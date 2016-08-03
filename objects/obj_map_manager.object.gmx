@@ -39,6 +39,7 @@ else{
     //for(i = 0; i &lt; array_height_2d(global.hex); i++){
     for(i = 0; i &lt; array_length_1d(global.map_tile); i++){
         global.map_tile[i] = instance_create(global.hex[i, 0], global.hex[i, 1], obj_test_place);
+        global.map_tile[i].terrain = global.hex[i, 2];
     }
 }
 //Set the player and the marker
@@ -201,8 +202,8 @@ if(key_quit &amp;&amp; paused){
             <kind>1</kind>
             <string>//
 draw_set_color(c_white);
-draw_text(10, 10, array_length_1d(global.map_tile));
-draw_text(10, 30, array_height_2d(global.hex));
+//draw_text(10, 10, array_length_1d(global.map_tile));
+//draw_text(10, 30, array_height_2d(global.hex));
 </string>
           </argument>
         </arguments>
@@ -229,11 +230,12 @@ draw_text(10, 30, array_height_2d(global.hex));
 /*for(i = 0; i &lt; array_length_1d(path_check); i++){
     draw_sprite(spr_tile_marker, 0, path_check[i].x, path_check[i].y);
 }*/
-//
+
 //
 draw_set_color(c_white);
 draw_set_valign(fa_center);
 draw_set_halign(fa_center);
+
 
 //Pause instructions
 if(paused){

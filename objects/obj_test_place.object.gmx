@@ -29,6 +29,14 @@
 positionX = 0;
 positionY = 0;
 marked = false;
+/*Terrain type
+        0 - Settlement
+        1 - Plains
+        2 - Forest
+        3 - Swamp
+*/
+//We assign it from the manager or other
+terrain = 0;
 //
 alarm_set(0, 1);
 </string>
@@ -53,9 +61,24 @@ alarm_set(0, 1);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//
+            <string>//Stuff that has to be checked one step before the create
 player_group = instance_find(obj_adventurer_group, 0);
 map_marker = instance_find(obj_marker_hand, 0);
+//Terrain sprite
+switch(terrain){
+    case 0:
+        sprite_index = spr_settlement_hex;
+    break;
+    case 1:
+        sprite_index = spr_plains_hex;
+    break;
+    case 2:
+        sprite_index = spr_forest_hex;
+    break;
+    case 3:
+        sprite_index = spr_swamp_hex;
+    break;
+}
 </string>
           </argument>
         </arguments>

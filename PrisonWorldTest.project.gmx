@@ -14,6 +14,10 @@
     <sprite>sprites\spr_tile_marker_green</sprite>
     <sprite>sprites\spr_marker_hand</sprite>
     <sprite>sprites\spr_adventurer</sprite>
+    <sprite>sprites\spr_forest_hex</sprite>
+    <sprite>sprites\spr_settlement_hex</sprite>
+    <sprite>sprites\spr_plains_hex</sprite>
+    <sprite>sprites\spr_swamp_hex</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_forest1</background>

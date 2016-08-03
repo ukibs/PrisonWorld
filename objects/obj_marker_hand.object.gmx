@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>//Variables
 //actual_tile = map_tile[0];
-
+terrain_text = "fsdhst";
 //
 player_group = instance_find(obj_adventurer_group, 0);
 </string>
@@ -88,6 +88,8 @@ if(action_button){
     player_group.destinationX = x;
     player_group.destinationY = y;
 }
+//
+terrain_text = "Unknown";
 </string>
           </argument>
         </arguments>
@@ -114,6 +116,22 @@ if(action_button){
 if(action_button){
     player_group.destinationX = x;
     player_group.destinationY = y;
+}
+//Get the data
+terrain = other.terrain;
+switch(terrain){
+    case 0:
+        terrain_text = "Settlement";
+    break;
+    case 1:
+        terrain_text = "Plains";
+    break;
+    case 2:
+        terrain_text = "Forest";
+    break;
+    case 3:
+        terrain_text = "Swamp";
+    break;
 }
 </string>
           </argument>
@@ -165,6 +183,10 @@ if(action_button){
             <string>//
 draw_self();
 //draw_sprite(spr_tile_marker, 0, actual_tile.x, actual_tile.y);
+//Details of the terrain
+//if(place_meeting(x, y, obj_test_place)){
+    draw_text(x + 100, y + 10, terrain_text);
+//}
 </string>
           </argument>
         </arguments>

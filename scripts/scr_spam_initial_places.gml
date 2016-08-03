@@ -27,4 +27,18 @@ for(i = 0; i < 7; i++){
     global.hex[i, 0] = global.map_tile[i].x;
     //Posicion en y
     global.hex[i, 1] = global.map_tile[i].y;
+    /*Terrain type
+        0 - Settlement
+        1 - Plains
+        2 - Forest
+        3 - Swamp
+    */
+    if(i == 0){
+        global.hex[i, 2] = 0;
+        global.map_tile[i].terrain = 0;
+    }
+    else{
+        global.hex[i, 2] = irandom_range(1, 3);
+        global.map_tile[i].terrain = global.hex[i, 2];
+    }
 }
