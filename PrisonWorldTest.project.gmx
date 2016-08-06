@@ -38,6 +38,7 @@
         <sprite>sprites\spr_skeleton_back_death</sprite>
       </sprites>
     </sprites>
+    <sprite>sprites\spr_photo_placeholder</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_forest1</background>
@@ -59,12 +60,15 @@
       <object>objects\obj_marker_hand</object>
       <object>objects\obj_adventurer_group</object>
     </objects>
+    <object>objects\obj_introduction</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_preload</room>
+    <room>rooms\room_introduction</room>
     <room>rooms\room_menu</room>
     <room>rooms\room_map</room>
     <room>rooms\room_forest1</room>
+    <room>rooms\room_settlement</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
