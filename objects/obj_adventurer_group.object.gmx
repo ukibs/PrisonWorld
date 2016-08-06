@@ -28,6 +28,11 @@
             <string>//Variables
 destinationX = x;
 destinationY = y;
+/*Actions
+    0 - Enter settlement
+    1 - Stop / Camp
+*/
+action = 0;
 </string>
           </argument>
         </arguments>
@@ -141,6 +146,40 @@ global.lastY = y;
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_test_place">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Get the type of terrain for the action
+switch(other.terrain){
+    //Settlement
+    case 0:
+        action = 0;
+    break;
+    //The others
+    default:
+        action = 1;
+    break;
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="5">
       <action>
         <libid>1</libid>
@@ -159,6 +198,33 @@ global.lastY = y;
           <argument>
             <kind>1</kind>
             <string></string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Show possible action
+if(action == 0)
+    draw_text(1300, 680, "B ENTER SETTLEMENT");
+else
+    draw_text(1300, 680, "B STOP/CAMP");
+</string>
           </argument>
         </arguments>
       </action>

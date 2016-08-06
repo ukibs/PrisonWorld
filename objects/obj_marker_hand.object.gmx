@@ -56,11 +56,21 @@ player_group = instance_find(obj_adventurer_group, 0);
 gamepad_set_axis_deadzone(0, 0.2);
 v_axis = gamepad_axis_value(0, gp_axislv);
 h_axis = gamepad_axis_value(0, gp_axislh);
-action_button = gamepad_button_check_pressed(0, gp_face1);
+moving_button = gamepad_button_check_pressed(0, gp_face1);
+action_button = gamepad_button_check_pressed(0, gp_face2);
 
 //Move it
 y += v_axis * 20;
 x += h_axis * 20;
+
+//Execute action depending on place
+if(action_button){
+    switch(obj_adventurer_group.action){
+        case 0:
+            room_goto(room_settlement);
+        break;
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -84,7 +94,7 @@ x += h_axis * 20;
           <argument>
             <kind>1</kind>
             <string>//Set the group their new destiantion
-if(action_button){
+if(moving_button){
     player_group.destinationX = x;
     player_group.destinationY = y;
 }
@@ -113,7 +123,7 @@ terrain_text = "Unknown";
           <argument>
             <kind>1</kind>
             <string>//Set the group their new destiantion
-if(action_button){
+if(moving_button){
     player_group.destinationX = x;
     player_group.destinationY = y;
 }
@@ -158,6 +168,8 @@ switch(terrain){
             <string>//Control stuff
 //draw_set_colour(c_white);
 //draw_text(10, 10, actual_tile);
+
+draw_text(1300, 700, "A GO");
 </string>
           </argument>
         </arguments>
