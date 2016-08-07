@@ -43,6 +43,9 @@
       <sprite>sprites\spr_castle</sprite>
       <sprite>sprites\spr_tabern</sprite>
     </sprites>
+    <sprites name="Heroes">
+      <sprite>sprites\spr_warrior_front_move</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_forest1</background>
@@ -70,13 +73,14 @@
       <object>objects\obj_castle</object>
       <object>objects\obj_tavern</object>
     </objects>
+    <object>objects\obj_test_warrior</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\room_forest1</room>
     <room>rooms\room_preload</room>
     <room>rooms\room_introduction</room>
     <room>rooms\room_menu</room>
     <room>rooms\room_map</room>
-    <room>rooms\room_forest1</room>
     <room>rooms\room_settlement</room>
   </rooms>
   <help>
