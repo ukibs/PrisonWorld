@@ -26,11 +26,16 @@
           <argument>
             <kind>1</kind>
             <string>//Global variables
+//Map stuff
 global.map_tile[0] = "Penish";
 global.hex[0, 0] = 0;
 global.hex[0, 1] = 0;
 global.lastX = 0;
 global.lastY = 0;
+//Missions
+global.mission = 0;
+global.mission_progress = 0;
+global.mission_requirement = 0;
 //
 room_goto_next();
 </string>

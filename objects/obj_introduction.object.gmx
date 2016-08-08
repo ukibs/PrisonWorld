@@ -35,16 +35,16 @@ text[1,0] = "But then, they came";
 text[1,1] = "Beings of incredible power";
 
 //Third one, tlaking about the war
-text[2,0] = "3";
-text[2,1] = "";
+text[2,0] = "We fought them with all we had";
+text[2,1] = "But little we could do";
 
 //Fourth one, about their fate
-text[3,0] = "4";
-text[3,1] = "";
+text[3,0] = "With little effort, they wiped out us";
+text[3,1] = "Except a few";
 
 //Fifth one, where they are
-text[4,0] = "5";
-text[4,1] = "";
+text[4,0] = "Then they took us and brought to this place";
+text[4,1] = "This kind of prison world";
 
 //Variables
 fadeIn = true;

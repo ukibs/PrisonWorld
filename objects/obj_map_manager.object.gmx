@@ -243,6 +243,15 @@ if(paused){
     draw_text(view_xview + view_wview/2, view_yview + 400, "START to continue");
     draw_text(view_xview + view_wview/2, view_yview + 450, "A to quit");
 }
+else{ //Stuff to show when not paused
+    switch(global.mission){
+        //Exploration
+        case 1:
+            draw_text(view_xview + view_wview/2, view_yview + 50, 
+                "EXPLORE NEW AREAS (" + string(global.mission_progress) + "/3)");
+        break;
+    }
+}
 </string>
           </argument>
         </arguments>

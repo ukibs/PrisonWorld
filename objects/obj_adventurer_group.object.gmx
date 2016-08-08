@@ -141,6 +141,10 @@ global.lastY = y;
             instance_create(other.x - (sprite_get_width(spr_test_place)*3/4), 
                         other.y + sprite_get_height(spr_test_place)/2,
                         obj_unknown_place);
+//If it´s part of a mission...
+if(global.mission == 1 &amp;&amp; global.mission_progress &lt; global.mission_requirement){
+    global.mission_progress ++;
+}
 </string>
           </argument>
         </arguments>
