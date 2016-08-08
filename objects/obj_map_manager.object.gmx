@@ -87,6 +87,7 @@ map_marker = instance_create(global.lastX, global.lastY, obj_marker_hand);
                         global.map_tile[i].y + sprite_get_height(spr_test_place)/2,
                         obj_unknown_place);
     }
+
 </string>
           </argument>
         </arguments>

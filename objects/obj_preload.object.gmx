@@ -36,7 +36,9 @@ global.lastY = 0;
 global.mission = 0;
 global.mission_progress = 0;
 global.mission_requirement = 0;
-//
+//Days lapsed
+global.days_lapsed = 0;
+//And start
 room_goto_next();
 </string>
           </argument>

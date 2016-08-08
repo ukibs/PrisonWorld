@@ -33,12 +33,18 @@ for(i = 0; i < 7; i++){
         2 - Forest
         3 - Swamp
     */
+    //And hostility
     if(i == 0){
         global.hex[i, 2] = 0;
         global.map_tile[i].terrain = 0;
+        global.hex[i, 3] = 0;
+        global.map_tile[i].hostility = 0;
     }
     else{
         global.hex[i, 2] = irandom_range(1, 3);
         global.map_tile[i].terrain = global.hex[i, 2];
+        //A moderate hostilty for the initial places
+        global.hex[i, 3] = irandom_range(20, 60);
+        global.map_tile[i].hostility = global.hex[i, 3];
     }
 }

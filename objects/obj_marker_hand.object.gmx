@@ -28,6 +28,7 @@
             <string>//Variables
 //actual_tile = map_tile[0];
 terrain_text = "fsdhst";
+terrain_hostility = 0;
 //
 player_group = instance_find(obj_adventurer_group, 0);
 </string>
@@ -143,6 +144,7 @@ switch(terrain){
         terrain_text = "Swamp";
     break;
 }
+terrain_hostility = other.hostility;
 </string>
           </argument>
         </arguments>
@@ -192,13 +194,26 @@ draw_text(1300, 700, "A GO");
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//
+            <string>//Details of the terrain
+draw_set_colour(c_black);
+draw_rectangle(x, y, x + 190, y + 100, false);
+draw_set_colour(c_white);
+draw_text(x + 100, y + 10, terrain_text);
+//Hostitly text
+if(place_meeting(x, y, obj_test_place)){
+    if(terrain_hostility &gt; 80)
+        draw_text(x + 100, y + 30, "Nope");
+    else if(terrain_hostility &gt; 60)
+        draw_text(x + 100, y + 30, "Dangeorus");
+    else if(terrain_hostility &gt; 40)
+        draw_text(x + 100, y + 30, "Moderate");
+    else if(terrain_hostility &gt; 20)
+        draw_text(x + 100, y + 30, "Quiete");
+    else
+        draw_text(x + 100, y + 30, "Peaceful");
+}
+//And then draw the icon
 draw_self();
-//draw_sprite(spr_tile_marker, 0, actual_tile.x, actual_tile.y);
-//Details of the terrain
-//if(place_meeting(x, y, obj_test_place)){
-    draw_text(x + 100, y + 10, terrain_text);
-//}
 </string>
           </argument>
         </arguments>
