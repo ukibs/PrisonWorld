@@ -38,7 +38,7 @@ x += h_axis * 20;
 
 //Return to the map
 if(return_button){
-    room_goto(room_map);
+    room_goto(room_settlement);
 }
 
 //Set the status depending on the mission progress

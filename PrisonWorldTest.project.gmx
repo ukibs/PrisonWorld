@@ -81,6 +81,8 @@
     <objects name="EventStuff">
       <object>objects\obj_forest_cover1</object>
       <object>objects\obj_player1</object>
+      <object>objects\obj_enemy1</object>
+      <object>objects\obj_event_manager</object>
     </objects>
   </objects>
   <rooms name="rooms">

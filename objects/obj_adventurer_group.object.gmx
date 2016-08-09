@@ -32,6 +32,7 @@ movement_speed = 5;
 terrain_multiplier = 1;
 actual_hostility = 0;
 time_between_checks = 60;
+accumulated_time = time_between_checks;
 /*Actions
     0 - Enter settlement
     1 - Stop / Camp
@@ -96,6 +97,8 @@ if(distance_to_point(destinationX, destinationY) &gt; 10){
 }
 else{
     speed = 0;
+    if(alarm[0] &gt; -1)
+        accumulated_time = alarm_get(0);
     alarm_set(0, -1);
 }
 //Save the position
@@ -286,6 +289,11 @@ if(action == 0)
     draw_text(1300, 680, "B ENTER SETTLEMENT");
 else
     draw_text(1300, 680, "B STOP/CAMP");
+    
+//Test stuff
+draw_text(10, 10, alarm[0]);
+draw_text(10, 30, time_between_checks);
+draw_text(10, 50, accumulated_time);
 </string>
           </argument>
         </arguments>

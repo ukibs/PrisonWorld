@@ -98,7 +98,7 @@ if(action_button){
 if(moving_button){
     player_group.destinationX = x;
     player_group.destinationY = y;
-    player_group.alarm[0] = player_group.time_between_checks;
+    player_group.alarm[0] = player_group.accumulated_time;
 }
 //
 terrain_text = "Unknown";
@@ -128,7 +128,7 @@ terrain_text = "Unknown";
 if(moving_button){
     player_group.destinationX = x;
     player_group.destinationY = y;
-    player_group.alarm[0] = player_group.time_between_checks;
+    player_group.alarm[0] = player_group.accumulated_time;
 }
 //Get the data
 terrain = other.terrain;
