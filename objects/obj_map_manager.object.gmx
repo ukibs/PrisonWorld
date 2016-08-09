@@ -249,7 +249,14 @@ else{ //Stuff to show when not paused
         //Exploration
         case 1:
             draw_text(view_xview + view_wview/2, view_yview + 50, 
-                "EXPLORE NEW AREAS (" + string(global.mission_progress) + "/3)");
+                "EXPLORE NEW AREAS (" + string(global.mission_progress) + "/" 
+                + string(global.mission_requirement) + ")");
+        break;
+        //Extermination
+        case 2:
+            draw_text(view_xview + view_wview/2, view_yview + 50, 
+                "REDUCE HOSTILITY IN ANY AREA (" + string(global.mission_progress) + "/" 
+                + string(global.mission_requirement) + ")");
         break;
     }
 }

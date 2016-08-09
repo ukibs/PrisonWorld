@@ -46,6 +46,7 @@
     <sprites name="Heroes">
       <sprite>sprites\spr_warrior_front_move</sprite>
     </sprites>
+    <sprite>sprites\spr_quest_button</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_forest1</background>
@@ -74,6 +75,11 @@
     </objects>
     <object>objects\obj_introduction</object>
     <object>objects\obj_forest_cover1</object>
+    <objects name="CastleStuff">
+      <object>objects\obj_quest_selector</object>
+      <object>objects\obj_quest_generator</object>
+      <object>objects\obj_quest_button</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_preload</room>
@@ -82,6 +88,7 @@
     <room>rooms\room_map</room>
     <room>rooms\room_settlement</room>
     <room>rooms\room_forest1</room>
+    <room>rooms\room_castle</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

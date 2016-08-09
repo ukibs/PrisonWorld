@@ -41,38 +41,30 @@ if(return_button){
     room_goto(room_map);
 }
 
-//Reset the status
-status = 0;
+//Set the status depending on the mission progress
+if(global.mission == 0){
+    status = 0;
+}
+else if(global.mission_progress == global.mission_requirement){
+    status = 3;
+}
+else if(global.mission &gt; 0){
+    status = 2;
+}
+//Press to get the reward or to give up on the quest
+if(action_button &amp;&amp; global.mission &gt; 0){
+    if(global.mission_progress == global.mission_requirement){
+        global.currency += global.mission_requirement * 100;
+    }
+    global.mission_progress = 0;
+    global.mission = 0;
+}
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_tavern">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//
-status = 2;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_castle">
+    <event eventtype="4" ename="obj_quest_button">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -93,9 +85,10 @@ status = 2;
 status = 1;
 //
 if(action_button){
-    //global.mission = 1;
-    //global.mission_requirement = 3;
-    room_goto(room_castle);
+    global.mission = other.quest_type;
+    global.mission_requirement = other.difficulty;
+    //For now we destroy the button
+    with(obj_quest_button) instance_destroy();
 }
 </string>
           </argument>
@@ -125,11 +118,13 @@ draw_text(1300, 600, "B EXIT");
 switch(status){
     //Castle/missions
     case 1:
-        draw_text(1300, 630, "A GET MISSIONS");
+        draw_text(1300, 630, "A CHOOSE");
     break;
-    //Tabern/heal
     case 2:
-        draw_text(1300, 630, "A REST");
+        draw_text(1300, 630, "A GIVE UP");
+    break;
+    case 3:
+        draw_text(1300, 630, "A GET REWARD");
     break;
 }
 //Draw the actual currency
