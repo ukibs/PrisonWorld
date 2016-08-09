@@ -57,8 +57,8 @@
     <script>scripts\scr_spam_initial_places.gml</script>
   </scripts>
   <objects name="objects">
-    <object>objects\obj_player1</object>
     <object>objects\obj_preload</object>
+    <object>objects\obj_introduction</object>
     <object>objects\obj_menu_manager</object>
     <objects name="MapStuff">
       <object>objects\obj_map_manager</object>
@@ -73,12 +73,14 @@
       <object>objects\obj_castle</object>
       <object>objects\obj_tavern</object>
     </objects>
-    <object>objects\obj_introduction</object>
-    <object>objects\obj_forest_cover1</object>
     <objects name="CastleStuff">
       <object>objects\obj_quest_selector</object>
       <object>objects\obj_quest_generator</object>
       <object>objects\obj_quest_button</object>
+    </objects>
+    <objects name="EventStuff">
+      <object>objects\obj_forest_cover1</object>
+      <object>objects\obj_player1</object>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -87,8 +89,8 @@
     <room>rooms\room_menu</room>
     <room>rooms\room_map</room>
     <room>rooms\room_settlement</room>
-    <room>rooms\room_forest1</room>
     <room>rooms\room_castle</room>
+    <room>rooms\room_forest1</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

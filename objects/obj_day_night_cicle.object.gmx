@@ -68,8 +68,9 @@ if(obj_adventurer_group.speed &gt; 0){
             //A new day
             global.days_lapsed ++;
             //Raise a little the  hostilty
+            //Habrá que hacer que no suba en el asentamiento
             obj_test_place.hostility ++;
-            for(i = 0; i &lt; array_height_2d(global.hex); i++){
+            for(i = 1; i &lt; array_height_2d(global.hex); i++){
                 global.hex[i, 3] ++;
             }
         }

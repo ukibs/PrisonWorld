@@ -30,6 +30,8 @@ destinationX = x;
 destinationY = y;
 movement_speed = 5;
 terrain_multiplier = 1;
+actual_hostility = 0;
+time_between_checks = 60;
 /*Actions
     0 - Enter settlement
     1 - Stop / Camp
@@ -58,6 +60,13 @@ action = 0;
           <argument>
             <kind>1</kind>
             <string>//Testeo de eventos
+encounter_chance = random(100);
+if(encounter_chance &lt; actual_hostility){
+    room_goto(room_forest1);
+}
+else{
+    alarm_set(0, time_between_checks);
+}
 </string>
           </argument>
         </arguments>
@@ -85,8 +94,10 @@ if(distance_to_point(destinationX, destinationY) &gt; 10){
     move_towards_point(destinationX, destinationY, 
                         movement_speed * terrain_multiplier);
 }
-else
+else{
     speed = 0;
+    alarm_set(0, -1);
+}
 //Save the position
 global.lastX = x;
 global.lastY = y;
@@ -223,6 +234,8 @@ switch(other.terrain){
         action = 1;
     break;
 }
+//Get the hostilty of the place
+actual_hostility = other.hostility;
 
 </string>
           </argument>

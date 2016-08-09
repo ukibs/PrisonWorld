@@ -95,8 +95,8 @@ if(key_okey){
             <kind>1</kind>
             <string>//
 draw_set_color(c_white);
-draw_text(10, 10, array_length_1d(global.map_tile));
-draw_text(10, 30, array_height_2d(global.hex));
+//draw_text(10, 10, array_length_1d(global.map_tile));
+//draw_text(10, 30, array_height_2d(global.hex));
 </string>
           </argument>
         </arguments>

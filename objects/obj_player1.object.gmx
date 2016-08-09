@@ -26,10 +26,11 @@
           <argument>
             <kind>1</kind>
             <string>//Get keys
-key_up = keyboard_check(vk_up);
-key_down = keyboard_check(vk_down);
-key_left = keyboard_check(vk_left);
-key_right = keyboard_check(vk_right);
+gamepad_set_axis_deadzone(0, 0.2);
+key_up = keyboard_check(vk_up) || gamepad_button_check(0, gp_padu) || gamepad_axis_value(0, gp_axislv) &lt; -0.2;
+key_down = keyboard_check(vk_down) || gamepad_button_check(0, gp_padd) || gamepad_axis_value(0, gp_axislv) &gt; 0.2;
+key_left = keyboard_check(vk_left) || gamepad_button_check(0, gp_padl) || gamepad_axis_value(0, gp_axislh) &lt; -0.2;
+key_right = keyboard_check(vk_right) || gamepad_button_check(0, gp_padr) || gamepad_axis_value(0, gp_axislh) &gt; 0.2;
 //Move it
 vspeed = (-key_up + key_down) * 10;
 hspeed = (-key_left + key_right) * 10;
