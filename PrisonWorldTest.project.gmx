@@ -83,6 +83,7 @@
       <object>objects\obj_player1</object>
       <object>objects\obj_enemy1</object>
       <object>objects\obj_event_manager</object>
+      <object>objects\obj_pause</object>
     </objects>
   </objects>
   <rooms name="rooms">
