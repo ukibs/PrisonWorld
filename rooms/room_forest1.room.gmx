@@ -59,6 +59,7 @@
     <instance objName="obj_enemy1" x="1440" y="1024" name="inst_D3652CB6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_event_manager" x="32" y="64" name="inst_D6D56AD7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pause" x="64" y="32" name="inst_20C5DEF1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_basic_attack" x="1216" y="1312" name="inst_CBDB701A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

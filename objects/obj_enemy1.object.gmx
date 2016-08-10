@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>//
 life = 100;
+
 </string>
           </argument>
         </arguments>
@@ -49,7 +50,27 @@ life = 100;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//
+            <string>//Mira hacia el prota
+//De momento solo con uno
+direction = point_direction(x, y, obj_player1.x, obj_player1.y);
+
+//Sprite que mostrar
+//En guarro
+if(direction &lt;= 180){
+    sprite_index = spr_livingTree_back_idle;
+}
+else{
+    sprite_index = spr_livingTree_front_idle;
+}
+//Orientación del sprite
+if(direction &gt;= 90 &amp;&amp; direction &lt;= 270){
+    image_xscale = -1;
+}
+else{
+    image_xscale = 1;
+}
+
+//Muerte
 if(life &lt;= 0){
     sprite_index = spr_livingTree_front_death;
 }

@@ -33,6 +33,7 @@ terrain_multiplier = 1;
 actual_hostility = 0;
 time_between_checks = 60;
 accumulated_time = time_between_checks;
+direction = 270;
 /*Actions
     0 - Enter settlement
     1 - Stop / Camp
@@ -102,6 +103,7 @@ else{
     if(alarm[0] &gt; -1)
         accumulated_time = alarm_get(0);
     alarm_set(0, -1);
+    direction = 270;
 }
 //Save the position
 global.lastX = x;
@@ -343,7 +345,8 @@ switch(direction_drawing){
         draw_sprite(spr_warrior_left_move, 0, x, y);
     break;
     //Down
-    case 3:
+    //case 3:
+    default:
         draw_sprite(spr_warrior_front_move, 0, x, y);
     break;
 }

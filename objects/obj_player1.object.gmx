@@ -33,6 +33,7 @@ attack = 5;
 
 //
 direction = 270;
+looking_direction = 270; //Alternativa
 </string>
           </argument>
         </arguments>
@@ -76,19 +77,19 @@ h_direction = (-key_left + key_right);
 if(h_direction != 0)
     direction = h_direction * 90 -90;*/
 if(v_direction == -1)
-    direction = 90;
+    looking_direction = 90;
 else if(v_direction == 1)
-    direction = 90;
+    looking_direction = 270;
 else if(h_direction == -1)
-    direction = 90;
+    looking_direction = 180;
 else if(h_direction == 1)
-    direction = 90;
+    looking_direction = 0;
 //Movement
 vspeed = v_direction * 10;
 hspeed = h_direction * 10;
 
 //Sprite_control
-switch(direction){
+switch(looking_direction){
     //Right
     case 0:
         sprite_index = spr_warrior_right_move;
@@ -109,7 +110,8 @@ switch(direction){
 //Basic attack
 if(key_action_1){
     attack_instance = instance_create(x, y, obj_basic_attack);
-    attack_instance.direction = direction;
+    attack_instance.direction = looking_direction;
+    attack_instance.image_angle = attack_instance.direction;
     attack_instance.damage = attack;
 }
 </string>
@@ -160,9 +162,9 @@ if(key_action_1){
           <argument>
             <kind>1</kind>
             <string>//Test stuff
-draw_text(10, 10, v_direction);
-draw_text(10, 30, h_direction);
-draw_text(10, 50, direction);
+//draw_text(10, 10, v_direction);
+//draw_text(10, 30, h_direction);
+//draw_text(10, 50, direction);
 </string>
           </argument>
         </arguments>
