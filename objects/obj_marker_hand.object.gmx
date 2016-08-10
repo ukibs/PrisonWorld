@@ -3,7 +3,7 @@
   <spriteName>spr_marker_hand</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1</depth>
+  <depth>-11</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -129,6 +129,8 @@ if(moving_button){
     player_group.destinationX = x;
     player_group.destinationY = y;
     player_group.alarm[0] = player_group.accumulated_time;
+    player_group.direction = point_direction(player_group.x, player_group.y,
+                                x, y);
 }
 //Get the data
 terrain = other.terrain;
@@ -171,7 +173,7 @@ terrain_hostility = other.hostility;
             <kind>1</kind>
             <string>//Control stuff
 //draw_set_colour(c_white);
-//draw_text(10, 10, actual_tile);
+//draw_text(10, 10, direction_drawing);
 
 draw_text(1300, 700, "A GO");
 </string>
