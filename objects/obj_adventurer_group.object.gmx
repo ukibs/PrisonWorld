@@ -64,6 +64,8 @@ action = 0;
             <string>//Testeo de eventos
 encounter_chance = random(100);
 if(encounter_chance &lt; actual_hostility){
+    global.hostility_to_use = actual_hostility;
+    global.hex_to_use = actual_hex;
     room_goto(room_forest1);
 }
 else{
@@ -144,11 +146,35 @@ global.lastY = y;
         2 - Forest
         3 - Swamp
     */
-    global.hex[next_index, 2] = irandom_range(1, 3);
+    //Terrain
+    //Vamos a prbar de otra forma
+    adjacent = 0;   
+    //Si, hay que tragarse la array entera 
+    for(i = 0; i &lt; array_length_1d(global.map_tile); i++){
+        //Buscamos los colindantes (hay que revisar la distancia)
+            //Que no pille el asentamiento
+        if(distance_to_object(global.map_tile[i] &lt; 100) &amp;&amp; 
+            global.map_tile[i].terrain &gt; 0){
+            //Si lo es guardamos su terreno
+            adjacent_places[adjacent] = global.map_tile[i].terrain;
+            adjacent ++;
+        }
+    }
+    //Decidimos tanto si cae uno de esos
+    terrain_decider = irandom(5);
+    if(terrain_decider &lt;= adjacent)
+        //Como cual será de ellos
+        global.hex[next_index, 2] = adjacent_places[terrain_decider];
+    else    //Si no random y a tomar por culo
+        global.hex[next_index, 2] = irandom_range(1, 3);
     global.map_tile[next_index].terrain = global.hex[next_index, 2];
+    
     //A hostilty
     global.hex[next_index, 3] = irandom_range(20, 80);
     global.map_tile[next_index].hostility = global.hex[next_index, 3];
+    //Id
+    global.hex[next_index, 4] = next_index;
+    global.map_tile[next_index].hex_id = global.hex[next_index, 4];
     //And destroy the unknown one
     with(other) instance_destroy();
     //obj_map_manager.check = true;
@@ -241,8 +267,9 @@ switch(other.terrain){
         action = 1;
     break;
 }
-//Get the hostilty of the place
+//Get the ID and hostilty of the place
 actual_hostility = other.hostility;
+actual_hex = other.hex_id;
 
 </string>
           </argument>
@@ -298,9 +325,9 @@ else
 //draw_text(10, 10, alarm[0]);
 //draw_text(10, 30, time_between_checks);
 //draw_text(10, 50, accumulated_time);
-draw_text(10, 10, direction);
-draw_text(10, 30, direction_drawing);
-draw_text(10, 50, direction % 4);
+draw_text(10, 10, actual_hex);
+draw_text(10, 30, actual_hostility);
+draw_text(10, 50, distance_to_object(global.map_tile[0]));
 </string>
           </argument>
         </arguments>

@@ -28,9 +28,12 @@
             <string>//Global variables
 //Map stuff
 global.map_tile[0] = "Penish";
-global.hex[0, 0] = 0;
-global.hex[0, 1] = 0;
-global.lastX = 0;
+global.hex[0, 0] = 0;   //x
+global.hex[0, 1] = 0;   //y
+global.hex[0, 2] = 0;   //Terreno
+global.hex[0, 3] = 0;   //Hostilidad
+global.hex[0, 4] = 0;   //Id
+global.lastX = 0;   
 global.lastY = 0;
 //Missions
 global.mission = 0;
@@ -40,6 +43,9 @@ global.mission_requirement = 0;
 global.days_lapsed = 0;
 //Money
 global.currency = 100;
+//Events
+global.hostility_to_use = 0;
+global.hex_to_use = 0;
 //And start
 room_goto_next();
 </string>

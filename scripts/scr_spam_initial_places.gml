@@ -41,10 +41,35 @@ for(i = 0; i < 7; i++){
         global.map_tile[i].hostility = 0;
     }
     else{
-        global.hex[i, 2] = irandom_range(1, 3);
+        //Terrain type
+        //Vamos a prbar de otra forma
+        adjacent = 0;   
+        adjacent_places[0] = 0;
+        //Si, hay que tragarse la array entera 
+        for(j = 0; j < array_length_1d(global.map_tile); j++){
+            //Buscamos los colindantes (hay que revisar la distancia)
+                //Que no pille el asentamiento
+            if(distance_to_object(global.map_tile[j] < 100) && 
+                global.map_tile[j].terrain > 0){
+                //Si lo es guardamos su terreno
+                adjacent_places[adjacent] = global.map_tile[j].terrain;
+                adjacent ++;
+            }
+        }
+        //Decidimos tanto si cae uno de esos
+        terrain_decider = irandom(5);
+        if(terrain_decider < adjacent)
+            //Como cual será de ellos
+            global.hex[i, 2] = adjacent_places[terrain_decider];
+        else    //Si no random y a tomar por culo
+            global.hex[i, 2] = irandom_range(1, 3);
         global.map_tile[i].terrain = global.hex[i, 2];
+        
         //A moderate hostilty for the initial places
         global.hex[i, 3] = irandom_range(20, 60);
         global.map_tile[i].hostility = global.hex[i, 3];
+        //Id
+        global.hex[i, 4] = i;
+        global.map_tile[i].hex_id = global.hex[i, 4];
     }
 }

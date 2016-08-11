@@ -162,9 +162,9 @@ if(key_action_1){
           <argument>
             <kind>1</kind>
             <string>//Test stuff
-//draw_text(10, 10, v_direction);
-//draw_text(10, 30, h_direction);
-//draw_text(10, 50, direction);
+draw_text(10, 10, global.hex_to_use);
+draw_text(10, 30, global.hostility_to_use);
+draw_text(10, 50, instance_number(obj_enemy1));
 </string>
           </argument>
         </arguments>

@@ -51,6 +51,8 @@
     </sprites>
     <sprite>sprites\spr_quest_button</sprite>
     <sprite>sprites\spr_basic_attack</sprite>
+    <sprite>sprites\spr_red_marker</sprite>
+    <sprite>sprites\spr_blue_marker</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_forest1</background>
@@ -59,6 +61,7 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_spam_initial_places.gml</script>
+    <script>scripts\scr_terrain_checker.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_preload</object>
@@ -84,13 +87,16 @@
       <object>objects\obj_quest_button</object>
     </objects>
     <objects name="EventStuff">
+      <object>objects\obj_event_manager</object>
       <object>objects\obj_forest_cover1</object>
       <object>objects\obj_player1</object>
+      <object>objects\obj_key_player</object>
       <object>objects\obj_enemy1</object>
-      <object>objects\obj_event_manager</object>
       <object>objects\obj_pause</object>
       <object>objects\obj_basic_attack</object>
       <object>objects\obj_damage_displayer</object>
+      <object>objects\obj_red_marker</object>
+      <object>objects\obj_blue_marker</object>
     </objects>
   </objects>
   <rooms name="rooms">
