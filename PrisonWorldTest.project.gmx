@@ -48,6 +48,7 @@
       <sprite>sprites\spr_warrior_left_move</sprite>
       <sprite>sprites\spr_warrior_back_move</sprite>
       <sprite>sprites\spr_warrior_right_move</sprite>
+      <sprite>sprites\spr_warrior_down</sprite>
     </sprites>
     <sprite>sprites\spr_quest_button</sprite>
     <sprite>sprites\spr_basic_attack</sprite>
@@ -101,9 +102,13 @@
       <object>objects\obj_red_marker</object>
       <object>objects\obj_blue_marker</object>
     </objects>
+    <objects name="TabernStuff">
+      <object>objects\obj_tabern_manager</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_preload</room>
+    <room>rooms\room_tabern</room>
     <room>rooms\room_introduction</room>
     <room>rooms\room_menu</room>
     <room>rooms\room_settlement</room>

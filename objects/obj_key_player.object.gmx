@@ -34,6 +34,7 @@ attack = 5;
 //
 direction = 270;
 looking_direction = 270; //Alternativa
+status_down = 0;
 </string>
           </argument>
         </arguments>
@@ -67,52 +68,60 @@ key_action_2 = keyboard_check_pressed(ord('D'));
 key_action_3 = keyboard_check_pressed(ord('A'));
 key_action_4 = keyboard_check_pressed(ord('W'));
 
-//Move it
-//Moving direction
-v_direction = (-key_up + key_down);
-h_direction = (-key_left + key_right);
-//Direction facing
-/*if(v_direction != 0)
-    direction = v_direction * -90;
-if(h_direction != 0)
-    direction = h_direction * 90 -90;*/
-if(v_direction == -1)
-    looking_direction = 90;
-else if(v_direction == 1)
-    looking_direction = 270;
-else if(h_direction == -1)
-    looking_direction = 180;
-else if(h_direction == 1)
-    looking_direction = 0;
-//Movement
-vspeed = v_direction * 10;
-hspeed = h_direction * 10;
-
-//Sprite_control
-switch(looking_direction){
-    //Right
-    case 0:
-        sprite_index = spr_warrior_right_move;
-    break;
-    //Up
-    case 90:
-        sprite_index = spr_warrior_back_move;
-    break;
-    //Left
-    case 180:
-        sprite_index = spr_warrior_left_move;
-    break;
-    //Down
-    case 270:
-        sprite_index = spr_warrior_front_move;
-    break;
+//If not down
+if(status_down == 0){
+    //Move it
+    //Moving direction
+    v_direction = (-key_up + key_down);
+    h_direction = (-key_left + key_right);
+    //Direction facing
+    /*if(v_direction != 0)
+        direction = v_direction * -90;
+    if(h_direction != 0)
+        direction = h_direction * 90 -90;*/
+    if(v_direction == -1)
+        looking_direction = 90;
+    else if(v_direction == 1)
+        looking_direction = 270;
+    else if(h_direction == -1)
+        looking_direction = 180;
+    else if(h_direction == 1)
+        looking_direction = 0;
+    //Movement
+    vspeed = v_direction * 10;
+    hspeed = h_direction * 10;
+    
+    //Sprite_control
+    switch(looking_direction){
+        //Right
+        case 0:
+            sprite_index = spr_warrior_right_move;
+        break;
+        //Up
+        case 90:
+            sprite_index = spr_warrior_back_move;
+        break;
+        //Left
+        case 180:
+            sprite_index = spr_warrior_left_move;
+        break;
+        //Down
+        case 270:
+            sprite_index = spr_warrior_front_move;
+        break;
+    }
+    //Basic attack
+    if(key_action_1){
+        attack_instance = instance_create(x, y, obj_basic_attack);
+        attack_instance.direction = looking_direction;
+        attack_instance.image_angle = attack_instance.direction;
+        attack_instance.damage = attack;
+    }
 }
-//Basic attack
-if(key_action_1){
-    attack_instance = instance_create(x, y, obj_basic_attack);
-    attack_instance.direction = looking_direction;
-    attack_instance.image_angle = attack_instance.direction;
-    attack_instance.damage = attack;
+//Out of combat
+if(life &lt;= 0){
+    status_down = 1;
+    sprite_index = spr_warrior_down;
 }
 </string>
           </argument>

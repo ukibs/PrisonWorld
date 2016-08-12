@@ -25,12 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Prueba guarra
-for(i = 0; i &lt; global.hostility_to_use / 10; i ++){
-    randomX = irandom_range(200, room_width - 200);
-    randomY = irandom_range(100, room_height - 200);
-    enemy = instance_create(randomX, randomY, obj_enemy1);
-}
+            <string>//Variables
+connected_gamepads = 0;
+//Control the players
+player[0] = 0;
+player[1] = 0;
+player[2] = 0;
+player[3] = 0;
 </string>
           </argument>
         </arguments>
@@ -53,19 +54,83 @@ for(i = 0; i &lt; global.hostility_to_use / 10; i ++){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//De momento simplón
-if(!instance_exists(obj_enemy1)){
-    //Check if there is active an exterminate mission
-    if(global.mission == 2 &amp;&amp; global.mission_progress &lt; global.mission_requirement)
-        global.mission_progress ++;
-    //Reduce the hostility of the place
-    //En guarro
-    global.hex[global.hex_to_use, 3] -= int64(global.hostility_to_use / 10);
-    
-    //And go to the map
-    room_goto(room_map);
+            <string>//Check constantly the number of gamepads
+connected_gamepads = gamepad_get_device_count();
+
+//En guarro
+//Ningún mando
+if(connected_gamepads == 0){
+
 }
-//Controlar también que se mueran los jugadores
+
+/*switch(connected_gamepads){
+    //Ningún mando
+    case 0:
+    
+    break;
+    
+}*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//
+draw_set_color(c_white);
+
+//En guarro
+//Ningún mando
+if(connected_gamepads == 0){
+    if(player[0] == 0)
+        draw_text(30, 30, "Press Enter");
+    else
+        draw_text(30, 30, "Okay");
+}
+//Primer mando
+if(connected_gamepads &gt; 0){
+    if(player[0] == 0)
+        draw_text(30, 30, "Press A");
+    else
+        draw_text(30, 30, "Okay");
+}
+//Segund mando
+if(connected_gamepads &gt; 1){
+    if(player[1] == 0)
+        draw_text(1200, 30, "Press A");
+    else
+        draw_text(1200, 30, "Okay");
+}
+//Tercero mando
+if(connected_gamepads &gt; 2){
+    if(player[2] == 0)
+        draw_text(30, 600, "Press A");
+    else
+        draw_text(30, 600, "Okay");
+}
+//Cuarto mando
+if(connected_gamepads &gt; 3){
+    if(player[3] == 0)
+        draw_text(1200, 600, "Press A");
+    else
+        draw_text(1200, 600, "Okay");
+}
 </string>
           </argument>
         </arguments>
