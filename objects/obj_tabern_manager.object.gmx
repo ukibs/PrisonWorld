@@ -55,21 +55,23 @@ player[3] = 0;
           <argument>
             <kind>1</kind>
             <string>//Check constantly the number of gamepads
-connected_gamepads = gamepad_get_device_count();
-
-//En guarro
-//Ningún mando
-if(connected_gamepads == 0){
-
+connected_gamepads = 0;
+for(i = 0; i &lt; 4; i++){
+    connected_gamepads += gamepad_is_connected(i);
 }
 
-/*switch(connected_gamepads){
-    //Ningún mando
-    case 0:
-    
-    break;
-    
-}*/
+//Control para jugador con teclado
+num_players = connected_gamepads + 1;
+num_players = min(num_players, 4);
+
+//Control de aceptado
+for(i = 0; i &lt; connected_gamepads; i++){
+    if(gamepad_button_check_pressed(i, gp_face1))
+        player[i] = 1;
+}
+//Teclado
+if(keyboard_check_pressed(vk_enter) &amp;&amp; num_players &gt; connected_gamepads)
+     player[num_players-1] = 1;
 </string>
           </argument>
         </arguments>
@@ -95,41 +97,17 @@ if(connected_gamepads == 0){
             <string>//
 draw_set_color(c_white);
 
-//En guarro
-//Ningún mando
-if(connected_gamepads == 0){
-    if(player[0] == 0)
-        draw_text(30, 30, "Press Enter");
+//Mostramos por pantalla
+for(i = 0; i &lt; num_players; i++){
+    if(player[i] == 0){
+        if(i == connected_gamepads) //Control para jugador de tclado
+            draw_text(30, i * 30 + 30, "Press Enter");
+        else
+            draw_text(30, i * 30 + 30, "Press A");
+        
+    }
     else
-        draw_text(30, 30, "Okay");
-}
-//Primer mando
-if(connected_gamepads &gt; 0){
-    if(player[0] == 0)
-        draw_text(30, 30, "Press A");
-    else
-        draw_text(30, 30, "Okay");
-}
-//Segund mando
-if(connected_gamepads &gt; 1){
-    if(player[1] == 0)
-        draw_text(1200, 30, "Press A");
-    else
-        draw_text(1200, 30, "Okay");
-}
-//Tercero mando
-if(connected_gamepads &gt; 2){
-    if(player[2] == 0)
-        draw_text(30, 600, "Press A");
-    else
-        draw_text(30, 600, "Okay");
-}
-//Cuarto mando
-if(connected_gamepads &gt; 3){
-    if(player[3] == 0)
-        draw_text(1200, 600, "Press A");
-    else
-        draw_text(1200, 600, "Okay");
+        draw_text(30, i * 30 + 30, "Okay");
 }
 </string>
           </argument>
