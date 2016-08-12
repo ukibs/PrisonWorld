@@ -25,12 +25,41 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Prueba guarra
+            <string>//Spammeo enemigos
+//Prueba guarra
 for(i = 0; i &lt; global.hostility_to_use / 10; i ++){
     randomX = irandom_range(200, room_width - 200);
     randomY = irandom_range(100, room_height - 200);
     enemy = instance_create(randomX, randomY, obj_enemy1);
 }
+//Spammeo jugadores
+//Datos
+//Positions
+spam_positionX = room_width/2;
+spam_positionY = room_height - 150;
+posX[0] = 0;
+posX[1] = -20;
+posX[2] = 20;
+posX[3] = 0;
+posY[0] = -20;
+posY[1] = 0;
+posY[2] = 0;
+posY[3] = 20;
+
+//Spam
+for(i = 0; i &lt; global.num_players; i++){
+    //Asign each instanced player his number;
+    //if(global.player[i] == 1){
+        player[i] = instance_create(spam_positionX + posX[i], spam_positionY + posY[i],
+                                    obj_player1);
+        player[i].player_num = i;
+    /*}
+    else{
+        player[i] = instance_create(spam_positionX + posX[i], spam_positionY + posY[i],
+                                    obj_key_player);
+    }*/
+}
+
 </string>
           </argument>
         </arguments>

@@ -27,14 +27,19 @@
             <kind>1</kind>
             <string>//Variables
 //De momento unas provisonales
+max_life = 10;
 life = 10;
 defense = 2;
 attack = 5;
+main_cooldown = 10;
 
-//
+
+//Datos de manejo
+player_num = 0;
 direction = 270;
 looking_direction = 270; //Alternativa
 status_down = 0;
+
 </string>
           </argument>
         </arguments>
@@ -58,7 +63,6 @@ status_down = 0;
           <argument>
             <kind>1</kind>
             <string>//Get keys
-gamepad_set_axis_deadzone(0, 0.2);
 key_up = keyboard_check(vk_up);
 key_down = keyboard_check(vk_down);
 key_left = keyboard_check(vk_left);
@@ -174,6 +178,13 @@ if(life &lt;= 0){
 //draw_text(10, 10, v_direction);
 //draw_text(10, 30, h_direction);
 //draw_text(10, 50, direction);
+
+//Draw stats and stuff
+draw_sprite_stretched(spr_health_bar, 0, 30, 30 + (player_num * 90), 
+                        life / max_life * 64, 16);
+draw_sprite(spr_sword, 0, 30, 50 + (i * 90));
+draw_sprite_stretched(spr_cooldown, 0, 30, 50 + (player_num * 90) - 16, 
+                        alarm_get(0) / main_cooldown, 32);
 </string>
           </argument>
         </arguments>

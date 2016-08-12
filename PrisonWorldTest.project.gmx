@@ -6,8 +6,9 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\spr_forest1</sprite>
+    <sprite>sprites\spr_photo_placeholder</sprite>
     <sprite>sprites\spr_black</sprite>
+    <sprite>sprites\spr_quest_button</sprite>
     <sprites name="Map">
       <sprite>sprites\spr_swamp_hex</sprite>
       <sprite>sprites\spr_plains_hex</sprite>
@@ -38,7 +39,6 @@
         <sprite>sprites\spr_skeleton_back_death</sprite>
       </sprites>
     </sprites>
-    <sprite>sprites\spr_photo_placeholder</sprite>
     <sprites name="Settlement">
       <sprite>sprites\spr_castle</sprite>
       <sprite>sprites\spr_tabern</sprite>
@@ -50,11 +50,20 @@
       <sprite>sprites\spr_warrior_right_move</sprite>
       <sprite>sprites\spr_warrior_down</sprite>
     </sprites>
-    <sprite>sprites\spr_quest_button</sprite>
-    <sprite>sprites\spr_basic_attack</sprite>
-    <sprite>sprites\spr_diagonal_attack</sprite>
-    <sprite>sprites\spr_red_marker</sprite>
-    <sprite>sprites\spr_blue_marker</sprite>
+    <sprites name="Markers">
+      <sprite>sprites\spr_red_marker</sprite>
+      <sprite>sprites\spr_blue_marker</sprite>
+      <sprite>sprites\spr_white_marker</sprite>
+      <sprite>sprites\spr_green_marker</sprite>
+    </sprites>
+    <sprites name="Events">
+      <sprite>sprites\spr_basic_attack</sprite>
+      <sprite>sprites\spr_diagonal_attack</sprite>
+      <sprite>sprites\spr_forest1</sprite>
+      <sprite>sprites\spr_health_bar</sprite>
+      <sprite>sprites\spr_sword</sprite>
+      <sprite>sprites\spr_cooldown</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_forest1</background>
@@ -64,6 +73,7 @@
   <scripts name="scripts">
     <script>scripts\scr_spam_initial_places.gml</script>
     <script>scripts\scr_terrain_checker.gml</script>
+    <script>scripts\scr_get_gamepad1.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_preload</object>
@@ -99,8 +109,7 @@
       <object>objects\obj_basic_attack</object>
       <object>objects\obj_diagonal_attack</object>
       <object>objects\obj_damage_displayer</object>
-      <object>objects\obj_red_marker</object>
-      <object>objects\obj_blue_marker</object>
+      <object>objects\obj_marker</object>
     </objects>
     <objects name="TabernStuff">
       <object>objects\obj_tabern_manager</object>

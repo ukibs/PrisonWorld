@@ -32,6 +32,9 @@ global.player[0] = 0;
 global.player[1] = 0;
 global.player[2] = 0;
 global.player[3] = 0;
+
+//
+
 </string>
           </argument>
         </arguments>
@@ -71,7 +74,7 @@ for(i = 0; i &lt; connected_gamepads; i++){
 }
 //Teclado
 if(keyboard_check_pressed(vk_enter) &amp;&amp; global.num_players &gt; connected_gamepads)
-     global.player[global.num_players-1] = 1;
+     global.player[global.num_players-1] = 2;
      
 // In case of disconected controller
 global.player[global.num_players] = 0;
