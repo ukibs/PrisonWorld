@@ -39,6 +39,15 @@ direction = 270;
     1 - Stop / Camp
 */
 action = 0;
+//Positions
+posX[0] = 0;
+posX[1] = -20;
+posX[2] = 20;
+posX[3] = 0;
+posY[0] = -20;
+posY[1] = 0;
+posY[2] = 0;
+posY[3] = 20;
 </string>
           </argument>
         </arguments>
@@ -350,32 +359,29 @@ draw_text(10, 50, distance_to_object(global.map_tile[0]));
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Que no se dibuje a si mismo
-//draw_self();
-//Dibuja al tonto que anda
-/*draw_sprite(spr_warrior_front_move, 
-            current_time%sprite_get_number(spr_warrior_front_move), 
-            x, y);*/
-//Sprite_control
+            <string>//Sprite_control
 direction_drawing = int64((direction+45)/90);
-switch(direction_drawing){
-    //Right
-    case 0:
-        draw_sprite(spr_warrior_right_move, 0, x, y);
-    break;
-    //Up
-    case 1:
-        draw_sprite(spr_warrior_back_move, 0, x, y);
-    break;
-    //Left
-    case 2:
-        draw_sprite(spr_warrior_left_move, 0, x, y);
-    break;
-    //Down
-    //case 3:
-    default:
-        draw_sprite(spr_warrior_front_move, 0, x, y);
-    break;
+// We draw the character sprite for each player 
+for(i = 0; i &lt; global.num_players; i++){
+    switch(direction_drawing){
+        //Right
+        case 0:
+            draw_sprite(spr_warrior_right_move, 0, x + posX[i], y + posY[i]);
+        break;
+        //Up
+        case 1:
+            draw_sprite(spr_warrior_back_move, 0, x + posX[i], y + posY[i]);
+        break;
+        //Left
+        case 2:
+            draw_sprite(spr_warrior_left_move, 0, x + posX[i], y + posY[i]);
+        break;
+        //Down
+        //case 3:
+        default:
+            draw_sprite(spr_warrior_front_move, 0, x + posX[i], y + posY[i]);
+        break;
+    }
 }
 </string>
           </argument>

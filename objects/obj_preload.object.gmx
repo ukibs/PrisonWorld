@@ -46,6 +46,12 @@ global.currency = 100;
 //Events
 global.hostility_to_use = 0;
 global.hex_to_use = 0;
+// players
+global.num_players = 0;
+global.player[0] = 0;
+global.player[1] = 0;
+global.player[2] = 0;
+global.player[3] = 0;
 //And start
 room_goto_next();
 </string>
