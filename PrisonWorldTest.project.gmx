@@ -38,6 +38,9 @@
         <sprite>sprites\spr_skeleton_back_attack</sprite>
         <sprite>sprites\spr_skeleton_back_death</sprite>
       </sprites>
+      <sprites name="teeth_ball">
+        <sprite>sprites\spr_teethball_front_iwalking</sprite>
+      </sprites>
     </sprites>
     <sprites name="Settlement">
       <sprite>sprites\spr_castle</sprite>
