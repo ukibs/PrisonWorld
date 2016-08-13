@@ -51,6 +51,7 @@
       <sprite>sprites\spr_warrior_down</sprite>
     </sprites>
     <sprites name="Markers">
+      <sprite>sprites\spr_general_marker</sprite>
       <sprite>sprites\spr_red_marker</sprite>
       <sprite>sprites\spr_blue_marker</sprite>
       <sprite>sprites\spr_white_marker</sprite>
@@ -64,6 +65,9 @@
       <sprite>sprites\spr_sword</sprite>
       <sprite>sprites\spr_cooldown</sprite>
     </sprites>
+    <sprites name="Tabern">
+      <sprite>sprites\spr_warrior_selection</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_forest1</background>
@@ -72,8 +76,6 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_spam_initial_places.gml</script>
-    <script>scripts\scr_terrain_checker.gml</script>
-    <script>scripts\scr_get_gamepad1.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_preload</object>
@@ -109,10 +111,11 @@
       <object>objects\obj_basic_attack</object>
       <object>objects\obj_diagonal_attack</object>
       <object>objects\obj_damage_displayer</object>
-      <object>objects\obj_marker</object>
     </objects>
     <objects name="TabernStuff">
       <object>objects\obj_tabern_manager</object>
+      <object>objects\obj_character_selector</object>
+      <object>objects\obj_character_image</object>
     </objects>
   </objects>
   <rooms name="rooms">

@@ -46,12 +46,19 @@ global.currency = 100;
 //Events
 global.hostility_to_use = 0;
 global.hex_to_use = 0;
-// players
+//Players
 global.num_players = 0;
-global.player[0] = 0;
-global.player[1] = 0;
-global.player[2] = 0;
-global.player[3] = 0;
+    // 0 - Nada, 1 - Mando, 2 - Teclado
+global.player[0, 0] = 0;
+global.player[1, 0] = 0;
+global.player[2, 0] = 0;
+global.player[3, 0] = 0;
+    //Personaje
+        // 0 - Nada, 1 - Guerrero
+global.player[0, 1] = 0;
+global.player[1, 1] = 0;
+global.player[2, 1] = 0;
+global.player[3, 1] = 0;  
 //And start
 room_goto_next();
 </string>
