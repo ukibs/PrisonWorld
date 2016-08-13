@@ -57,6 +57,36 @@ status = 0;
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_goods_store">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//
+status = 3;
+//
+if(action_button){
+    //global.mission = 1;
+    //global.mission_requirement = 3;
+    room_goto(room_store);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_tavern">
       <action>
         <libid>1</libid>
@@ -134,11 +164,18 @@ draw_text(1300, 600, "B EXIT");
 switch(status){
     //Castle/missions
     case 1:
+        draw_text(room_width/2, 100, "CASTLE");
         draw_text(1300, 630, "A GET MISSIONS");
     break;
     //Tabern/heal
     case 2:
-        draw_text(1300, 630, "A REST");
+        draw_text(room_width/2, 100, "TABERN");
+        draw_text(1300, 630, "A CHANGE HEROES");
+    break;
+    //Tabern/heal
+    case 3:
+        draw_text(room_width/2, 100, "GOODS STORE");
+        draw_text(1300, 630, "A BUY STUFF");
     break;
 }
 //Draw the actual currency

@@ -42,6 +42,7 @@
     <sprites name="Settlement">
       <sprite>sprites\spr_castle</sprite>
       <sprite>sprites\spr_tabern</sprite>
+      <sprite>sprites\spr_goods_store</sprite>
     </sprites>
     <sprites name="Heroes">
       <sprite>sprites\spr_warrior_front_move</sprite>
@@ -94,6 +95,7 @@
       <object>objects\obj_settlement_hand</object>
       <object>objects\obj_castle</object>
       <object>objects\obj_tavern</object>
+      <object>objects\obj_goods_store</object>
     </objects>
     <objects name="CastleStuff">
       <object>objects\obj_quest_selector</object>
@@ -127,6 +129,7 @@
     <room>rooms\room_map</room>
     <room>rooms\room_castle</room>
     <room>rooms\room_forest1</room>
+    <room>rooms\room_store</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

@@ -363,24 +363,26 @@ draw_text(10, 50, distance_to_object(global.map_tile[0]));
 direction_drawing = int64((direction+45)/90);
 // We draw the character sprite for each player 
 for(i = 0; i &lt; global.num_players; i++){
-    switch(direction_drawing){
-        //Right
-        case 0:
-            draw_sprite(spr_warrior_right_move, 0, x + posX[i], y + posY[i]);
-        break;
-        //Up
-        case 1:
-            draw_sprite(spr_warrior_back_move, 0, x + posX[i], y + posY[i]);
-        break;
-        //Left
-        case 2:
-            draw_sprite(spr_warrior_left_move, 0, x + posX[i], y + posY[i]);
-        break;
-        //Down
-        //case 3:
-        default:
-            draw_sprite(spr_warrior_front_move, 0, x + posX[i], y + posY[i]);
-        break;
+    if(global.player[i, 0] != 0){
+        switch(direction_drawing){
+            //Right
+            case 0:
+                draw_sprite(spr_warrior_right_move, 0, x + posX[i], y + posY[i]);
+            break;
+            //Up
+            case 1:
+                draw_sprite(spr_warrior_back_move, 0, x + posX[i], y + posY[i]);
+            break;
+            //Left
+            case 2:
+                draw_sprite(spr_warrior_left_move, 0, x + posX[i], y + posY[i]);
+            break;
+            //Down
+            //case 3:
+            default:
+                draw_sprite(spr_warrior_front_move, 0, x + posX[i], y + posY[i]);
+            break;
+        }
     }
 }
 </string>

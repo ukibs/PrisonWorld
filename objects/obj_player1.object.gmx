@@ -87,7 +87,8 @@ status_down = 0;
           <argument>
             <kind>1</kind>
             <string>//Get keys
-if(global.player[player_num] == 1){
+    //Check if gampead or keyboard player
+if(global.player[player_num, 0] == 1){
     gamepad_set_axis_deadzone(player_num, 0.2);
     key_up = gamepad_button_check(player_num, gp_padu) || gamepad_axis_value(0, gp_axislv) &lt; -0.2;
     key_down = gamepad_button_check(player_num, gp_padd) || gamepad_axis_value(0, gp_axislv) &gt; 0.2;

@@ -85,7 +85,7 @@ if(triggered == false){
     final_damage = max(damage - other.defense, 0); //Prevenimos daño negativo. Curación, vamos
     other.life -= final_damage;
     damage_display = instance_create(other.x, other.y, obj_damage_displayer);
-    damage_display.value = -damage;
+    damage_display.value = -final_damage;
     damage_display.alarm[0] = 10;
     triggered = true;
 }

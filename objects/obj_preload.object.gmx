@@ -46,19 +46,28 @@ global.currency = 100;
 //Events
 global.hostility_to_use = 0;
 global.hex_to_use = 0;
-//Players
+//Players   -   Algunas de estas hay que establecer las 4 desde el principio
 global.num_players = 0;
     // 0 - Nada, 1 - Mando, 2 - Teclado
 global.player[0, 0] = 0;
 global.player[1, 0] = 0;
 global.player[2, 0] = 0;
 global.player[3, 0] = 0;
-    //Personaje
+    //Character
         // 0 - Nada, 1 - Guerrero
 global.player[0, 1] = 0;
 global.player[1, 1] = 0;
 global.player[2, 1] = 0;
 global.player[3, 1] = 0;  
+    //Stats
+global.player[0, 2] = 0;    //Max life
+global.player[0, 3] = 0;    //Actual life
+global.player[0, 4] = 0;    //Attack
+global.player[0, 5] = 0;    //Defense
+
+//Inventory
+global.inventory[0] = 0; //Raciones
+global.inventory[1] = 0; //Antorchas
 //And start
 room_goto_next();
 </string>

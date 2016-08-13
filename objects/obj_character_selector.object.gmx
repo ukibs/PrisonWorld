@@ -101,7 +101,13 @@ x += (-key_left + key_right) * 20;
             <kind>1</kind>
             <string>//En guarro
 if(action_button){
+    //Get the warrior
     global.player[player_num, 1] = 1;
+    //And his stats
+    global.player[player_num, 2] = 15;    //Max life
+    global.player[player_num, 3] = 15;    //Actual life
+    global.player[player_num, 4] = 5;    //Attack
+    global.player[player_num, 5] = 2;    //Defense
 }
 </string>
           </argument>
