@@ -70,14 +70,18 @@
       <sprite>sprites\spr_diagonal_attack</sprite>
       <sprite>sprites\spr_forest1</sprite>
       <sprite>sprites\spr_health_bar</sprite>
-      <sprite>sprites\spr_sword</sprite>
-      <sprite>sprites\spr_cooldown</sprite>
     </sprites>
     <sprites name="Tabern">
       <sprite>sprites\spr_warrior_selection</sprite>
     </sprites>
     <sprites name="Store">
       <sprite>sprites\spr_ration</sprite>
+    </sprites>
+    <sprites name="Icons">
+      <sprite>sprites\spr_cooldown</sprite>
+      <sprite>sprites\spr_sword</sprite>
+      <sprite>sprites\spr_no_action</sprite>
+      <sprite>sprites\spr_raise</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">

@@ -39,7 +39,11 @@ player_num = 0;
 direction = 270;
 looking_direction = 270; //Alternativa
 status_down = 0;
-
+/*Actions
+    0 - No action
+    1 - Raise mate
+*/
+action = 0; 
 </string>
           </argument>
         </arguments>
@@ -165,8 +169,7 @@ if(status_down == 0){
 
 //Out of combat
 if(global.player[player_num, 3] &lt;= 0){
-    //status_down = 1;
-    //sprite_index = spr_warrior_down;
+    global.player[player_num, 3] = 0;
     downed = instance_create(x, y, obj_downed_player);
     downed.player_num = player_num;
     instance_destroy();
@@ -201,6 +204,38 @@ if(global.player[player_num, 3] &lt;= 0){
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_downed_player">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//
+action = 1;
+//
+if(key_action_4){
+    mate_number = other.player_num;
+    raised_mate = instance_create(other.x, other.y, obj_player);
+    raised_mate.player_num = mate_number;
+    global.player[mate_number, 3] = 3/*int64(global.player[mate_number, 2] / 4)*/;
+    with(other) instance_destroy();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
@@ -228,9 +263,19 @@ if(global.player[player_num, 3] &lt;= 0){
 draw_sprite_stretched(spr_health_bar, 0, 30, 30 + (player_num * 90), 
                         global.player[player_num, 3] / 
                         global.player[player_num, 2] * 64, 16);
+    //First ability and cooldown
 draw_sprite(spr_sword, 0, 30, 50 + (player_num * 90));
 draw_sprite_stretched(spr_cooldown, 0, 30, 50 + (player_num * 90), 
                         alarm_get(0) / main_cooldown * 32, 32);
+    //Use button
+switch(action){
+    case 0:
+        draw_sprite(spr_no_action, 0, 120, 50 + (player_num * 90));
+    break;
+    case 1:
+        draw_sprite(spr_raise, 0, 120, 50 + (player_num * 90));
+    break;
+}
 </string>
           </argument>
         </arguments>
