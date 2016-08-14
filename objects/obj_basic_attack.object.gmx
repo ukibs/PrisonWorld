@@ -77,14 +77,12 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Guarro
-//with(other) instance_destroy();
-
-//
+            <string>//
 if(triggered == false){
-    other.life -= damage;
+    final_damage = damage - other.defense;
+    other.life -= final_damage;
     damage_display = instance_create(other.x, other.y, obj_damage_displayer);
-    damage_display.value = -damage;
+    damage_display.value = -final_damage;
     damage_display.alarm[0] = 10;
     triggered = true;
 }

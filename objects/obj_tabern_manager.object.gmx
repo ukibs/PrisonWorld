@@ -111,23 +111,28 @@ if(gamepad_button_check_pressed(0, gp_face2) || keyboard_check_pressed(vk_escape
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//
+            <string>//Text parameters
 draw_set_color(c_white);
+draw_set_valign(fa_center);
+draw_set_halign(fa_center);
+
+//Show actual generation
+draw_text(room_width/2, 50, "GENERATION " + string(global.generation));
 
 //Mostramos por pantalla
 for(i = 0; i &lt; global.num_players; i++){
-    draw_text(20, i * 40 + 10, "Player " + string(i));
+    draw_text(50, i * 40 + 50, "Player " + string(i));
     if(global.player[i, 0] == 0){
         if(i == connected_gamepads) //Control para jugador de tclado
-            draw_text(30, i * 40 + 30, "Press Enter");
+            draw_text(50, i * 40 + 70, "Press Enter");
         else
-            draw_text(30, i * 40 + 30, "Press A");
+            draw_text(50, i * 40 + 70, "Press A");
         
     }
     else if(global.player[i, 1] == 0)
-        draw_text(30, i * 40 + 30, "Choose a character");
+        draw_text(50, i * 40 + 70, "Choose a character");
     else //En guarro
-        draw_text(30, i * 40 + 30, "Warrior");
+        draw_text(50, i * 40 + 70, "Warrior");
 }
 
 //To quit

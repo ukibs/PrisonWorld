@@ -62,7 +62,7 @@ if(obj_adventurer_group.speed &gt; 0){
     }
     else{
         darkness -= fading_speed;
-        if(darkness &lt;= 0){
+        if(darkness &lt;= 0){  //Cambio de día
             //darkness = 0;
             darkening = true;
             //A new day
@@ -72,6 +72,13 @@ if(obj_adventurer_group.speed &gt; 0){
             obj_test_place.hostility ++;
             for(i = 1; i &lt; array_height_2d(global.hex); i++){
                 global.hex[i, 3] ++;
+            }
+            //Curación diaria
+                //Luego meteremos perdida de vida si faltan raciones
+            for(i = 1; i &lt; global.num_players; i++){
+                //De momento que recupeere un cuarto de su vida
+                global.player[i, 3] += int64(global.player[i, 2] / 4);
+                global.player[i, 3] = min(global.player[i, 3], global.player[i, 2]);
             }
         }
     }

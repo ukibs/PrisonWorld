@@ -120,8 +120,10 @@ switch(type){
             <kind>1</kind>
             <string>//Mira hacia el prota
 //De momento solo con uno
-objective = instance_nearest(x, y, obj_player);
-direction = point_direction(x, y, objective.x, objective.y);
+if(instance_exists(obj_player)){
+    objective = instance_nearest(x, y, obj_player);
+    direction = point_direction(x, y, objective.x, objective.y);
+}
 
 //Sprite que mostrar
 //En guarro

@@ -330,13 +330,21 @@ if(action == 0)
 else
     draw_text(1300, 680, "B STOP/CAMP");
     
+//Life of the party members
+for(i = 0; i &lt; global.num_players; i++){
+    if(global.player[i, 0] &gt; 0){
+        draw_text(50, 50 + (i * 50), 
+                    string(global.player[i, 3]) + "/" + string(global.player[i, 2]));
+    }
+}
+
 //Test stuff
 //draw_text(10, 10, alarm[0]);
 //draw_text(10, 30, time_between_checks);
 //draw_text(10, 50, accumulated_time);
-draw_text(10, 10, actual_hex);
-draw_text(10, 30, actual_hostility);
-draw_text(10, 50, distance_to_object(global.map_tile[0]));
+//draw_text(10, 10, actual_hex);
+//draw_text(10, 30, actual_hostility);
+//draw_text(10, 50, distance_to_object(global.map_tile[0]));
 </string>
           </argument>
         </arguments>
