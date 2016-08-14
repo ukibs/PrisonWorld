@@ -25,8 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Variables
-player_num = 0; //Asigned when created
+            <string>//
+player_num = 0; //Se lo asignamos desde fuera
 </string>
           </argument>
         </arguments>

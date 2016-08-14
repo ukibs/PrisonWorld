@@ -62,23 +62,26 @@ if(obj_adventurer_group.speed &gt; 0){
     }
     else{
         darkness -= fading_speed;
-        if(darkness &lt;= 0){  //Cambio de día
+        if(darkness &lt;= 0){
             //darkness = 0;
             darkening = true;
             //A new day
-            global.days_lapsed ++;
+            global.day ++;
             //Raise a little the  hostilty
             //Habrá que hacer que no suba en el asentamiento
             obj_test_place.hostility ++;
             for(i = 1; i &lt; array_height_2d(global.hex); i++){
                 global.hex[i, 3] ++;
             }
-            //Curación diaria
-                //Luego meteremos perdida de vida si faltan raciones
+            //Recuperar vida con el cambio de día
+                //Luego haremos que pierdan si se quedan sin raciones
             for(i = 1; i &lt; global.num_players; i++){
-                //De momento que recupeere un cuarto de su vida
-                global.player[i, 3] += int64(global.player[i, 2] / 4);
-                global.player[i, 3] = min(global.player[i, 3], global.player[i, 2]);
+                if(global.player[i, 0] &gt; 0){
+                    //De momento que se curen un cuarto de su vida cada vez
+                    global.player[i, 3] += int64(global.player[i, 2] / 4);
+                    //Y que mno suba de su maximo
+                    global.player[i, 3] = min(global.player[i, 2], global.player[i, 3]);
+                }
             }
         }
     }
@@ -106,7 +109,7 @@ if(obj_adventurer_group.speed &gt; 0){
           <argument>
             <kind>1</kind>
             <string>//
-draw_text(1300, 50, "DAY " + string(global.days_lapsed));
+draw_text(1300, 50, "DAY " + string(global.day));
 </string>
           </argument>
         </arguments>

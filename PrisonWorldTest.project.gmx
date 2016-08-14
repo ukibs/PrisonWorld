@@ -53,8 +53,8 @@
       <sprites name="Warrior">
         <sprite>sprites\spr_warrior_front_move</sprite>
         <sprite>sprites\spr_warrior_left_move</sprite>
-        <sprite>sprites\spr_warrior_back_move</sprite>
         <sprite>sprites\spr_warrior_right_move</sprite>
+        <sprite>sprites\spr_warrior_back_move</sprite>
         <sprite>sprites\spr_warrior_down</sprite>
       </sprites>
     </sprites>
@@ -114,12 +114,12 @@
       <object>objects\obj_forest_cover1</object>
       <object>objects\obj_player</object>
       <object>objects\obj_downed_player</object>
+      <object>objects\obj_key_player</object>
       <object>objects\obj_enemy1</object>
       <object>objects\obj_pause</object>
       <object>objects\obj_basic_attack</object>
       <object>objects\obj_diagonal_attack</object>
       <object>objects\obj_damage_displayer</object>
-      <object>objects\obj_key_player</object>
     </objects>
     <objects name="TabernStuff">
       <object>objects\obj_tabern_manager</object>

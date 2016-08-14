@@ -39,8 +39,8 @@ global.lastY = 0;
 global.mission = 0;
 global.mission_progress = 0;
 global.mission_requirement = 0;
-//Time stuff
-global.days_lapsed = 1;
+//Days lapsed
+global.day = 1;
 global.generation = 1;
 //Money
 global.currency = 100;
