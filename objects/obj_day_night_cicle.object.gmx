@@ -70,17 +70,35 @@ if(obj_adventurer_group.speed &gt; 0){
             //Raise a little the  hostilty
             //Habrá que hacer que no suba en el asentamiento
             obj_test_place.hostility ++;
-            for(i = 1; i &lt; array_height_2d(global.hex); i++){
-                global.hex[i, 3] ++;
+            for(i = 0; i &lt; array_height_2d(global.hex); i++){
+                //Que no suba en el asentamiento
+                if(global.hex[i, 2] &gt; 0)
+                    global.hex[i, 3] ++;
             }
-            //Recuperar vida con el cambio de día
-                //Luego haremos que pierdan si se quedan sin raciones
-            for(i = 1; i &lt; global.num_players; i++){
-                if(global.player[i, 0] &gt; 0){
-                    //De momento que se curen un cuarto de su vida cada vez
-                    global.player[i, 3] += int64(global.player[i, 2] / 4);
-                    //Y que mno suba de su maximo
-                    global.player[i, 3] = min(global.player[i, 2], global.player[i, 3]);
+            //Mientras haya raciones...
+            if(global.inventory[0] &gt; 0){
+                //Recuperar vida con el cambio de día
+                for(i = 0; i &lt; global.num_players; i++){
+                    
+                        if(global.player[i, 0] &gt; 0){
+                            //De momento que se curen un cuarto de su vida cada vez
+                            global.player[i, 3] += int64(global.player[i, 2] / 4);
+                            //Y que mno suba de su maximo
+                            global.player[i, 3] = min(global.player[i, 2], global.player[i, 3]);
+                        }
+                }
+                //Y gastamos racion
+                global.inventory[0] --;
+            }
+            else{ //Si no...
+                //Perder vida con el cambio de día
+                for(i = 0; i &lt; global.num_players; i++){
+                    if(global.player[i, 0] &gt; 0){
+                        //De momento que pierdan un cuarto de su vida cada vez
+                        global.player[i, 3] -= int64(global.player[i, 2] / 4);
+                        //Pero no se mueran
+                        global.player[i, 3] = max(global.player[i, 3], 1);
+                    }
                 }
             }
         }
@@ -109,7 +127,8 @@ if(obj_adventurer_group.speed &gt; 0){
           <argument>
             <kind>1</kind>
             <string>//
-draw_text(1300, 50, "DAY " + string(global.day));
+draw_text(1200, 50, "DAY " + string(global.day));
+draw_text(1200, 80, "Rations: " + string(global.inventory[0]));
 </string>
           </argument>
         </arguments>
