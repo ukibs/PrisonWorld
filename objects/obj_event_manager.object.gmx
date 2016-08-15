@@ -145,6 +145,8 @@ if(!instance_exists(obj_enemy1)){
     global.hex[global.hex_to_use, 3] -= int64(global.hostility_to_use / 10);
     //Restore the fallen players
     for(i = 0; i &lt; global.num_players; i++){
+        //Tengo que revisar de una vez este control
+        if(global.player[i, 0] &gt; 0)
         global.player[i, 3] = max(global.player[i, 3], 1);
     }
     //And go to the map
