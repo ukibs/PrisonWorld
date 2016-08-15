@@ -40,7 +40,7 @@ third_duration = 20;
 
 first_cooldown = 10;
 second_cooldown = 30;
-third_cooldown = 100;
+third_cooldown = 90;
 
 
 //Datos de manejo
@@ -102,7 +102,9 @@ action = 0;
             <kind>1</kind>
             <string>//Well, now we unlock the player
 status_locked = false;
-speed = 0;
+//speed = 0;
+hspeed = 0;
+vspeed = 0;
 pushing = false;
 </string>
           </argument>
@@ -270,8 +272,9 @@ if(status_locked == false){
     else if(h_direction == 1)
         looking_direction = 0;
     //Movement
-    vspeed = v_direction * movement_speed;
-    hspeed = h_direction * movement_speed;
+        //De momento sin h/vspeed
+    y += v_direction * movement_speed;
+    x += h_direction * movement_speed;
     
     //Sprite_control
     switch(looking_direction){
@@ -294,7 +297,11 @@ if(status_locked == false){
     }
     //First ability
     if(key_action_1 &amp;&amp; alarm_get(0) == -1){
-        status_locked = true;
+        //Le pasamos el nombre de la habilidad y las alarmas que usa
+        script_execute(scr_abilities, global.player[player_num, 6], 
+                        global.player[player_num, 7], 
+                        global.player[player_num, 8]);
+        /*status_locked = true;
         attack_instance = instance_create(x, y, obj_basic_attack);
         attack_instance.direction = looking_direction;
         attack_instance.image_angle = attack_instance.direction;
@@ -302,25 +309,36 @@ if(status_locked == false){
         //Duration of the ability
         alarm_set(0, first_duration);
         //Cooldown of the ability
-        alarm_set(1, first_cooldown);
+        alarm_set(1, first_cooldown);*/
     }
     //Second
     if(key_action_2 &amp;&amp; alarm_get(3) == -1){
-        //Duration of the ability
-        //alarm_set(2, second_duration);
-        //Cooldown of the ability
-        //alarm_set(3, second_cooldown);
+        script_execute(scr_abilities, global.player[player_num, 9], 
+                        global.player[player_num, 10], 
+                        global.player[player_num, 11]);
     }
     //Third
     if(key_action_3 &amp;&amp; alarm_get(5) == -1){
-        status_locked = true;
-        direction = looking_direction;
-        speed = movement_speed * 3;
+        script_execute(scr_abilities, global.player[player_num, 12], 
+                        global.player[player_num, 13], 
+                        global.player[player_num, 14]);
+        /*status_locked = true;
+        //Stablish dashing direction
+        dashingH = 0;
+        dashingV = 0;
+        switch(looking_direction){
+            case 0: dashingH = 1; break;
+            case 90: dashingV = -1; break;
+            case 180: dashingH = -1; break;
+            case 270: dashingV = 1; break;
+        }
+        vspeed += dashingV * movement_speed * 3;
+        hspeed += dashingH * movement_speed * 3;
         pushing = true;
         //Duration of the ability
         alarm_set(4, third_duration);
         //Cooldown of the ability
-        alarm_set(5, third_cooldown);
+        alarm_set(5, third_cooldown);*/
     }
 //}
 
@@ -355,7 +373,9 @@ if(global.player[player_num, 3] &lt;= 0){
             <kind>1</kind>
             <string>//Si embestimos...
 if(pushing == true){
-
+    other.x += hspeed;
+    other.y += vspeed;
+    other.status_locked = true;
 }
 </string>
           </argument>
@@ -412,7 +432,7 @@ if(key_action_4){
           <argument>
             <kind>1</kind>
             <string>//Test stuff
-//draw_text(10, 10, global.hex_to_use);
+draw_text(10, 10, global.player[player_num, 4]);
 //draw_text(10, 30, global.hostility_to_use);
 //draw_text(10, 50, instance_number(obj_enemy1));
 

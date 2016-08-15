@@ -97,6 +97,7 @@
   <scripts name="scripts">
     <script>scripts\scr_spam_initial_places.gml</script>
     <script>scripts\scr_enemy_spam.gml</script>
+    <script>scripts\scr_abilities.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_preload</object>

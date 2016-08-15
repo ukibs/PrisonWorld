@@ -101,13 +101,17 @@ x += (-key_left + key_right) * 20;
             <kind>1</kind>
             <string>//En guarro
 if(action_button){
-    //Get the warrior
-    global.player[player_num, 1] = 1;
-    //And his stats
-    global.player[player_num, 2] = 15;    //Max life
-    global.player[player_num, 3] = 15;    //Actual life
-    global.player[player_num, 4] = 5;    //Attack
-    global.player[player_num, 5] = 2;    //Defense
+    //Get the class using the id
+        //Should revise
+    global.player[player_num, 1] = other.character_id + 1;
+    //And his stats, abilities and sprites
+        //Life apart
+    global.player[player_num, 2] = global.character[other.character_id, 0];    //Max life
+    global.player[player_num, 3] = global.character[other.character_id, 0];    //Actual life
+        //And the rest
+    for(i = 4; i &lt; array_length_2d(global.player, player_num); i++){
+        global.player[player_num, i] = global.character[other.character_id, i - 3];
+    }
 }
 </string>
           </argument>

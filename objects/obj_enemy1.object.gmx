@@ -36,7 +36,7 @@ speed = movement_speed;
 type = 1;
 
 //
-alarm_set(0, 1);
+status_locked = false;
 </string>
           </argument>
         </arguments>
@@ -64,49 +64,60 @@ if(instance_exists(obj_player)){
     objective = instance_nearest(x, y, obj_player);
     direction = point_direction(x, y, objective.x, objective.y);
 }
-
 //Sprite que mostrar
-//En guarro
-if(speed &gt; 0){
+if(status_locked == false){
+    //En guarro
+    if(speed &gt; 0){
+        if(direction &lt;= 180){
+            sprite_index = back_idle;
+        }
+        else{
+            sprite_index = front_idle;
+        }
+    }
+    //Orientación del sprite
+    if(direction &gt;= 90 &amp;&amp; direction &lt;= 270){
+        image_xscale = 1;
+    }
+    else{
+        image_xscale = -1;
+    }
+    
+    //Atacar
+    if(distance_to_object(objective) &lt; 30 &amp;&amp; life &gt; 0 &amp;&amp;
+        sprite_index != back_attack &amp;&amp; sprite_index != front_attack){
+        //En guarro
+        speed = 0;
+        if(direction &lt;= 180){
+            sprite_index = back_attack;
+        }
+        else{
+            sprite_index = front_attack;
+        }
+        image_index = 0;
+    }
+    
+    //Muerte
+    if(life &lt;= 0 &amp;&amp; sprite_index != back_death &amp;&amp; sprite_index != front_death){
+        if(direction &lt;= 180){
+            sprite_index = back_death;
+        }
+        else{
+            sprite_index = front_death;
+        }
+        image_index = 0;
+        speed = 0;
+    }
+}
+else{
     if(direction &lt;= 180){
         sprite_index = back_idle;
     }
     else{
         sprite_index = front_idle;
     }
-}
-//Orientación del sprite
-if(direction &gt;= 90 &amp;&amp; direction &lt;= 270){
-    image_xscale = 1;
-}
-else{
-    image_xscale = -1;
-}
-
-//Atacar
-if(distance_to_object(objective) &lt; 30 &amp;&amp; life &gt; 0 &amp;&amp;
-    sprite_index != back_attack &amp;&amp; sprite_index != front_attack){
-    //En guarro
-    speed = 0;
-    if(direction &lt;= 180){
-        sprite_index = back_attack;
-    }
-    else{
-        sprite_index = front_attack;
-    }
     image_index = 0;
-}
-
-//Muerte
-if(life &lt;= 0 &amp;&amp; sprite_index != back_death &amp;&amp; sprite_index != front_death){
-    if(direction &lt;= 180){
-        sprite_index = back_death;
-    }
-    else{
-        sprite_index = front_death;
-    }
-    image_index = 0;
-    speed = 0;
+    status_locked = false;
 }
 </string>
           </argument>
