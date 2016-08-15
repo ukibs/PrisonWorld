@@ -79,9 +79,14 @@
     </sprites>
     <sprites name="Icons">
       <sprite>sprites\spr_cooldown</sprite>
-      <sprite>sprites\spr_sword</sprite>
       <sprite>sprites\spr_no_action</sprite>
       <sprite>sprites\spr_raise</sprite>
+      <sprite>sprites\spr_sword</sprite>
+      <sprite>sprites\spr_shield</sprite>
+      <sprite>sprites\spr_assault</sprite>
+    </sprites>
+    <sprites name="Terrain">
+      <sprite>sprites\spr_big_mushroom</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -122,12 +127,12 @@
       <object>objects\obj_forest_cover1</object>
       <object>objects\obj_player</object>
       <object>objects\obj_downed_player</object>
-      <object>objects\obj_key_player</object>
       <object>objects\obj_enemy1</object>
       <object>objects\obj_pause</object>
       <object>objects\obj_basic_attack</object>
       <object>objects\obj_diagonal_attack</object>
       <object>objects\obj_damage_displayer</object>
+      <object>objects\obj_big_mushroom</object>
     </objects>
     <objects name="TabernStuff">
       <object>objects\obj_tabern_manager</object>
