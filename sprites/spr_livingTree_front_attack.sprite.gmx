@@ -7,18 +7,18 @@
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>5</bbox_left>
-  <bbox_right>118</bbox_right>
-  <bbox_top>3</bbox_top>
-  <bbox_bottom>125</bbox_bottom>
+  <bbox_left>18</bbox_left>
+  <bbox_right>245</bbox_right>
+  <bbox_top>6</bbox_top>
+  <bbox_bottom>251</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>128</width>
-  <height>128</height>
+  <width>256</width>
+  <height>256</height>
   <frames>
     <frame index="0">images\spr_livingTree_front_attack_0.png</frame>
     <frame index="1">images\spr_livingTree_front_attack_1.png</frame>
@@ -29,5 +29,14 @@
     <frame index="6">images\spr_livingTree_front_attack_6.png</frame>
     <frame index="7">images\spr_livingTree_front_attack_7.png</frame>
     <frame index="8">images\spr_livingTree_front_attack_8.png</frame>
+    <frame index="9">images\spr_livingTree_front_attack_9.png</frame>
+    <frame index="10">images\spr_livingTree_front_attack_10.png</frame>
+    <frame index="11">images\spr_livingTree_front_attack_11.png</frame>
+    <frame index="12">images\spr_livingTree_front_attack_12.png</frame>
+    <frame index="13">images\spr_livingTree_front_attack_13.png</frame>
+    <frame index="14">images\spr_livingTree_front_attack_14.png</frame>
+    <frame index="15">images\spr_livingTree_front_attack_15.png</frame>
+    <frame index="16">images\spr_livingTree_front_attack_16.png</frame>
+    <frame index="17">images\spr_livingTree_front_attack_17.png</frame>
   </frames>
 </sprite>

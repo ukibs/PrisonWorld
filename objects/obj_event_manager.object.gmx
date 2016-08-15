@@ -34,17 +34,8 @@ alpha = 1;
 fading_speed = 0.05;
 
 //Spammeo enemigos
-//Prueba guarra
-enemy_force = global.hostility_to_use / 10;
-force_deployed = 0;
-while(force_deployed &lt; enemy_force){
-    randomX = irandom_range(200, room_width - 200);
-    randomY = irandom_range(100, room_height - 200);
-    enemy_type = irandom_range(1, 2);
-    enemy = instance_create(randomX, randomY, obj_enemy1);
-    enemy.type = enemy_type;
-    force_deployed += enemy_type;
-}
+script_execute(scr_enemy_spam);
+
 //Spammeo jugadores
 //Datos
 //Positions
