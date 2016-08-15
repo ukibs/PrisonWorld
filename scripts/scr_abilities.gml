@@ -1,6 +1,4 @@
 //Get the name of the ability
-    //De momento solo el nombre
-    //Pero seguramente le pasemos también las alarmas a utilizar
 switch(argument0){
     //Primera del guerrero
     case "Slash":
@@ -12,11 +10,11 @@ switch(argument0){
         //Duration of the ability
         alarm_set(argument1, 3);
         //Cooldown of the ability
-        alarm_set(argument2, 10);
+        alarm_set(argument2, global.player[player_num, 9]);
     break;
     //Segunda del guerrero
     case "Shield":
-    
+        
     break;
     //Tercera del guerrero
     case "Dash":
@@ -36,6 +34,6 @@ switch(argument0){
         //Duration of the ability
         alarm_set(argument1, 20);
         //Cooldown of the ability
-        alarm_set(argument2, 90);
+        alarm_set(argument2, global.player[player_num, 17]);
     break;
 }

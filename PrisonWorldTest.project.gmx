@@ -40,8 +40,6 @@
       </sprites>
       <sprites name="teeth_ball">
         <sprite>sprites\spr_teethball_front_iwalking</sprite>
-        <sprite>sprites\spr_teethball_back_walking</sprite>
-        <sprite>sprites\spr_teethball_front_atack</sprite>
       </sprites>
     </sprites>
     <sprites name="Settlement">
@@ -59,11 +57,11 @@
         <sprite>sprites\spr_warrior_back_move</sprite>
         <sprite>sprites\spr_warrior_down</sprite>
       </sprites>
-      <sprites name="wizard">
-        <sprite>sprites\sprite55</sprite>
+      <sprites name="Wizard">
+        <sprite>sprites\spr_wizard_front_idle</sprite>
       </sprites>
-      <sprites name="ranger">
-        <sprite>sprites\sprite56</sprite>
+      <sprites name="Monk">
+        <sprite>sprites\spr_monk_front_idle</sprite>
       </sprites>
     </sprites>
     <sprites name="Markers">
@@ -106,6 +104,7 @@
     <script>scripts\scr_spam_initial_places.gml</script>
     <script>scripts\scr_enemy_spam.gml</script>
     <script>scripts\scr_abilities.gml</script>
+    <script>scripts\scr_abilities_end.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_preload</object>

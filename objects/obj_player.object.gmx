@@ -34,13 +34,13 @@
 
 pushing = false;
 
-first_duration = 3;
+/*first_duration = 3;
 second_duration = 0;
 third_duration = 20;
 
 first_cooldown = 10;
 second_cooldown = 30;
-third_cooldown = 90;
+third_cooldown = 90;*/
 
 
 //Datos de manejo
@@ -55,6 +55,13 @@ movement_speed = 10;    //La acabaremos asignando junto con los stats
     1 - Raise mate
 */
 action = 0; 
+
+//Skin
+    //Lo haremos bien cuando las tengamos
+front_move = spr_warrior_front_move;
+back_move = spr_warrior_back_move;
+left_move = spr_warrior_left_move;
+right_move = spr_warrior_right_move;
 </string>
           </argument>
         </arguments>
@@ -100,12 +107,8 @@ action = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Well, now we unlock the player
-status_locked = false;
-//speed = 0;
-hspeed = 0;
-vspeed = 0;
-pushing = false;
+            <string>//Third ability end
+script_execute(scr_abilities_end, global.player[player_num, 14]);
 </string>
           </argument>
         </arguments>
@@ -197,13 +200,8 @@ pushing = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Yeah, it´s empty
-    //For the moment we only use it´s value
-
-    
-//Well, now we unlock the player
-status_locked = false;
-speed = 0;
+            <string>//First ability end
+script_execute(scr_abilities_end, global.player[player_num, 6]);
 </string>
           </argument>
         </arguments>
@@ -227,7 +225,7 @@ speed = 0;
           <argument>
             <kind>1</kind>
             <string>//Get keys (if not locked)
-if(status_locked == false){
+//if(status_locked == false){
     //Check if gampead or keyboard player
     if(global.player[player_num, 0] == 1){
         gamepad_set_axis_deadzone(player_num, 0.2);
@@ -250,9 +248,9 @@ if(status_locked == false){
         key_action_3 = keyboard_check_pressed(ord('A'));
         key_action_4 = keyboard_check_pressed(ord('W'));
     }
-}
+//}
 //If not locked (not here now)
-//if(status_locked == false){
+if(status_locked == false){
     //Move it
     //Moving direction
     v_direction = (-key_up + key_down);
@@ -280,19 +278,19 @@ if(status_locked == false){
     switch(looking_direction){
         //Right
         case 0:
-            sprite_index = spr_warrior_right_move;
+            sprite_index = right_move;
         break;
         //Up
         case 90:
-            sprite_index = spr_warrior_back_move;
+            sprite_index = back_move;
         break;
         //Left
         case 180:
-            sprite_index = spr_warrior_left_move;
+            sprite_index = left_move;
         break;
         //Down
         case 270:
-            sprite_index = spr_warrior_front_move;
+            sprite_index = front_move;
         break;
     }
     //First ability
@@ -301,46 +299,20 @@ if(status_locked == false){
         script_execute(scr_abilities, global.player[player_num, 6], 
                         global.player[player_num, 7], 
                         global.player[player_num, 8]);
-        /*status_locked = true;
-        attack_instance = instance_create(x, y, obj_basic_attack);
-        attack_instance.direction = looking_direction;
-        attack_instance.image_angle = attack_instance.direction;
-        attack_instance.damage = global.player[player_num, 4];
-        //Duration of the ability
-        alarm_set(0, first_duration);
-        //Cooldown of the ability
-        alarm_set(1, first_cooldown);*/
     }
     //Second
     if(key_action_2 &amp;&amp; alarm_get(3) == -1){
-        script_execute(scr_abilities, global.player[player_num, 9], 
-                        global.player[player_num, 10], 
-                        global.player[player_num, 11]);
+        script_execute(scr_abilities, global.player[player_num, 10], 
+                        global.player[player_num, 11], 
+                        global.player[player_num, 12]);
     }
     //Third
     if(key_action_3 &amp;&amp; alarm_get(5) == -1){
-        script_execute(scr_abilities, global.player[player_num, 12], 
-                        global.player[player_num, 13], 
-                        global.player[player_num, 14]);
-        /*status_locked = true;
-        //Stablish dashing direction
-        dashingH = 0;
-        dashingV = 0;
-        switch(looking_direction){
-            case 0: dashingH = 1; break;
-            case 90: dashingV = -1; break;
-            case 180: dashingH = -1; break;
-            case 270: dashingV = 1; break;
-        }
-        vspeed += dashingV * movement_speed * 3;
-        hspeed += dashingH * movement_speed * 3;
-        pushing = true;
-        //Duration of the ability
-        alarm_set(4, third_duration);
-        //Cooldown of the ability
-        alarm_set(5, third_cooldown);*/
+        script_execute(scr_abilities, global.player[player_num, 14], 
+                        global.player[player_num, 15], 
+                        global.player[player_num, 16]);
     }
-//}
+}
 
 //Out of combat
 if(global.player[player_num, 3] &lt;= 0){
@@ -444,15 +416,18 @@ draw_sprite_stretched(spr_health_bar, 0, 30, 30 + (player_num * 90),
     //First ability and cooldown
 draw_sprite(spr_sword, 0, 32, 50 + (player_num * 90));
 draw_sprite_stretched(spr_cooldown, 0, 32, 50 + (player_num * 90), 
-                        alarm_get(1) / first_cooldown * 32, 32);
+                        alarm_get(1) / 
+                        global.player[0, 9] * 32, 32);
     //Second ability and cooldown
 draw_sprite(spr_shield, 0, 64, 50 + (player_num * 90));
 draw_sprite_stretched(spr_cooldown, 0, 64, 50 + (player_num * 90), 
-                        alarm_get(3) / second_cooldown * 32, 32);
+                        alarm_get(3) / 
+                        global.player[0, 13] * 32, 32);
     //Third ability and cooldown
 draw_sprite(spr_assault, 0, 96, 50 + (player_num * 90));
 draw_sprite_stretched(spr_cooldown, 0, 96, 50 + (player_num * 90), 
-                        alarm_get(5) / third_cooldown * 32, 32);
+                        alarm_get(5) / 
+                        global.player[0, 17] * 32, 32);
     //Use button
 switch(action){
     case 0:
