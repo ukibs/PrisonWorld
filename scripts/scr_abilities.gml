@@ -10,7 +10,7 @@ switch(argument0){
         //Duration of the ability
         alarm_set(argument1, 3);
         //Cooldown of the ability
-        alarm_set(argument2, global.player[player_num, 9]);
+        alarm_set(argument2, global.player[player_num, 10]);
     break;
     //Segunda del guerrero
     case "Shield":
@@ -34,6 +34,6 @@ switch(argument0){
         //Duration of the ability
         alarm_set(argument1, 20);
         //Cooldown of the ability
-        alarm_set(argument2, global.player[player_num, 17]);
+        alarm_set(argument2, global.player[player_num, 20]);
     break;
 }

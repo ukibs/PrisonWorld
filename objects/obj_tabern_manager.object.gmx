@@ -131,8 +131,16 @@ for(i = 0; i &lt; global.num_players; i++){
     }
     else if(global.player[i, 1] == 0)
         draw_text(50, i * 40 + 30, "Choose a character");
-    else //En guarro
-        draw_text(50, i * 40 + 30, "Warrior");
+    else{ //En guarro
+        switch(global.player[i, 1]){
+            case 1:
+                draw_text(50, i * 40 + 30, "Warrior");
+            break;
+            case 2:
+                draw_text(50, i * 40 + 30, "Ranger");
+            break;
+        }
+    }
 }
 
 //To quit

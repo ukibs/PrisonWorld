@@ -119,6 +119,9 @@ else{
     image_index = 0;
     status_locked = false;
 }
+
+//Adjust depth
+depth = room_height - y;
 </string>
           </argument>
         </arguments>

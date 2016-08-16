@@ -58,10 +58,11 @@ action = 0;
 
 //Skin
     //Lo haremos bien cuando las tengamos
-front_move = spr_warrior_front_move;
-back_move = spr_warrior_back_move;
-left_move = spr_warrior_left_move;
-right_move = spr_warrior_right_move;
+front_move = global.player[player_num, 21];
+left_move = global.player[player_num, 22];
+right_move = global.player[player_num, 23];
+back_move = global.player[player_num, 24];
+down = global.player[player_num, 25];
 </string>
           </argument>
         </arguments>
@@ -108,7 +109,7 @@ right_move = spr_warrior_right_move;
           <argument>
             <kind>1</kind>
             <string>//Third ability end
-script_execute(scr_abilities_end, global.player[player_num, 14]);
+script_execute(scr_abilities_end, global.player[player_num, 16]);
 </string>
           </argument>
         </arguments>
@@ -294,23 +295,23 @@ if(status_locked == false){
         break;
     }
     //First ability
-    if(key_action_1 &amp;&amp; alarm_get(0) == -1){
+    if(key_action_1 &amp;&amp; alarm_get(1) == -1){
         //Le pasamos el nombre de la habilidad y las alarmas que usa
         script_execute(scr_abilities, global.player[player_num, 6], 
-                        global.player[player_num, 7], 
-                        global.player[player_num, 8]);
+                        global.player[player_num, 8], 
+                        global.player[player_num, 9]);
     }
     //Second
     if(key_action_2 &amp;&amp; alarm_get(3) == -1){
-        script_execute(scr_abilities, global.player[player_num, 10], 
-                        global.player[player_num, 11], 
-                        global.player[player_num, 12]);
+        script_execute(scr_abilities, global.player[player_num, 11], 
+                        global.player[player_num, 13], 
+                        global.player[player_num, 14]);
     }
     //Third
     if(key_action_3 &amp;&amp; alarm_get(5) == -1){
-        script_execute(scr_abilities, global.player[player_num, 14], 
-                        global.player[player_num, 15], 
-                        global.player[player_num, 16]);
+        script_execute(scr_abilities, global.player[player_num, 16], 
+                        global.player[player_num, 18], 
+                        global.player[player_num, 19]);
     }
 }
 
@@ -319,8 +320,12 @@ if(global.player[player_num, 3] &lt;= 0){
     global.player[player_num, 3] = 0;
     downed = instance_create(x, y, obj_downed_player);
     downed.player_num = player_num;
+    downed.sprite_index = down;
     instance_destroy();
 }
+
+//Adjust depth
+depth = room_height - y;
 </string>
           </argument>
         </arguments>
@@ -404,7 +409,7 @@ if(key_action_4){
           <argument>
             <kind>1</kind>
             <string>//Test stuff
-draw_text(10, 10, global.player[player_num, 4]);
+//draw_text(10, 10, global.player[player_num, 4]);
 //draw_text(10, 30, global.hostility_to_use);
 //draw_text(10, 50, instance_number(obj_enemy1));
 
@@ -414,17 +419,17 @@ draw_sprite_stretched(spr_health_bar, 0, 30, 30 + (player_num * 90),
                         global.player[player_num, 3] / 
                         global.player[player_num, 2] * 64, 16);
     //First ability and cooldown
-draw_sprite(spr_sword, 0, 32, 50 + (player_num * 90));
+draw_sprite(global.player[player_num, 7], 0, 32, 50 + (player_num * 90));
 draw_sprite_stretched(spr_cooldown, 0, 32, 50 + (player_num * 90), 
                         alarm_get(1) / 
                         global.player[0, 9] * 32, 32);
     //Second ability and cooldown
-draw_sprite(spr_shield, 0, 64, 50 + (player_num * 90));
+draw_sprite(global.player[player_num, 12], 0, 64, 50 + (player_num * 90));
 draw_sprite_stretched(spr_cooldown, 0, 64, 50 + (player_num * 90), 
                         alarm_get(3) / 
                         global.player[0, 13] * 32, 32);
     //Third ability and cooldown
-draw_sprite(spr_assault, 0, 96, 50 + (player_num * 90));
+draw_sprite(global.player[player_num, 17], 0, 96, 50 + (player_num * 90));
 draw_sprite_stretched(spr_cooldown, 0, 96, 50 + (player_num * 90), 
                         alarm_get(5) / 
                         global.player[0, 17] * 32, 32);

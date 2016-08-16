@@ -60,7 +60,33 @@ global.player[0, 1] = 0;
 global.player[1, 1] = 0;
 global.player[2, 1] = 0;
 global.player[3, 1] = 0;  
-    //Stats
+/*
+//Players, with enum
+enum player {
+    controller,
+    character,
+    c_health,
+    attack,
+    defense,
+    first_ability,
+    fa_icon,
+    fa_duration_alarm,
+    fa_cooldown_alarm,
+    second_ability,
+    sa_icon,
+    sa_duration_alarm,
+    sa_cooldown_alarm,
+    third_ability,
+    ta_icon,
+    ta_duration_alarm,
+    ta_cooldown_alarm,
+    front_move,
+    left_move,
+    back_move,
+    down
+}
+*/
+ /*   //Stats
 global.player[0, 2] = 0;    //Max life
 global.player[0, 3] = 0;    //Actual life
 global.player[0, 4] = 0;    //Attack
@@ -78,6 +104,7 @@ global.player[0, 15] = 0;             //Duration alarm
 global.player[0, 16] = 0;            //Cooldown alarm
 global.player[0, 17] = 0;            //Cooldown duration
 //global.player[0, 15] =                //Sprite x
+*/
 
 //Characters
     //Warrior
@@ -85,17 +112,79 @@ global.character[0, 0] = 15; //Max life (use it for actual too)
 global.character[0, 1] = 5; //Attack
 global.character[0, 2] = 2; //Defense
 global.character[0, 3] = "Slash";   //First ability
-global.character[0, 4] = 0;             //Duration alarm
-global.character[0, 5] = 1;            //Cooldown alarm
-global.character[0, 6] = 10;             //Cooldown duration
-global.character[0, 7] = "Shield";   //Second ability
-global.character[0, 8] = 2;             //Duration alarm
-global.character[0, 9] = 3;            //Cooldown alarm
-global.character[0, 10] = 20;             //Cooldown duration
-global.character[0, 11] = "Dash";   //Third ability
-global.character[0, 12] = 4;             //Duration alarm
-global.character[0, 13] = 5;            //Cooldown alarm
-global.character[0, 14] = 90;             //Cooldown duration
+global.character[0, 4] = spr_sword;      //Icon
+global.character[0, 5] = 0;             //Duration alarm
+global.character[0, 6] = 1;            //Cooldown alarm
+global.character[0, 7] = 10;             //Cooldown duration
+global.character[0, 8] = "Shield";   //Second ability
+global.character[0, 9] = spr_shield;     //Icon
+global.character[0, 10] = 2;             //Duration alarm
+global.character[0, 11] = 3;            //Cooldown alarm
+global.character[0, 12] = 20;             //Cooldown duration
+global.character[0, 13] = "Dash";   //Third ability
+global.character[0, 14] = spr_assault;     //Icon
+global.character[0, 15] = 4;             //Duration alarm
+global.character[0, 16] = 5;            //Cooldown alarm
+global.character[0, 17] = 90;             //Cooldown duration
+        //Skins
+global.character[0, 18] = spr_warrior_front_move;   //Fornt move
+global.character[0, 19] = spr_warrior_left_move;   //Left move
+global.character[0, 20] = spr_warrior_right_move;   //Rigth move
+global.character[0, 21] = spr_warrior_back_move;   //Back move
+global.character[0, 22] = spr_warrior_down;   //Down
+
+    //Ranger
+global.character[1, 0] = 10; //Max life (use it for actual too)
+global.character[1, 1] = 6; //Attack
+global.character[1, 2] = 1; //Defense
+global.character[1, 3] = "Shoot";   //First ability
+global.character[1, 4] = spr_arrow;      //Icon
+global.character[1, 5] = 0;             //Duration alarm
+global.character[1, 6] = 1;            //Cooldown alarm
+global.character[1, 7] = 20;             //Cooldown duration
+global.character[1, 8] = "Trap";   //Second ability
+global.character[1, 9] = spr_trap;     //Icon
+global.character[1, 10] = 2;             //Duration alarm
+global.character[1, 11] = 1;            //Cooldown alarm
+global.character[1, 12] = 90;             //Cooldown duration
+global.character[1, 13] = "Mark";   //Third ability
+global.character[1, 14] = spr_bullseye;     //Icon
+global.character[1, 15] = 4;             //Duration alarm
+global.character[1, 16] = 1;            //Cooldown alarm
+global.character[1, 17] = 90;             //Cooldown duration
+        //Skins
+global.character[1, 18] = spr_ranger_front_move;   //Fornt move
+global.character[1, 19] = spr_ranger_left_move;   //Left move
+global.character[1, 20] = spr_ranger_right_move;   //Rigth move
+global.character[1, 21] = spr_ranger_back_move;   //Back move
+global.character[1, 22] = spr_ranger_down;   //Down
+
+/*
+//Characters, with enum
+enum character {
+    c_health,
+    attack,
+    defense,
+    first_ability,
+    fa_icon,
+    fa_duration_alarm,
+    fa_cooldown_alarm,
+    second_ability,
+    sa_icon,
+    sa_duration_alarm,
+    sa_cooldown_alarm,
+    third_ability,
+    ta_icon,
+    ta_duration_alarm,
+    ta_cooldown_alarm,
+    front_move,
+    left_move,
+    back_move,
+    down
+}
+    //Warrior, with enum
+    character[].
+*/
 
 //Inventory
 global.inventory[0] = 0; //Raciones
