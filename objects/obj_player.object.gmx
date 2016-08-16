@@ -26,22 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>//Variables
-//De momento unas provisonales
-//max_life = 10;
-///life = 10;
-//defense = 2;
-//attack = 5;
-
 pushing = false;
-
-/*first_duration = 3;
-second_duration = 0;
-third_duration = 20;
-
-first_cooldown = 10;
-second_cooldown = 30;
-third_cooldown = 90;*/
-
 
 //Datos de manejo
 player_num = 0;
@@ -56,13 +41,6 @@ movement_speed = 10;    //La acabaremos asignando junto con los stats
 */
 action = 0; 
 
-//Skin
-    //Lo haremos bien cuando las tengamos
-front_move = global.player[player_num, 21];
-left_move = global.player[player_num, 22];
-right_move = global.player[player_num, 23];
-back_move = global.player[player_num, 24];
-down = global.player[player_num, 25];
 </string>
           </argument>
         </arguments>
@@ -279,19 +257,19 @@ if(status_locked == false){
     switch(looking_direction){
         //Right
         case 0:
-            sprite_index = right_move;
+            sprite_index = global.player[player_num, 23];
         break;
         //Up
         case 90:
-            sprite_index = back_move;
+            sprite_index = global.player[player_num, 24];
         break;
         //Left
         case 180:
-            sprite_index = left_move;
+            sprite_index = global.player[player_num, 22];
         break;
         //Down
         case 270:
-            sprite_index = front_move;
+            sprite_index = global.player[player_num, 21];
         break;
     }
     //First ability
@@ -329,7 +307,7 @@ if(global.player[player_num, 3] &lt;= 0){
     global.player[player_num, 3] = 0;
     downed = instance_create(x, y, obj_downed_player);
     downed.player_num = player_num;
-    downed.sprite_index = down;
+    downed.sprite_index = global.player[player_num, 25];
     instance_destroy();
 }
 

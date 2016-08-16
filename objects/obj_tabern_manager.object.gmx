@@ -71,7 +71,7 @@ global.num_players = min(global.num_players, 4);
 for(i = 0; i &lt; connected_gamepads; i++){
     if(gamepad_button_check_pressed(i, gp_face1) &amp;&amp; global.player[i, 0] == 0){
         global.player[i, 0] = 1;
-        selector = instance_create(250 + (i * 100), 150 + (i*100), obj_character_selector);
+        selector = instance_create(250 + (i * 100), 150 + (i * 100), obj_character_selector);
         selector.player_num = i;
     }
 }

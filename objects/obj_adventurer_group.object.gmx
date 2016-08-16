@@ -374,20 +374,20 @@ for(i = 0; i &lt; global.num_players; i++){
         switch(direction_drawing){
             //Right
             case 0:
-                draw_sprite(spr_warrior_right_move, 0, x + posX[i], y + posY[i]);
+                draw_sprite(global.player[i, 23], 0, x + posX[i], y + posY[i]);
             break;
             //Up
             case 1:
-                draw_sprite(spr_warrior_back_move, 0, x + posX[i], y + posY[i]);
+                draw_sprite(global.player[i, 24], 0, x + posX[i], y + posY[i]);
             break;
             //Left
             case 2:
-                draw_sprite(spr_warrior_left_move, 0, x + posX[i], y + posY[i]);
+                draw_sprite(global.player[i, 22], 0, x + posX[i], y + posY[i]);
             break;
             //Down
             //case 3:
             default:
-                draw_sprite(spr_warrior_front_move, 0, x + posX[i], y + posY[i]);
+                draw_sprite(global.player[i, 21], 0, x + posX[i], y + posY[i]);
             break;
         }
     }
