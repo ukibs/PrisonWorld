@@ -36,4 +36,25 @@ switch(argument0){
         //Cooldown of the ability
         alarm_set(argument2, global.player[player_num, 20]);
     break;
+    //Primera de la exploradora
+    case "Shoot":
+        status_locked = true;
+        proyectile = instance_create(x, y, obj_arrow);
+        proyectile.direction = looking_direction;
+        proyectile.image_angle = proyectile.direction;
+        proyectile.speed = 25;
+        proyectile.damage = global.player[player_num, 4];
+        //Duration of the ability
+        alarm_set(argument1, 6);
+        //Cooldown of the ability
+        alarm_set(argument2, global.player[player_num, 10]);
+    break;
+    //Segunda de la exploradora
+    case "Trap":
+    
+    break;
+    //Tercera de la exploradora
+    case "Mark":
+    
+    break;
 }

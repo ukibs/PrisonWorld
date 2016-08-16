@@ -110,7 +110,7 @@ if(action_button){
     global.player[player_num, 3] = global.character[other.character_id, 0];    //Actual life
         //And the rest
             //Aquí usamos la longitud del personaje 0 como referencia
-    for(i = 4; i &lt; array_length_2d(global.character, 0); i++){
+    for(i = 1; i &lt; array_length_2d(global.character, 0); i++){
         global.player[player_num, i + 3] = global.character[other.character_id, i];
     }
 }

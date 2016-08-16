@@ -148,10 +148,13 @@
       <object>objects\obj_downed_player</object>
       <object>objects\obj_enemy1</object>
       <object>objects\obj_pause</object>
-      <object>objects\obj_basic_attack</object>
-      <object>objects\obj_diagonal_attack</object>
       <object>objects\obj_damage_displayer</object>
       <object>objects\obj_big_mushroom</object>
+      <objects name="Attacks">
+        <object>objects\obj_basic_attack</object>
+        <object>objects\obj_diagonal_attack</object>
+        <object>objects\obj_arrow</object>
+      </objects>
     </objects>
     <objects name="TabernStuff">
       <object>objects\obj_tabern_manager</object>

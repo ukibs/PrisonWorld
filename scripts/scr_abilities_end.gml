@@ -15,4 +15,16 @@ switch(argument0){
         vspeed = 0;
         pushing = false;
     break;
+    //Primer de la explroadora
+    case "Shoot":
+        status_locked = false;
+    break;
+    //Segundo de la explroadora
+    case "Trap":
+    
+    break;
+    //Tercera de la explroadora
+    case "Mark":
+    
+    break;
 }

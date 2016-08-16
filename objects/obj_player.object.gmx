@@ -300,6 +300,15 @@ if(status_locked == false){
         script_execute(scr_abilities, global.player[player_num, 6], 
                         global.player[player_num, 8], 
                         global.player[player_num, 9]);
+        /*status_locked = true;
+        attack_instance = instance_create(x, y, obj_basic_attack);
+        attack_instance.direction = looking_direction;
+        attack_instance.image_angle = attack_instance.direction;
+        attack_instance.damage = global.player[player_num, 4];
+        //Duration of the ability
+        alarm_set(0, 3);
+        //Cooldown of the ability
+        alarm_set(1, global.player[player_num, 10]);*/
     }
     //Second
     if(key_action_2 &amp;&amp; alarm_get(3) == -1){
@@ -409,9 +418,9 @@ if(key_action_4){
           <argument>
             <kind>1</kind>
             <string>//Test stuff
-//draw_text(10, 10, global.player[player_num, 4]);
-//draw_text(10, 30, global.hostility_to_use);
-//draw_text(10, 50, instance_number(obj_enemy1));
+draw_text(10, 10, global.player[player_num, 11]);
+draw_text(10, 30, global.player[player_num, 13]);
+draw_text(10, 50, global.player[player_num, 14]);
 
 //Draw stats and stuff
     //Healthbar
@@ -422,17 +431,17 @@ draw_sprite_stretched(spr_health_bar, 0, 30, 30 + (player_num * 90),
 draw_sprite(global.player[player_num, 7], 0, 32, 50 + (player_num * 90));
 draw_sprite_stretched(spr_cooldown, 0, 32, 50 + (player_num * 90), 
                         alarm_get(1) / 
-                        global.player[0, 9] * 32, 32);
+                        global.player[player_num, 10] * 32, 32);
     //Second ability and cooldown
 draw_sprite(global.player[player_num, 12], 0, 64, 50 + (player_num * 90));
 draw_sprite_stretched(spr_cooldown, 0, 64, 50 + (player_num * 90), 
                         alarm_get(3) / 
-                        global.player[0, 13] * 32, 32);
+                        global.player[player_num, 15] * 32, 32);
     //Third ability and cooldown
 draw_sprite(global.player[player_num, 17], 0, 96, 50 + (player_num * 90));
 draw_sprite_stretched(spr_cooldown, 0, 96, 50 + (player_num * 90), 
                         alarm_get(5) / 
-                        global.player[0, 17] * 32, 32);
+                        global.player[player_num, 20] * 32, 32);
     //Use button
 switch(action){
     case 0:
