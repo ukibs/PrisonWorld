@@ -51,7 +51,11 @@ switch(argument0){
     break;
     //Segunda de la exploradora
     case "Trap":
-    
+        trap = instance_create(x, y, obj_trap);
+            //Lo revisaremos
+        trap.damage = global.player[player_num, 4];
+        //Cooldown of the ability
+        alarm_set(argument2, global.player[player_num, 15]);
     break;
     //Tercera de la exploradora
     case "Mark":

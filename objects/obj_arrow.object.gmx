@@ -52,6 +52,9 @@ damage = 0; //Assigned from the instataitor
             <string>//Damage it
 final_damage = damage - other.defense;
 other.life -= final_damage;
+//Esto lo asignaremos con un atributo mas adelante
+other.status_locked = true;
+other.alarm[0] = 2;
 damage_display = instance_create(other.x, other.y, obj_damage_displayer);
 damage_display.value = -final_damage;
 damage_display.alarm[0] = 10;

@@ -154,6 +154,7 @@
         <object>objects\obj_basic_attack</object>
         <object>objects\obj_diagonal_attack</object>
         <object>objects\obj_arrow</object>
+        <object>objects\obj_trap</object>
       </objects>
     </objects>
     <objects name="TabernStuff">
