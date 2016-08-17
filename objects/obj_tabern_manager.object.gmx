@@ -152,12 +152,15 @@ for(i = 0; i &lt; possible_players; i++){
             case 2:
                 draw_text(50, i * 40 + 30, "Ranger");
             break;
+            case 3:
+                draw_text(50, i * 40 + 30, "Monk");
+            break;
         }
     }
 }
 
 //To quit
-draw_text(1200, 600, "B/ESC Quit");
+draw_text(1200, 700, "B/ESC Quit");
 </string>
           </argument>
         </arguments>

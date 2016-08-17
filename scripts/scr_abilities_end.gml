@@ -27,4 +27,9 @@ switch(argument0){
     case "Mark":
     
     break;
+    //Primera del monje
+    case "Punch":
+        //De momento igual que el guerrero
+        status_locked = false;
+    break;
 }

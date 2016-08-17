@@ -238,14 +238,14 @@ script_execute(scr_abilities_end, global.player[player_num, 6]);
         key_action_1_maintained = keyboard_check(ord('S'));
         key_action_1_released = keyboard_check_released(ord('S'));
         key_action_2_pressed = keyboard_check_pressed(ord('D'));
-        key_action_2_maintained = keyboard_check(ord('S'));
-        key_action_2_released = keyboard_check_released(ord('S'));
+        key_action_2_maintained = keyboard_check(ord('D'));
+        key_action_2_released = keyboard_check_released(ord('D'));
         key_action_3_pressed = keyboard_check_pressed(ord('A'));
-        key_action_3_maintained = keyboard_check(ord('S'));
-        key_action_3_released = keyboard_check_released(ord('S'));
+        key_action_3_maintained = keyboard_check(ord('A'));
+        key_action_3_released = keyboard_check_released(ord('A'));
         key_action_4_pressed = keyboard_check_pressed(ord('W'));
-        key_action_4_maintained = keyboard_check(ord('S'));
-        key_action_4_released = keyboard_check_released(ord('S'));
+        key_action_4_maintained = keyboard_check(ord('W'));
+        key_action_4_released = keyboard_check_released(ord('W'));
     }
 //}
 //If not locked (not here now)
@@ -387,7 +387,7 @@ if(pushing == true){
             <string>//
 action = 1;
 //
-if(key_action_4){
+if(key_action_4_pressed){
     mate_number = other.player_num;
     raised_mate = instance_create(other.x, other.y, obj_player);
     raised_mate.player_num = mate_number;

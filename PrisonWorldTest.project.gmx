@@ -61,7 +61,11 @@
         <sprite>sprites\spr_wizard_front_idle</sprite>
       </sprites>
       <sprites name="Monk">
-        <sprite>sprites\spr_monk_front_idle</sprite>
+        <sprite>sprites\spr_monk_front_move</sprite>
+        <sprite>sprites\spr_monk_back_move</sprite>
+        <sprite>sprites\spr_monk_right_move</sprite>
+        <sprite>sprites\spr_monk_left_move</sprite>
+        <sprite>sprites\spr_monk_down</sprite>
       </sprites>
       <sprites name="Ranger">
         <sprite>sprites\spr_ranger_left_move</sprite>
@@ -87,6 +91,7 @@
     <sprites name="Tabern">
       <sprite>sprites\spr_warrior_selection</sprite>
       <sprite>sprites\spr_ranger_selection</sprite>
+      <sprite>sprites\spr_monk_selection</sprite>
     </sprites>
     <sprites name="Store">
       <sprite>sprites\spr_ration</sprite>
@@ -102,6 +107,9 @@
       <sprite>sprites\spr_trap</sprite>
       <sprite>sprites\spr_bullseye</sprite>
       <sprite>sprites\spr_bullseye2</sprite>
+      <sprite>sprites\spr_punch</sprite>
+      <sprite>sprites\spr_heal</sprite>
+      <sprite>sprites\spr_flash</sprite>
     </sprites>
     <sprites name="Terrain">
       <sprite>sprites\spr_big_mushroom</sprite>
@@ -166,6 +174,7 @@
       <object>objects\obj_character_image</object>
       <object>objects\obj_warrior_image</object>
       <object>objects\obj_ranger_image</object>
+      <object>objects\obj_monk_image</object>
     </objects>
     <objects name="StoreStuff">
       <object>objects\obj_store_hand</object>
