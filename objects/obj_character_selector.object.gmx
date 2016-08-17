@@ -30,6 +30,8 @@ player_num = 0;
 
 //For errors
 action_button = 0;
+show = false;
+character_id = 0;
 </string>
           </argument>
         </arguments>
@@ -55,10 +57,10 @@ action_button = 0;
             <string>//Get controls
 if(global.player[player_num, 0] == 1){
     gamepad_set_axis_deadzone(player_num, 0.2);
-    key_up = gamepad_button_check(player_num, gp_padu) || gamepad_axis_value(0, gp_axislv) &lt; -0.2;
-    key_down = gamepad_button_check(player_num, gp_padd) || gamepad_axis_value(0, gp_axislv) &gt; 0.2;
-    key_left = gamepad_button_check(player_num, gp_padl) || gamepad_axis_value(0, gp_axislh) &lt; -0.2;
-    key_right = gamepad_button_check(player_num, gp_padr) || gamepad_axis_value(0, gp_axislh) &gt; 0.2;
+    key_up = gamepad_button_check(player_num, gp_padu) || gamepad_axis_value(player_num, gp_axislv) &lt; -0.2;
+    key_down = gamepad_button_check(player_num, gp_padd) || gamepad_axis_value(player_num, gp_axislv) &gt; 0.2;
+    key_left = gamepad_button_check(player_num, gp_padl) || gamepad_axis_value(player_num, gp_axislh) &lt; -0.2;
+    key_right = gamepad_button_check(player_num, gp_padr) || gamepad_axis_value(player_num, gp_axislh) &gt; 0.2;
 }
 else{
     key_up = keyboard_check(vk_up);
@@ -80,6 +82,9 @@ return_button = gamepad_button_check_pressed(player_num, gp_face2) || keyboard_c
 //Keys
 y += (-key_up + key_down) * 20;
 x += (-key_left + key_right) * 20;
+
+//Show control
+show = false;
 </string>
           </argument>
         </arguments>
@@ -102,7 +107,10 @@ x += (-key_left + key_right) * 20;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//En guarro
+            <string>//Get the id to show data
+character_id = other.character_id;
+show = true;
+//En guarro
 if(action_button){
     //Get the class using the id
         //Should revise
@@ -139,7 +147,33 @@ if(action_button){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//
+            <string>//Text parameters
+draw_set_color(c_white);
+draw_set_valign(fa_center);
+draw_set_halign(fa_right);
+
+//
+if(show == true){
+    draw_set_colour(c_black);
+    draw_rectangle(x, y, x + 190, y + 150, false);
+    draw_set_colour(c_white);
+    //De momento lo hacemos asi, luego lo guardaremos bien
+    switch(character_id){
+        case 0: character_name = "Warrior"; break;
+        case 1: character_name = "Ranger"; break;
+        case 2: character_name = "Monk"; break;
+        case 3: character_name = "Mage"; break;
+    }
+    draw_text(x + 100, y + 10, character_name);
+    draw_text(x + 100, y + 30, "Life: " + string(global.character[character_id, 0]));
+    draw_text(x + 100, y + 50, "Defense: " + string(global.character[character_id, 2]));
+    draw_text(x + 100, y + 70, "Skills: ");
+    draw_text(x + 120, y + 90, global.character[character_id, 3]);
+    draw_text(x + 120, y + 110, global.character[character_id, 8]);
+    draw_text(x + 120, y + 130, global.character[character_id, 13]);
+}
+
+//
 draw_self();
 //
 draw_sprite(spr_general_marker, player_num, x + 20, y + 20);
