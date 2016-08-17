@@ -212,20 +212,40 @@ script_execute(scr_abilities_end, global.player[player_num, 6]);
         key_down = gamepad_button_check(player_num, gp_padd) || gamepad_axis_value(0, gp_axislv) &gt; 0.2;
         key_left = gamepad_button_check(player_num, gp_padl) || gamepad_axis_value(0, gp_axislh) &lt; -0.2;
         key_right = gamepad_button_check(player_num, gp_padr) || gamepad_axis_value(0, gp_axislh) &gt; 0.2;
-        key_action_1 = gamepad_button_check_pressed(player_num, gp_face1);
-        key_action_2 = gamepad_button_check_pressed(player_num, gp_face2);
-        key_action_3 = gamepad_button_check_pressed(player_num, gp_face3);
-        key_action_4 = gamepad_button_check_pressed(player_num, gp_face4);
+        
+        key_action_1_pressed = gamepad_button_check_pressed(player_num, gp_face1);
+        key_action_1_maintained = gamepad_button_check(player_num, gp_face1);
+        key_action_1_released = gamepad_button_check_released(player_num, gp_face1);
+        
+        key_action_2_pressed = gamepad_button_check_pressed(player_num, gp_face2);
+        key_action_2_maintained = gamepad_button_check(player_num, gp_face2);
+        key_action_2_released = gamepad_button_check_released(player_num, gp_face2);
+        
+        key_action_3_pressed = gamepad_button_check_pressed(player_num, gp_face3);
+        key_action_3_maintained = gamepad_button_check(player_num, gp_face3);
+        key_action_3_released = gamepad_button_check_released(player_num, gp_face3);
+        
+        key_action_4_pressed = gamepad_button_check_pressed(player_num, gp_face4);
+        key_action_4_maintained = gamepad_button_check(player_num, gp_face4);
+        key_action_4_released = gamepad_button_check_released(player_num, gp_face4);
     }
     else{
         key_up = keyboard_check(vk_up);
         key_down = keyboard_check(vk_down);
         key_left = keyboard_check(vk_left);
         key_right = keyboard_check(vk_right);
-        key_action_1 = keyboard_check_pressed(ord('S'));
-        key_action_2 = keyboard_check_pressed(ord('D'));
-        key_action_3 = keyboard_check_pressed(ord('A'));
-        key_action_4 = keyboard_check_pressed(ord('W'));
+        key_action_1_pressed = keyboard_check_pressed(ord('S'));
+        key_action_1_maintained = keyboard_check(ord('S'));
+        key_action_1_released = keyboard_check_released(ord('S'));
+        key_action_2_pressed = keyboard_check_pressed(ord('D'));
+        key_action_2_maintained = keyboard_check(ord('S'));
+        key_action_2_released = keyboard_check_released(ord('S'));
+        key_action_3_pressed = keyboard_check_pressed(ord('A'));
+        key_action_3_maintained = keyboard_check(ord('S'));
+        key_action_3_released = keyboard_check_released(ord('S'));
+        key_action_4_pressed = keyboard_check_pressed(ord('W'));
+        key_action_4_maintained = keyboard_check(ord('S'));
+        key_action_4_released = keyboard_check_released(ord('S'));
     }
 //}
 //If not locked (not here now)
@@ -273,29 +293,26 @@ if(status_locked == false){
         break;
     }
     //First ability
-    if(key_action_1 &amp;&amp; alarm_get(1) == -1){
+        //We go with all the possible combinations to the ability
+            //The proper ability will decide wich one it uses
+            //In some abilities it doesn´t matter
+    if((key_action_1_pressed || key_action_1_maintained || key_action_1_released) 
+        &amp;&amp; alarm_get(1) == -1){
         //Le pasamos el nombre de la habilidad y las alarmas que usa
         script_execute(scr_abilities, global.player[player_num, 6], 
                         global.player[player_num, 8], 
                         global.player[player_num, 9]);
-        /*status_locked = true;
-        attack_instance = instance_create(x, y, obj_basic_attack);
-        attack_instance.direction = looking_direction;
-        attack_instance.image_angle = attack_instance.direction;
-        attack_instance.damage = global.player[player_num, 4];
-        //Duration of the ability
-        alarm_set(0, 3);
-        //Cooldown of the ability
-        alarm_set(1, global.player[player_num, 10]);*/
     }
     //Second
-    if(key_action_2 &amp;&amp; alarm_get(3) == -1){
+    if((key_action_2_pressed || key_action_2_maintained || key_action_2_released) 
+        &amp;&amp; alarm_get(3) == -1){
         script_execute(scr_abilities, global.player[player_num, 11], 
                         global.player[player_num, 13], 
                         global.player[player_num, 14]);
     }
     //Third
-    if(key_action_3 &amp;&amp; alarm_get(5) == -1){
+    if((key_action_3_pressed || key_action_3_maintained || key_action_3_released) 
+        &amp;&amp; alarm_get(5) == -1){
         script_execute(scr_abilities, global.player[player_num, 16], 
                         global.player[player_num, 18], 
                         global.player[player_num, 19]);
@@ -313,6 +330,10 @@ if(global.player[player_num, 3] &lt;= 0){
 
 //Adjust depth
 depth = room_height - y;
+
+//Control to not go out of the camera view
+x = clamp(x, view_xview, view_xview + view_wview);
+y = clamp(y, view_yview, view_yview + view_hview);
 </string>
           </argument>
         </arguments>
@@ -370,7 +391,7 @@ if(key_action_4){
     mate_number = other.player_num;
     raised_mate = instance_create(other.x, other.y, obj_player);
     raised_mate.player_num = mate_number;
-    global.player[mate_number, 3] = 3/*int64(global.player[mate_number, 2] / 4)*/;
+    global.player[mate_number, 3] = round(global.player[mate_number, 2] / 4);
     with(other) instance_destroy();
 }
 </string>

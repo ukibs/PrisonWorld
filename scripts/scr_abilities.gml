@@ -38,16 +38,35 @@ switch(argument0){
     break;
     //Primera de la exploradora
     case "Shoot":
-        status_locked = true;
-        proyectile = instance_create(x, y, obj_arrow);
-        proyectile.direction = looking_direction;
-        proyectile.image_angle = proyectile.direction;
-        proyectile.speed = 25;
-        proyectile.damage = global.player[player_num, 4];
-        //Duration of the ability
-        alarm_set(argument1, 6);
-        //Cooldown of the ability
-        alarm_set(argument2, global.player[player_num, 10]);
+        //
+        if(instance_exists(obj_mark)){
+            direction = point_direction(x, y, obj_mark.x, obj_mark.y);
+            looking_direction = round(direction / 90) * 90 + 45;
+        }
+        //Mas adelante haremos que atrape la tecla por parámetro
+        if(key_action_1_pressed){
+            shoot_force = 2;
+        }
+        if(key_action_1_maintained){
+            shoot_force += 0.1;
+        }
+        if(key_action_1_released){            
+            status_locked = true;
+            shoot_force = min(8, shoot_force);
+            shoot_force = round(shoot_force);
+            proyectile = instance_create(x, y, obj_arrow);
+            if(!instance_exists(obj_mark))
+                proyectile.direction = looking_direction;
+            else
+                proyectile.direction = direction;
+            proyectile.image_angle = proyectile.direction;
+            proyectile.speed = 25;
+            proyectile.damage = shoot_force;
+            //Duration of the ability
+            alarm_set(argument1, 6);
+            //Cooldown of the ability
+            alarm_set(argument2, global.player[player_num, 10]);
+        }
     break;
     //Segunda de la exploradora
     case "Trap":
@@ -59,6 +78,16 @@ switch(argument0){
     break;
     //Tercera de la exploradora
     case "Mark":
-    
+        //Destroy the previous if it exist
+        if(instance_exists(obj_mark)){
+            with(obj_mark) 
+                instance_destroy();
+        }
+        //And create the new one
+        objective = instance_nearest(x, y, obj_enemy1);
+        mark = instance_create(objective.x, objective.y, obj_mark);
+        mark.objective = objective;
+        //Cooldown of the ability
+        alarm_set(argument2, global.player[player_num, 20]);
     break;
 }

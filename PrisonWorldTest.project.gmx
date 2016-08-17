@@ -101,6 +101,7 @@
       <sprite>sprites\spr_arrow</sprite>
       <sprite>sprites\spr_trap</sprite>
       <sprite>sprites\spr_bullseye</sprite>
+      <sprite>sprites\spr_bullseye2</sprite>
     </sprites>
     <sprites name="Terrain">
       <sprite>sprites\spr_big_mushroom</sprite>
@@ -143,19 +144,21 @@
     </objects>
     <objects name="EventStuff">
       <object>objects\obj_event_manager</object>
-      <object>objects\obj_forest_cover1</object>
       <object>objects\obj_player</object>
       <object>objects\obj_downed_player</object>
       <object>objects\obj_enemy1</object>
       <object>objects\obj_pause</object>
       <object>objects\obj_damage_displayer</object>
       <object>objects\obj_big_mushroom</object>
+      <object>objects\obj_forest_cover1</object>
       <objects name="Attacks">
         <object>objects\obj_basic_attack</object>
         <object>objects\obj_diagonal_attack</object>
         <object>objects\obj_arrow</object>
         <object>objects\obj_trap</object>
+        <object>objects\obj_mark</object>
       </objects>
+      <object>objects\obj_camera</object>
     </objects>
     <objects name="TabernStuff">
       <object>objects\obj_tabern_manager</object>
