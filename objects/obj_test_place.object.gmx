@@ -80,6 +80,9 @@ switch(terrain){
     case 3:
         sprite_index = spr_swamp_hex;
     break;
+    case 4:
+        sprite_index = spr_desert_hex;
+    break;
 }
 </string>
           </argument>

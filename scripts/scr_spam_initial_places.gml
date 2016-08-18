@@ -32,6 +32,7 @@ for(i = 0; i < 7; i++){
         1 - Plains
         2 - Forest
         3 - Swamp
+        4 - Desert
     */
     //And hostility
     if(i == 0){
@@ -62,7 +63,7 @@ for(i = 0; i < 7; i++){
             //Como cual será de ellos
             global.hex[i, 2] = adjacent_places[terrain_decider];
         else    //Si no random y a tomar por culo
-            global.hex[i, 2] = irandom_range(1, 3);
+            global.hex[i, 2] = irandom_range(1, 4);
         global.map_tile[i].terrain = global.hex[i, 2];
         
         //A not very moderate hostilty for the initial places

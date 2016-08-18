@@ -271,6 +271,11 @@ switch(other.terrain){
         action = 1;
         terrain_multiplier = 0.4;
     break;
+    //Desert
+    case 4:
+        action = 1;
+        terrain_multiplier = 0.6;
+    break;
     //The others
     default:
         action = 1;

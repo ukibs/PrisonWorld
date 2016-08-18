@@ -10,10 +10,11 @@
     <sprite>sprites\spr_black</sprite>
     <sprite>sprites\spr_quest_button</sprite>
     <sprites name="Map">
+      <sprite>sprites\spr_settlement_hex</sprite>
       <sprite>sprites\spr_swamp_hex</sprite>
       <sprite>sprites\spr_plains_hex</sprite>
-      <sprite>sprites\spr_settlement_hex</sprite>
       <sprite>sprites\spr_forest_hex</sprite>
+      <sprite>sprites\spr_desert_hex</sprite>
       <sprite>sprites\spr_unknown_place</sprite>
       <sprite>sprites\spr_test_place</sprite>
       <sprite>sprites\spr_adventurer</sprite>
