@@ -15,6 +15,7 @@
       <sprite>sprites\spr_plains_hex</sprite>
       <sprite>sprites\spr_forest_hex</sprite>
       <sprite>sprites\spr_desert_hex</sprite>
+      <sprite>sprites\spr_volcan_hex</sprite>
       <sprite>sprites\spr_unknown_place</sprite>
       <sprite>sprites\spr_test_place</sprite>
       <sprite>sprites\spr_adventurer</sprite>
@@ -131,8 +132,11 @@
       <sprite>sprites\spr_sword</sprite>
       <sprite>sprites\spr_shield</sprite>
       <sprite>sprites\spr_assault</sprite>
+      <sprite>sprites\spr_arrow_icon</sprite>
       <sprite>sprites\spr_arrow</sprite>
       <sprite>sprites\spr_trap</sprite>
+      <sprite>sprites\spr_trap_prepared</sprite>
+      <sprite>sprites\spr_trap_active</sprite>
       <sprite>sprites\spr_bullseye</sprite>
       <sprite>sprites\spr_bullseye2</sprite>
       <sprite>sprites\spr_punch</sprite>
