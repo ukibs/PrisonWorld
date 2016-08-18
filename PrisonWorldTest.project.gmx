@@ -14,12 +14,21 @@
       <sprite>sprites\spr_plains_hex</sprite>
       <sprite>sprites\spr_settlement_hex</sprite>
       <sprite>sprites\spr_forest_hex</sprite>
-      <sprite>sprites\spr_tile_marker_green</sprite>
       <sprite>sprites\spr_unknown_place</sprite>
       <sprite>sprites\spr_test_place</sprite>
-      <sprite>sprites\spr_tile_marker_red</sprite>
       <sprite>sprites\spr_adventurer</sprite>
       <sprite>sprites\spr_marker_hand</sprite>
+      <sprites name="Markers">
+        <sprite>sprites\spr_tile_marker_red</sprite>
+        <sprite>sprites\spr_tile_marker_green</sprite>
+      </sprites>
+      <sprites name="Highlights">
+        <sprite>sprites\spr_tile_highlight_blue</sprite>
+        <sprite>sprites\spr_tile_highlight_green</sprite>
+        <sprite>sprites\spr_tile_highlight_yellow</sprite>
+        <sprite>sprites\spr_tile_highlight_orange</sprite>
+        <sprite>sprites\spr_tile_highlight_red</sprite>
+      </sprites>
     </sprites>
     <sprites name="Enemies">
       <sprites name="LivingTree">

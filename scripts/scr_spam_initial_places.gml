@@ -65,8 +65,8 @@ for(i = 0; i < 7; i++){
             global.hex[i, 2] = irandom_range(1, 3);
         global.map_tile[i].terrain = global.hex[i, 2];
         
-        //A moderate hostilty for the initial places
-        global.hex[i, 3] = irandom_range(20, 60);
+        //A not very moderate hostilty for the initial places
+        global.hex[i, 3] = irandom_range(35, 75);
         global.map_tile[i].hostility = global.hex[i, 3];
         //Id
         global.hex[i, 4] = i;

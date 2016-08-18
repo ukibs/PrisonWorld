@@ -141,8 +141,22 @@ else
             <kind>1</kind>
             <string>//
 draw_self();
+//
 if(marked == true)
     draw_sprite(spr_tile_marker_green, 0, x, y);
+//
+if(obj_marker_hand.show_button){
+    if(hostility &gt; 80)
+        draw_sprite(spr_tile_highlight_red, 0, x, y);
+    else if(hostility &gt; 60)
+        draw_sprite(spr_tile_highlight_orange, 0, x, y);
+    else if(hostility &gt; 40)
+        draw_sprite(spr_tile_highlight_yellow, 0, x, y);
+    else if(hostility &gt; 20)
+        draw_sprite(spr_tile_highlight_green, 0, x, y);
+    else
+        draw_sprite(spr_tile_highlight_blue, 0, x, y);
+}
 </string>
           </argument>
         </arguments>

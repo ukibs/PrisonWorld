@@ -179,7 +179,7 @@ global.lastY = y;
     global.map_tile[next_index].terrain = global.hex[next_index, 2];
     
     //A hostilty
-    global.hex[next_index, 3] = irandom_range(20, 80);
+    global.hex[next_index, 3] = irandom_range(35, 80);
     global.map_tile[next_index].hostility = global.hex[next_index, 3];
     //Id
     global.hex[next_index, 4] = next_index;
@@ -334,9 +334,12 @@ for(i = 0; i &lt; global.num_players; i++){
 //Show possible action
 if(action == 0)
     draw_text(1300, 680, "B ENTER SETTLEMENT");
-else
-    draw_text(1300, 680, "B STOP/CAMP");
-    
+else{
+    if(speed &gt; 0)
+        draw_text(1300, 680, "B STOP");
+    else
+        draw_text(1300, 680, "B CAMP");   
+ }  
 //Test stuff
 //draw_text(10, 10, alarm[0]);
 //draw_text(10, 30, time_between_checks);

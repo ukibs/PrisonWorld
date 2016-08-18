@@ -64,6 +64,7 @@ v_axis = gamepad_axis_value(0, gp_axislv);
 h_axis = gamepad_axis_value(0, gp_axislh);
 moving_button = gamepad_button_check_pressed(0, gp_face1) || keyboard_check_pressed(ord('S'));
 action_button = gamepad_button_check_pressed(0, gp_face2) || keyboard_check_pressed(ord('D'));
+show_button = gamepad_button_check(0, gp_face3) || keyboard_check(ord('A'));
 
 //Move it
 //Joystick
@@ -75,9 +76,26 @@ x += (-key_left + key_right) * 20;
 
 //Execute action depending on place
 if(action_button){
-    switch(obj_adventurer_group.action){
+    group = instance_find(obj_adventurer_group, 0);
+    switch(group.action){
         case 0:
             room_goto(room_settlement);
+        break;
+        case 1:
+            //Stop
+            if(group.speed &gt; 0){
+                group.destinationX = group.x;
+                group.destinationY = group.y;
+                group.speed = 0;
+                if(group.alarm[0] &gt; -1)
+                    group.accumulated_time = group.alarm[0];
+                group.alarm[0] = -1;
+                group.direction = 270;
+            }
+            else{
+                    //Cuando la hagamos
+                    //room_goto(room_camp);
+            }
         break;
     }
 }
@@ -185,6 +203,7 @@ terrain_hostility = other.hostility;
 //draw_text(10, 10, direction_drawing);
 
 draw_text(1300, 700, "A GO");
+draw_text(1200, 700, "X SHOW HOSTILITY");
 </string>
           </argument>
         </arguments>

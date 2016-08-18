@@ -136,13 +136,13 @@ else if (fadeIn == false) {
 
 //De momento simplón
     //Por muerte de enemigos
-if(!instance_exists(obj_enemy1)){
+if(!instance_exists(obj_enemy1) &amp;&amp; fadeIn == true){
     //Check if there is active an exterminate mission
     if(global.mission == 2 &amp;&amp; global.mission_progress &lt; global.mission_requirement)
         global.mission_progress ++;
     //Reduce the hostility of the place
     //En guarro
-    global.hex[global.hex_to_use, 3] -= int64(global.hostility_to_use / 10);
+    global.hex[global.hex_to_use, 3] -= force_deployed;
     //Restore the fallen players
     for(i = 0; i &lt; global.num_players; i++){
         //Tengo que revisar de una vez este control
