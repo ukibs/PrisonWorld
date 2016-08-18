@@ -41,6 +41,22 @@
       <sprites name="teeth_ball">
         <sprite>sprites\spr_teethball_front_iwalking</sprite>
       </sprites>
+      <sprites name="FireSpirit">
+        <sprite>sprites\spr_fireSpirit_front_idle</sprite>
+        <sprite>sprites\spr_fireSpirit_front_attack</sprite>
+        <sprite>sprites\spr_fireSpirit_front_death</sprite>
+        <sprite>sprites\spr_fireSpirit_back_idle</sprite>
+        <sprite>sprites\spr_fireSpirit_back_attack</sprite>
+        <sprite>sprites\spr_fireSpirit_back_death</sprite>
+      </sprites>
+      <sprites name="Ghost">
+        <sprite>sprites\spr_ghost_front_idle</sprite>
+        <sprite>sprites\spr_ghost_front_attack</sprite>
+        <sprite>sprites\spr_ghost_front_death</sprite>
+        <sprite>sprites\spr_ghost_back_idle</sprite>
+        <sprite>sprites\spr_ghost_back_attack</sprite>
+        <sprite>sprites\spr_ghost_back_death</sprite>
+      </sprites>
     </sprites>
     <sprites name="Settlement">
       <sprite>sprites\spr_castle</sprite>

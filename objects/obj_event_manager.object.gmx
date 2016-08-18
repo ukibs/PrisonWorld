@@ -50,8 +50,8 @@ posY[1] = 0;
 posY[2] = 0;
 posY[3] = 50;
 
-//Spam
-    //De momento un pooco guarro
+//Spawm
+    //De momento un poco guarro
     //Habrá que revisarlo
 for(i = 0; i &lt; global.num_players; i++){
     //Asign each instanced player his number
