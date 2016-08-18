@@ -48,9 +48,14 @@ switch(argument0){
         //Mas adelante haremos que atrape la tecla por parámetro
         if(key_action_1_pressed){
             shoot_force = 2;
+            icon_to_use = spr_arrow;
+            charge_required = 8;
+            charge_amount = 0.1;
+            action = 1;
         }
         if(key_action_1_maintained){
-            shoot_force += 0.1;
+            shoot_force += charge_amount;
+            charge_done += charge_amount;
         }
         if(key_action_1_released){            
             status_locked = true;
@@ -68,6 +73,9 @@ switch(argument0){
             alarm_set(argument1, 6);
             //Cooldown of the ability
             alarm_set(argument2, global.player[player_num, 10]);
+            //Para el icona de carga
+            action = 0;
+            charge_done = 0;
         }
     break;
     //Segunda de la exploradora

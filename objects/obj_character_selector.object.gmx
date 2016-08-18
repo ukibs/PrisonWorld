@@ -61,19 +61,17 @@ if(global.player[player_num, 0] == 1){
     key_down = gamepad_button_check(player_num, gp_padd) || gamepad_axis_value(player_num, gp_axislv) &gt; 0.2;
     key_left = gamepad_button_check(player_num, gp_padl) || gamepad_axis_value(player_num, gp_axislh) &lt; -0.2;
     key_right = gamepad_button_check(player_num, gp_padr) || gamepad_axis_value(player_num, gp_axislh) &gt; 0.2;
+    action_button = gamepad_button_check_pressed(player_num, gp_face1);
+    return_button = gamepad_button_check_pressed(player_num, gp_face2);
 }
 else{
     key_up = keyboard_check(vk_up);
     key_down = keyboard_check(vk_down);
     key_left = keyboard_check(vk_left);
     key_right = keyboard_check(vk_right);
+    action_button = keyboard_check_pressed(ord('S'));
+    return_button = keyboard_check_pressed(ord('D'));
 }
-
-//gamepad_set_axis_deadzone(player_num, 0.2);
-//v_axis = gamepad_axis_value(player_num, gp_axislv);
-//h_axis = gamepad_axis_value(player_num, gp_axislh);
-action_button = gamepad_button_check_pressed(player_num, gp_face1) || keyboard_check_pressed(ord('S'));
-return_button = gamepad_button_check_pressed(player_num, gp_face2) || keyboard_check_pressed(ord('D'));
 
 //Move it
 //Joystick

@@ -69,7 +69,8 @@ if(obj_adventurer_group.speed &gt; 0){
             global.day ++;
             //Raise a little the  hostilty
             //Habrá que hacer que no suba en el asentamiento
-            obj_test_place.hostility ++;
+                //En el mapa como está de moemnto no subimos nada
+            //obj_test_place.hostility ++;
             for(i = 0; i &lt; array_height_2d(global.hex); i++){
                 //Que no suba en el asentamiento
                 if(global.hex[i, 2] &gt; 0)

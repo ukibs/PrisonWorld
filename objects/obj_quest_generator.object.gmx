@@ -30,9 +30,39 @@ if(global.mission == 0 &amp;&amp; !instance_exists(obj_quest_button)){
     //Generate 3 random missions
     for(i = 0; i &lt; 3; i ++){
         //From easy to hard
-        quest_button[i] = instance_create(room_width/2, 200 + (i * 100), obj_quest_button);
-        quest_button[i].quest_type = irandom_range(1, 2);
-        quest_button[i].difficulty = i+1;
+        quest_type = irandom_range(1, 2);
+        //Decide if the mission meets the requisites
+            //Hostility comprobation for some of the missions
+        average_hostility = 0;  //Lo retocaremos para que trabaje con más asentamientos
+        for(j = 1; j &lt; array_height_2d(global.hex); j++){
+            average_hostility += global.hex[i, 3];
+        }
+        average_hostility /= array_height_2d(global.hex);
+        //Check the quest type
+        switch(quest_type){
+            //Exploration
+            case 1:
+                if(average_hostility &lt; 50)
+                    okay = true;
+                else
+                    okay = false;
+            break;
+            //Exterminate
+            case 2:
+                if(average_hostility &gt; 40)
+                    okay = true;
+                else
+                    okay = false;
+            break;
+        }
+        //Check if okay or not
+        if(okay == true){
+            quest_button[i] = instance_create(room_width/2, 200 + (i * 100), obj_quest_button);
+            quest_button[i].quest_type = quest_type;
+            quest_button[i].difficulty = i+1;
+        }
+        if(okay == false)
+            i --;
     }
 }
 </string>

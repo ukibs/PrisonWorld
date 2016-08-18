@@ -124,6 +124,7 @@
     </sprites>
     <sprites name="Icons">
       <sprite>sprites\spr_cooldown</sprite>
+      <sprite>sprites\spr_charge</sprite>
       <sprite>sprites\spr_no_action</sprite>
       <sprite>sprites\spr_raise</sprite>
       <sprite>sprites\spr_sword</sprite>
