@@ -208,7 +208,10 @@ script_execute(scr_abilities_end, global.player[player_num, 6]);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Get keys (if not locked)
+            <string>//Action control
+action = 0;
+
+//Get keys (if not locked)
 //if(status_locked == false){
     //Check if gampead or keyboard player
     if(global.player[player_num, 0] == 1){
@@ -339,6 +342,50 @@ depth = room_height - y;
 //Control to not go out of the camera view
 x = clamp(x, view_xview, view_xview + view_wview);
 y = clamp(y, view_yview, view_yview + view_hview);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_harvestable">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//
+action = 1;
+icon_to_use = spr_raise;
+//Raising depending on the button state
+if(key_action_4_pressed){
+    //De momento fija, pero más adelante ya pondremos que la saques del objeto
+    charge_required = 30;
+    charge_amount = 1;
+}
+if(key_action_4_maintained){
+    charge_done += charge_amount;
+    //draw_sprite_stretched(spr_charge, 0, 128, 50 + (player_num * 90), 
+                            //raising_count / 60 * 32, 32);
+}
+if(key_action_4_released){
+    if(charge_done &gt;= charge_required){
+        //De momento de 1 en 1, pero se podría cambiar
+        global.harvestable[other.type] ++;
+        with(other) instance_destroy();
+    }
+    charge_done = 0;
+}
 </string>
           </argument>
         </arguments>
@@ -487,14 +534,14 @@ draw_self();
 
 
 //Use button
-switch(action){
+/*switch(action){
     case 0:
         //draw_sprite(spr_no_action, 0, 128, 50 + (player_num * 90));
     break;
-    case 1:
-        draw_sprite(icon_to_use, 0, x - 16, y - 100);
-    break;
-}
+    case 1:*/
+        if(action == 1) draw_sprite(icon_to_use, 0, x - 16, y - 100);
+   /* break;
+}*/
     //Progression bar (charge)
     //Controlamos aqui que no se pase
     charge_done = min(charge_done, charge_required);

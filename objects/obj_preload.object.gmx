@@ -215,6 +215,9 @@ enum character {
 //Inventory
 global.inventory[0] = 0; //Raciones
 global.inventory[1] = 0; //Antorchas
+//Harvestables
+    //De moemnto todo lo mismo
+global.harvestable[0] = 0;
 //And start
 room_goto_next();
 </string>

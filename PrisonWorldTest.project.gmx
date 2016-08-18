@@ -113,6 +113,7 @@
       <sprite>sprites\spr_diagonal_attack</sprite>
       <sprite>sprites\spr_forest1</sprite>
       <sprite>sprites\spr_health_bar</sprite>
+      <sprite>sprites\spr_recolectable_shit</sprite>
     </sprites>
     <sprites name="Tabern">
       <sprite>sprites\spr_warrior_selection</sprite>
@@ -194,6 +195,7 @@
         <object>objects\obj_mark</object>
       </objects>
       <object>objects\obj_camera</object>
+      <object>objects\obj_harvestable</object>
     </objects>
     <objects name="TabernStuff">
       <object>objects\obj_tabern_manager</object>
@@ -206,6 +208,8 @@
     <objects name="StoreStuff">
       <object>objects\obj_store_hand</object>
       <object>objects\obj_rations</object>
+      <object>objects\obj_sell_button</object>
+      <object>objects\obj_shit_to_sell</object>
     </objects>
   </objects>
   <rooms name="rooms">

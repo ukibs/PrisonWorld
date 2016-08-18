@@ -55,6 +55,37 @@ if(return_button){
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_sell_button">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Let´s buy it
+if(action_button){
+    //Guarro de momento
+    for(i = 0; i &lt; array_length_1d(global.harvestable); i++){
+        //De momento toda la mierda vale lo mismo, ya lo cambiaremos
+        global.currency += global.harvestable[i] * 10;
+        global.harvestable[i] = 0;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_rations">
       <action>
         <libid>1</libid>
