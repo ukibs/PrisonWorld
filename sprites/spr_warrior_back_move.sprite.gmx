@@ -21,5 +21,20 @@
   <height>85</height>
   <frames>
     <frame index="0">images\spr_warrior_back_move_0.png</frame>
+    <frame index="1">images\spr_warrior_back_move_1.png</frame>
+    <frame index="2">images\spr_warrior_back_move_2.png</frame>
+    <frame index="3">images\spr_warrior_back_move_3.png</frame>
+    <frame index="4">images\spr_warrior_back_move_4.png</frame>
+    <frame index="5">images\spr_warrior_back_move_5.png</frame>
+    <frame index="6">images\spr_warrior_back_move_6.png</frame>
+    <frame index="7">images\spr_warrior_back_move_7.png</frame>
+    <frame index="8">images\spr_warrior_back_move_8.png</frame>
+    <frame index="9">images\spr_warrior_back_move_9.png</frame>
+    <frame index="10">images\spr_warrior_back_move_10.png</frame>
+    <frame index="11">images\spr_warrior_back_move_11.png</frame>
+    <frame index="12">images\spr_warrior_back_move_12.png</frame>
+    <frame index="13">images\spr_warrior_back_move_13.png</frame>
+    <frame index="14">images\spr_warrior_back_move_14.png</frame>
+    <frame index="15">images\spr_warrior_back_move_15.png</frame>
   </frames>
 </sprite>
