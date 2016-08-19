@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_enemy</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -32,7 +32,6 @@ attack = 4;
 movement_speed = 1;
 
 //
-speed = movement_speed;
 type = 1;
 
 //
@@ -99,7 +98,7 @@ if(instance_exists(obj_player)){
 }
 
 //Check behaviour
-if(life &gt; 0){
+if(life &gt; 0 &amp;&amp; status_locked == false &amp;&amp; instance_exists(obj_player)){
     done = false;
     for(i = 0; i &lt; array_length_1d(behaviour); i++){
         switch(behaviour[i]){
@@ -122,12 +121,38 @@ if(life &gt; 0){
                     done = true;
             break;
             case "Aproach":
-                
+                distanceX = abs(objective.x - x);
+                distanceY = abs(objective.y - y);
+                //If it´s farer in x
+                if(distanceX &gt; distanceY)
+                    x += sign(objective.x - x) * movement_speed;
+                else    //If not
+                    y += sign(objective.y - y) * movement_speed;
+                //Sprite using the direction parameter
+                if(direction &lt;= 180)
+                    sprite_index = back_idle;
+                else
+                    sprite_index = front_idle;
+                //And orientation
+                if(direction &gt;= 90 &amp;&amp; direction &lt;= 270)
+                    image_xscale = 1;
+                else
+                    image_xscale = -1;
+                //Aaaand done
+                done = true;
             break;
         }
         if(done == true)
             break;
     }
+}
+//Stun control
+if(status_locked == true){
+    if(direction &lt;= 180)
+        sprite_index = back_idle;
+    else
+        sprite_index = front_idle;
+    image_index = 0;
 }
 //Muerte
 if(life &lt;= 0 &amp;&amp; sprite_index != back_death &amp;&amp; sprite_index != front_death){
@@ -138,8 +163,9 @@ if(life &lt;= 0 &amp;&amp; sprite_index != back_death &amp;&amp; sprite_index !=
         sprite_index = front_death;
     }
     image_index = 0;
-    speed = 0;
 }
+//Adjust depth
+depth = room_height - y;
 </string>
           </argument>
         </arguments>
@@ -173,8 +199,33 @@ if(sprite_index == front_attack ||
     attack_instance.direction = direction + 45;
     attack_instance.image_angle = attack_instance.direction;
     attack_instance.damage = attack;
-    //speed = movement_speed;
+    //Return to normal sprite
+    sprite_index = front_idle;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//
+draw_text(10, 10, status_locked);
 </string>
           </argument>
         </arguments>

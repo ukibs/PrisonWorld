@@ -136,7 +136,7 @@ else if (fadeIn == false) {
 
 //De momento simplón
     //Por muerte de enemigos
-if(!instance_exists(obj_enemy1) &amp;&amp; fadeIn == true){
+if(!instance_exists(obj_enemy2) &amp;&amp; fadeIn == true){     //Ahora con enemigo 2
     //Check if there is active an exterminate mission
     if(global.mission == 2 &amp;&amp; global.mission_progress &lt; global.mission_requirement){
         //And if the level has gone lower

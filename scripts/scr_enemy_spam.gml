@@ -24,7 +24,6 @@ while(force_deployed < enemy_force){
             enemy.defense = 2;
             enemy.attack = 6;
             enemy.movement_speed = 1;
-            enemy.speed = 1;
             enemy_strength = 4;
         break;
         //Skeleton
@@ -41,7 +40,6 @@ while(force_deployed < enemy_force){
             enemy.defense = 1;
             enemy.attack = 3;
             enemy.movement_speed = 3;
-            enemy.speed = 3;
             enemy_strength = 1;
         break;
         //Fire Spirit
@@ -58,7 +56,6 @@ while(force_deployed < enemy_force){
             enemy.defense = 2;
             enemy.attack = 10;
             enemy.movement_speed = 5;
-            enemy.speed = 5;
             enemy_strength = 3;
         break;
         //Ghost
@@ -75,7 +72,6 @@ while(force_deployed < enemy_force){
             enemy.defense = 3;
             enemy.attack = 3;
             enemy.movement_speed = 2;
-            enemy.speed = 2;
             enemy_strength = 1;
         break;
     }

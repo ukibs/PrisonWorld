@@ -53,6 +53,7 @@ objective = obj_player;
 if(instance_exists(objective)){
     x = objective.x;
     y = objective.y;
+    //depth = objec
 }
 else{
     instance_destroy();

@@ -105,7 +105,7 @@ switch(argument0){
                 instance_destroy();
         }
         //And create the new one
-        objective = instance_nearest(x, y, obj_enemy1);
+        objective = instance_nearest(x, y, obj_enemy);
         mark = instance_create(objective.x, objective.y, obj_mark);
         mark.objective = objective;
         //Cooldown of the ability
@@ -142,8 +142,8 @@ switch(argument0){
     break;
     //Tercera del monje
     case "Flash":
-        for(i = 0; i < instance_number(obj_enemy1); i++){
-            objective = instance_find(obj_enemy1, i);
+        for(i = 0; i < instance_number(obj_enemy); i++){
+            objective = instance_find(obj_enemy, i);
             if(distance_to_object(objective) < 200){
                 objective.status_locked = true;
                 objective.alarm[0] = 90;

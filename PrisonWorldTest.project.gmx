@@ -183,13 +183,17 @@
       <object>objects\obj_quest_button</object>
     </objects>
     <objects name="EventStuff">
-      <object>objects\obj_event_manager</object>
+      <objects name="Utilities">
+        <object>objects\obj_event_manager</object>
+        <object>objects\obj_pause</object>
+        <object>objects\obj_damage_displayer</object>
+        <object>objects\obj_camera</object>
+      </objects>
       <object>objects\obj_player</object>
       <object>objects\obj_downed_player</object>
+      <object>objects\obj_enemy</object>
       <object>objects\obj_enemy1</object>
       <object>objects\obj_enemy2</object>
-      <object>objects\obj_pause</object>
-      <object>objects\obj_damage_displayer</object>
       <object>objects\obj_big_mushroom</object>
       <object>objects\obj_forest_cover1</object>
       <objects name="Attacks">
@@ -199,7 +203,6 @@
         <object>objects\obj_trap</object>
         <object>objects\obj_mark</object>
       </objects>
-      <object>objects\obj_camera</object>
       <object>objects\obj_harvestable</object>
     </objects>
     <objects name="TabernStuff">
