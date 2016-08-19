@@ -187,6 +187,7 @@
       <object>objects\obj_player</object>
       <object>objects\obj_downed_player</object>
       <object>objects\obj_enemy1</object>
+      <object>objects\obj_enemy2</object>
       <object>objects\obj_pause</object>
       <object>objects\obj_damage_displayer</object>
       <object>objects\obj_big_mushroom</object>

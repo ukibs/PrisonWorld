@@ -32,14 +32,25 @@ pushing = false;
 player_num = 0;
 direction = 270;
 looking_direction = 270; //Alternativa
-status_down = 0;
-status_locked = false;
+//status_down = 0;
 movement_speed = 10;    //La acabaremos asignando junto con los stats
 /*Actions
     0 - No action
     1 - Raise mate
 */
 action = 0; 
+
+//Types of lock
+total_lock = false;
+movement_lock = false;
+turning_lock = false;
+
+//Bonus defense (for abilities and shit)
+bonus_defense = 0;
+
+//For some abilities
+last_attack_done = 0;
+last_attack_received = 0;
 
 //Actions that require charge
 icon_to_use = 0;
@@ -257,29 +268,33 @@ action = 0;
     }
 //}
 //If not locked (not here now)
-if(status_locked == false){
+if(total_lock == false){
     //Move it
     //Moving direction
     v_direction = (-key_up + key_down);
     h_direction = (-key_left + key_right);
 
     //Direction facing
-    /*if(v_direction != 0)
-        direction = v_direction * -90;
-    if(h_direction != 0)
-        direction = h_direction * 90 -90;*/
-    if(v_direction == -1)
-        looking_direction = 90;
-    else if(v_direction == 1)
-        looking_direction = 270;
-    else if(h_direction == -1)
-        looking_direction = 180;
-    else if(h_direction == 1)
-        looking_direction = 0;
+    if(turning_lock == false){
+        /*if(v_direction != 0)
+            direction = v_direction * -90;
+        if(h_direction != 0)
+            direction = h_direction * 90 -90;*/
+        if(v_direction == -1)
+            looking_direction = 90;
+        else if(v_direction == 1)
+            looking_direction = 270;
+        else if(h_direction == -1)
+            looking_direction = 180;
+        else if(h_direction == 1)
+            looking_direction = 0;
+    }
     //Movement
+    if(movement_lock == false){
         //De momento sin h/vspeed
-    y += v_direction * movement_speed;
-    x += h_direction * movement_speed;
+        y += v_direction * movement_speed;
+        x += h_direction * movement_speed;
+    }
     
     //Sprite_control
     switch(looking_direction){
@@ -413,6 +428,16 @@ if(pushing == true){
     other.x += hspeed;
     other.y += vspeed;
     other.status_locked = true;
+    other.alarm[0] = 2;
+    if(last_attack_done != other.last_attack_received){
+        other.last_attack_received = last_attack_done;
+        final_damage = 5 - other.defense;   //Ya le asignaremos el daño desde otro lado
+        final_damage = max(final_damage, 0);
+        other.life -= final_damage;
+        damage_display = instance_create(other.x, other.y, obj_damage_displayer);
+        damage_display.value = -final_damage;
+        damage_display.alarm[0] = 10;
+    }
 }
 </string>
           </argument>

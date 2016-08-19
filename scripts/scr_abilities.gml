@@ -2,7 +2,7 @@
 switch(argument0){
     //Primera del guerrero
     case "Slash":
-        status_locked = true;
+        total_lock = true;
         attack_instance = instance_create(x, y, obj_basic_attack);
         attack_instance.direction = looking_direction;
         attack_instance.image_angle = attack_instance.direction;
@@ -14,11 +14,21 @@ switch(argument0){
     break;
     //Segunda del guerrero
     case "Shield":
-        
+        if(key_action_2_maintained){
+            bonus_defense = 5;
+            turning_lock = true;
+            icon_to_use = spr_shield;
+            action = 1;
+        }
+        if(key_action_2_released){
+            bonus_defense = 0;
+            turning_lock = false;
+        }
     break;
     //Tercera del guerrero
     case "Dash":
-        status_locked = true;
+        total_lock = true;
+        last_attack_done = random(100);
         //Stablish dashing direction
         dashingH = 0;
         dashingV = 0;
@@ -47,18 +57,19 @@ switch(argument0){
         
         //Mas adelante haremos que atrape la tecla por parámetro
         if(key_action_1_pressed){
+            movement_lock = true;
             shoot_force = 2;
             icon_to_use = spr_arrow;
             charge_required = 8;
             charge_amount = 0.1;
-            action = 1;
         }
         if(key_action_1_maintained){
             shoot_force += charge_amount;
             charge_done += charge_amount;
+            action = 1;
         }
-        if(key_action_1_released){            
-            status_locked = true;
+        if(key_action_1_released){ 
+            movement_lock = false;   
             shoot_force = min(8, shoot_force);
             shoot_force = round(shoot_force);
             proyectile = instance_create(x, y, obj_arrow);

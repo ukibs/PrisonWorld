@@ -6,7 +6,7 @@ while(force_deployed < enemy_force){
     randomX = irandom_range(200, room_width - 200);
     randomY = irandom_range(100, room_height - 200);
     enemy_type = irandom_range(1, 4);
-    enemy = instance_create(randomX, randomY, obj_enemy1);
+    enemy = instance_create(randomX, randomY, obj_enemy2);  //Esta vez con enemigo 2
     //Choose skin for the enemy
     //For now with number
     switch(enemy_type){

@@ -2,7 +2,7 @@
 switch(argument0){
     //Primera del guerrero
     case "Slash":
-        status_locked = false;
+        total_lock = false;
     break;
     //Segunda del guerrero
     case "Shield":
@@ -10,14 +10,14 @@ switch(argument0){
     break;
     //Tercera del guerrero
     case "Dash":
-        status_locked = false;
+        total_lock = false;
         hspeed = 0;
         vspeed = 0;
         pushing = false;
     break;
     //Primer de la explroadora
     case "Shoot":
-        status_locked = false;
+        
     break;
     //Segundo de la explroadora
     case "Trap":
@@ -30,6 +30,6 @@ switch(argument0){
     //Primera del monje
     case "Punch":
         //De momento igual que el guerrero
-        status_locked = false;
+        total_lock = false;
     break;
 }

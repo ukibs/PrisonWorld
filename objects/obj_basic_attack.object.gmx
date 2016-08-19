@@ -81,6 +81,7 @@ instance_destroy();
 if(triggered == false){
     final_damage = damage - other.defense;
     other.life -= final_damage;
+    final_damage = max(final_damage, 0);
     //Esto lo asignaremos con un atributo mas adelante
     other.status_locked = true;
     other.alarm[0] = 2;
