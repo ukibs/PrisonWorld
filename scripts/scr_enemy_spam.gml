@@ -1,11 +1,12 @@
 //Prueba guarra
+player_amount = global.num_players;
 enemy_force = global.hostility_to_use / 10;
 force_deployed = 0;
 enemy_strength = 0;
 while(force_deployed < enemy_force){
     randomX = irandom_range(200, room_width - 200);
     randomY = irandom_range(100, room_height - 200);
-    enemy_type = irandom_range(1, 4);
+    enemy_type = irandom_range(1, 5);
     enemy = instance_create(randomX, randomY, obj_enemy2);  //Esta vez con enemigo 2
     //Choose skin for the enemy
     //For now with number
@@ -61,6 +62,26 @@ while(force_deployed < enemy_force){
         //Ghost
         case 4:
             //Sprites
+            enemy.front_idle = spr_teethball_front_moving;
+            enemy.front_attack = spr_ghost_front_attack;
+            enemy.front_death = spr_teethball_front_death;
+            enemy.back_idle = spr_teethball_back_moving;
+            enemy.back_attack = spr_ghost_back_attack;
+            enemy.back_death = spr_teethball_back_death;
+            //Stats
+            enemy.life = 4;
+            enemy.defense = 3;
+            enemy.attack = 3;
+            enemy.movement_speed = 3;
+            enemy_strength = 1;
+            //Beahciour
+            enemy.behaviour[0] = "Melee Attack";
+            enemy.behaviour[1] = "Move Away";
+            enemy.behaviour[2] = "Offensive Teleport";
+        break;
+        //Teeth ball
+        case 5:
+            //Sprites
             enemy.front_idle = spr_ghost_front_idle;
             enemy.front_attack = spr_ghost_front_attack;
             enemy.front_death = spr_ghost_front_death;
@@ -68,11 +89,15 @@ while(force_deployed < enemy_force){
             enemy.back_attack = spr_ghost_back_attack;
             enemy.back_death = spr_ghost_back_death;
             //Stats
-            enemy.life = 4;
-            enemy.defense = 3;
-            enemy.attack = 3;
-            enemy.movement_speed = 2;
-            enemy_strength = 1;
+            enemy.life = 6;
+            enemy.defense = 1;
+            enemy.attack = 5;
+            enemy.movement_speed = 6;
+            enemy_strength = 2;
+            //Beahciour
+            enemy.behaviour[0] = "Charge";
+            enemy.behaviour[1] = "Move Around";
+            //enemy.behaviour[2] = "Offensive Teleport";
         break;
     }
     //enemy.type = enemy_type;

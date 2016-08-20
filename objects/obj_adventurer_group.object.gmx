@@ -41,13 +41,13 @@ direction = 270;
 action = 0;
 //Positions
 posX[0] = 0;
-posX[1] = -20;
-posX[2] = 20;
+posX[1] = 20;
+posX[2] = -20;
 posX[3] = 0;
-posY[0] = -20;
+posY[0] = 20;
 posY[1] = 0;
 posY[2] = 0;
-posY[3] = 20;
+posY[3] = -20;
 </string>
           </argument>
         </arguments>

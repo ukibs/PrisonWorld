@@ -49,8 +49,11 @@
         <sprite>sprites\spr_skeleton_back_attack</sprite>
         <sprite>sprites\spr_skeleton_back_death</sprite>
       </sprites>
-      <sprites name="teeth_ball">
-        <sprite>sprites\spr_teethball_front_iwalking</sprite>
+      <sprites name="Teeth Ball">
+        <sprite>sprites\spr_teethball_front_moving</sprite>
+        <sprite>sprites\spr_teethball_front_death</sprite>
+        <sprite>sprites\spr_teethball_back_moving</sprite>
+        <sprite>sprites\spr_teethball_back_death</sprite>
       </sprites>
       <sprites name="FireSpirit">
         <sprite>sprites\spr_fireSpirit_front_idle</sprite>

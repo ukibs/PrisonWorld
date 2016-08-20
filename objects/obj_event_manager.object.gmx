@@ -42,13 +42,13 @@ script_execute(scr_enemy_spam);
 spam_positionX = room_width/2;
 spam_positionY = room_height - 150;
 posX[0] = 0;
-posX[1] = -50;
-posX[2] = 50;
+posX[1] = 50;
+posX[2] = -50;
 posX[3] = 0;
-posY[0] = -50;
+posY[0] = 50;
 posY[1] = 0;
 posY[2] = 0;
-posY[3] = 50;
+posY[3] = -50;
 
 //Spawm
     //De momento un poco guarro
@@ -143,7 +143,7 @@ if(!instance_exists(obj_enemy2) &amp;&amp; fadeIn == true){     //Ahora con enem
         previous_hostilty = global.hex[global.hex_to_use, 3];
         previous_hostilty = round(previous_hostilty/20);
         next_hostility = global.hex[global.hex_to_use, 3] - force_deployed;
-        next_hostilty = round(next_hostilty/20);
+        next_hostility = round(next_hostility/20);
         if(next_hostility &lt; previous_hostility)
             global.mission_progress ++;
     }
