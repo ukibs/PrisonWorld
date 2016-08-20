@@ -40,6 +40,11 @@ status_locked = false;
 //For some abilities
 last_attack_done = 0;
 last_attack_received = 0;
+    //Melee and distance attack
+attack_to_use = obj_melee_attack;
+    //Charge
+charge = false;
+charge_direction = 0;
 
 //Behaviour (array of possible actions)
     //This requires a correct order to work well
@@ -100,127 +105,7 @@ if(instance_exists(obj_player)){
 
 //Check behaviour
 if(life &gt; 0 &amp;&amp; status_locked == false &amp;&amp; instance_exists(obj_player)){
-    done = false;
-    for(i = 0; i &lt; array_length_1d(behaviour); i++){
-        switch(behaviour[i]){
-            //Basic melee attack
-            case "Melee Attack":
-                //If the attack hasn´t started
-                if(distance_to_object(objective) &lt; 20 &amp;&amp; life &gt; 0 &amp;&amp;
-                    sprite_index != back_attack &amp;&amp; sprite_index != front_attack){
-                    //En guarro
-                    speed = 0;
-                    if(direction &lt;= 180){
-                        sprite_index = back_attack;
-                    }
-                    else{
-                        sprite_index = front_attack;
-                    }
-                    image_index = 0;
-                    done = true;
-                }
-                if(sprite_index == back_attack || sprite_index == front_attack)
-                    done = true;
-            break;
-            //Aproach to the player
-                //This should be the last one in all the enemies
-            case "Aproach":
-                distanceX = abs(objective.x - x);
-                distanceY = abs(objective.y - y);
-                //If it´s farer in x
-                if(distanceX &gt; distanceY)
-                    x += sign(objective.x - x) * movement_speed;
-                else    //If not
-                    y += sign(objective.y - y) * movement_speed;
-                //Sprite using the direction parameter
-                if(direction &lt;= 180)
-                    sprite_index = back_idle;
-                else
-                    sprite_index = front_idle;
-                //And orientation
-                if(direction &gt;= 90 &amp;&amp; direction &lt;= 270)
-                    image_xscale = 1;
-                else
-                    image_xscale = -1;
-                //Aaaand done
-                done = true;
-            break;
-            //Move away from the players, basically the opposite to the upper one
-            case "Move Away":
-                if(distance_to_object(objective) &lt; 300){
-                    //Point it on the opposite direction
-                    direction = direction + 180;
-                    if(direction &gt; 360) direction -= 360;
-                    //Get distance in both planes
-                    distanceX = abs(objective.x - x);
-                    distanceY = abs(objective.y - y);
-                    //If it´s farer in x
-                    if(distanceX &gt; distanceY)
-                        x -= sign(objective.x - x) * movement_speed;
-                    else    //If not
-                        y -= sign(objective.y - y) * movement_speed;
-                    //Sprite using the direction parameter
-                    if(direction &lt;= 180)
-                        sprite_index = back_idle;
-                    else
-                        sprite_index = front_idle;
-                    //And orientation
-                    if(direction &gt;= 90 &amp;&amp; direction &lt;= 270)
-                        image_xscale = 1;
-                    else
-                        image_xscale = -1;
-                    //Aaaand done
-                    done = true;
-                }
-            break;
-            //Offensive teleport
-            case "Offensive Teleport":
-                //A little of randomness
-                x = random_range(objective.x - 20, objective.x + 20);
-                y = random_range(objective.y - 20, objective.y + 20);
-                //Aaaand done
-                done = true;
-            break;
-            //Move around
-            case "Move Around":
-                //Point it on the opposite direction
-                direction = direction + 90;
-                if(direction &gt; 360) direction -= 360;
-                //Get distance in both planes
-                distanceX = abs(objective.x - x);
-                distanceY = abs(objective.y - y);
-                //If it´s farer in x
-                if(distanceX &lt; distanceY)
-                    x += sign(objective.x - x) * movement_speed;
-                else    //If not
-                    y += sign(objective.y - y) * movement_speed;
-                //Sprite using the direction parameter
-                if(direction &lt;= 180)
-                    sprite_index = back_idle;
-                else
-                    sprite_index = front_idle;
-                //And orientation
-                if(direction &gt;= 90 &amp;&amp; direction &lt;= 270)
-                    image_xscale = 1;
-                else
-                    image_xscale = -1;
-                //Aaaand done
-                done = true;
-            break;
-            //Charge
-            case "Charge":
-                //Get distance in both planes
-                distanceX = abs(objective.x - x);
-                distanceY = abs(objective.y - y);
-                if(distanceX &lt; 20 || distanceY &lt; 20){
-                    charge = true;
-                }
-            break;
-        }
-        //If the attide has been selected...
-        if(done == true)
-            break;
-    }
+    script_execute(scr_enemy_behaviour);
 }
 //Stun control
 if(status_locked == true){
@@ -242,6 +127,40 @@ if(life &lt;= 0 &amp;&amp; sprite_index != back_death &amp;&amp; sprite_index !=
 }
 //Adjust depth
 depth = room_height - y;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_player">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//When charguing
+if(charge == true){
+    if(last_attack_done != other.last_attack_received){
+        other.last_attack_received = last_attack_done;
+        final_damage = 5 - global.player[other.player_num, 5] - other.bonus_defense;   //Ya le asignaremos el daño desde otro lado
+        final_damage = max(final_damage, 0);
+        global.player[other.player_num, 3] -= final_damage;
+        damage_display = instance_create(other.x, other.y, obj_damage_displayer);
+        damage_display.value = -final_damage;
+        damage_display.alarm[0] = 10;
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -271,10 +190,16 @@ if(sprite_index == front_death ||
 //Realziar ataque
 if(sprite_index == front_attack ||
     sprite_index == back_attack){ //Habrá que retocarlo
-    attack_instance = instance_create(x, y, obj_diagonal_attack);
-    attack_instance.direction = direction + 45;
-    attack_instance.image_angle = attack_instance.direction;
-    attack_instance.damage = attack;
+    //If it´s not part of a charge
+    if(charge == false){
+        attack_instance = instance_create(x, y, attack_to_use);
+        attack_instance.direction = direction;
+        attack_instance.image_angle = attack_instance.direction;
+        attack_instance.damage = attack;
+    }
+    else{
+        charge = false;
+    }
     //Return to normal sprite
     sprite_index = front_idle;
 }

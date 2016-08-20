@@ -168,7 +168,11 @@ if(instance_number(obj_player) == 0 &amp;&amp; game_over == false){
     //Se retocará más adelante
     global.lastX = global.hex[0, 0];
     global.lastY = global.hex[0, 1];
-    
+    //Resetear seleccion de heroe y jugador
+    for(i = 0; i &lt; global.num_players; i++){
+        global.player[i, 0] = 0;
+        global.player[i, 1] = 0;
+    }
     //Luego pongo el resto
     
     //And start the fade
@@ -209,6 +213,11 @@ draw_set_halign(fa_center);
 //Si se mueren
 if(game_over == true){
     draw_text(600, 300, "BUT THE HEROES NEVER RETURNED");
+}
+
+//Si derrotan al enemigo
+if(!instance_exists(obj_enemy2)){
+    draw_text(600, 300, "Experience: " + string(enemy_force));
 }
 
 //Que la transparencia del texto vaya con la del fade

@@ -40,6 +40,7 @@
         <sprite>sprites\spr_livingTree_back_idle</sprite>
         <sprite>sprites\spr_livingTree_back_attack</sprite>
         <sprite>sprites\spr_livingTree_back_death</sprite>
+        <sprite>sprites\spr_living_tree_proyectile</sprite>
       </sprites>
       <sprites name="Skeleton">
         <sprite>sprites\spr_skeleton_front_idle</sprite>
@@ -51,8 +52,10 @@
       </sprites>
       <sprites name="Teeth Ball">
         <sprite>sprites\spr_teethball_front_moving</sprite>
+        <sprite>sprites\spr_teethball_front_charguing</sprite>
         <sprite>sprites\spr_teethball_front_death</sprite>
         <sprite>sprites\spr_teethball_back_moving</sprite>
+        <sprite>sprites\spr_teethball_back_charguing</sprite>
         <sprite>sprites\spr_teethball_back_death</sprite>
       </sprites>
       <sprites name="FireSpirit">
@@ -160,6 +163,7 @@
     <script>scripts\scr_enemy_spam.gml</script>
     <script>scripts\scr_abilities.gml</script>
     <script>scripts\scr_abilities_end.gml</script>
+    <script>scripts\scr_enemy_behaviour.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_preload</object>
@@ -186,27 +190,33 @@
       <object>objects\obj_quest_button</object>
     </objects>
     <objects name="EventStuff">
-      <objects name="Utilities">
+      <objects name="Managers">
         <object>objects\obj_event_manager</object>
         <object>objects\obj_pause</object>
         <object>objects\obj_damage_displayer</object>
         <object>objects\obj_camera</object>
+        <object>objects\obj_obscureitor</object>
       </objects>
       <object>objects\obj_player</object>
       <object>objects\obj_downed_player</object>
       <object>objects\obj_enemy</object>
       <object>objects\obj_enemy1</object>
       <object>objects\obj_enemy2</object>
-      <object>objects\obj_big_mushroom</object>
-      <object>objects\obj_forest_cover1</object>
       <objects name="Attacks">
         <object>objects\obj_basic_attack</object>
-        <object>objects\obj_diagonal_attack</object>
+        <object>objects\obj_melee_attack</object>
+        <object>objects\obj_enemy_proyectile</object>
         <object>objects\obj_arrow</object>
         <object>objects\obj_trap</object>
         <object>objects\obj_mark</object>
       </objects>
       <object>objects\obj_harvestable</object>
+      <objects name="Terrain">
+        <object>objects\obj_stepless_terrain</object>
+        <object>objects\obj_solid_terrain</object>
+        <object>objects\obj_big_mushroom</object>
+        <object>objects\obj_forest_cover1</object>
+      </objects>
     </objects>
     <objects name="TabernStuff">
       <object>objects\obj_tabern_manager</object>
