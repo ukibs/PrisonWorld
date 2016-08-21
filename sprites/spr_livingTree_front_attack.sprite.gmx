@@ -38,5 +38,11 @@
     <frame index="15">images\spr_livingTree_front_attack_15.png</frame>
     <frame index="16">images\spr_livingTree_front_attack_16.png</frame>
     <frame index="17">images\spr_livingTree_front_attack_17.png</frame>
+    <frame index="18">images\spr_livingTree_front_attack_18.png</frame>
+    <frame index="19">images\spr_livingTree_front_attack_19.png</frame>
+    <frame index="20">images\spr_livingTree_front_attack_20.png</frame>
+    <frame index="21">images\spr_livingTree_front_attack_21.png</frame>
+    <frame index="22">images\spr_livingTree_front_attack_22.png</frame>
+    <frame index="23">images\spr_livingTree_front_attack_23.png</frame>
   </frames>
 </sprite>

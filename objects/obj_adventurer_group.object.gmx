@@ -75,7 +75,8 @@ encounter_chance = random(100);
 if(encounter_chance &lt; actual_hostility){
     global.hostility_to_use = actual_hostility;
     global.hex_to_use = actual_hex;
-    room_goto(room_forest1);
+    //room_goto(room_forest1);
+    room_goto(room_forest2);
 }
 else{
     alarm_set(0, time_between_checks);

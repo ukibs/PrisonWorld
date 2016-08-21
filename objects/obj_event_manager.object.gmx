@@ -32,6 +32,9 @@ game_over = false;
 fadeIn = true;
 alpha = 1;
 fading_speed = 0.05;
+    //For final checks
+previous_hostility = 0;
+next_hostility = 0;
 
 //Spammeo enemigos
 script_execute(scr_enemy_spam);
@@ -126,24 +129,25 @@ else if (fadeIn == false) {
         alpha = 1;
         if(game_over == true){
             //Que aguante un poco, más dramático
-            if(alarm_get(0) &lt; 0)
-                alarm_set(0, 60);
+            //if(alarm_get(0) &lt; 0)
+                //alarm_set(0, 60);
         }
-        else
-            room_goto(room_map);
+        else{
+            //room_goto(room_map);
+        }
     }
 }
 
 //De momento simplón
     //Por muerte de enemigos
 if(!instance_exists(obj_enemy2) &amp;&amp; fadeIn == true){     //Ahora con enemigo 2
+    //Check if the hostility level has gone lower
+    previous_hostilty = global.hex[global.hex_to_use, 3];
+    previous_hostilty = round(previous_hostilty/20);
+    next_hostility = global.hex[global.hex_to_use, 3] - force_deployed;
+    next_hostility = round(next_hostility/20);
     //Check if there is active an exterminate mission
     if(global.mission == 2 &amp;&amp; global.mission_progress &lt; global.mission_requirement){
-        //And if the level has gone lower
-        previous_hostilty = global.hex[global.hex_to_use, 3];
-        previous_hostilty = round(previous_hostilty/20);
-        next_hostility = global.hex[global.hex_to_use, 3] - force_deployed;
-        next_hostility = round(next_hostility/20);
         if(next_hostility &lt; previous_hostility)
             global.mission_progress ++;
     }
@@ -177,6 +181,16 @@ if(instance_number(obj_player) == 0 &amp;&amp; game_over == false){
     
     //And start the fade
     fadeIn = false;
+}
+//Button to quit the event if finished
+    //De momento muy anidado, igual lo subo arriba
+if(gamepad_button_check_released(0, gp_face1) || keyboard_check_released(ord('S'))){
+    if(alpha == 1){
+        if(!instance_exists(obj_enemy2))
+            room_goto(room_map);
+        else if(game_over == true)
+            room_goto(room_tabern);
+    }
 }
 </string>
           </argument>
@@ -217,7 +231,9 @@ if(game_over == true){
 
 //Si derrotan al enemigo
 if(!instance_exists(obj_enemy2)){
-    draw_text(600, 300, "Experience: " + string(enemy_force));
+    draw_text(600, 300, "Experience: " + string(force_deployed));
+    if(next_hostility &lt; previous_hostility)
+        draw_text(600, 350, "Hostility reduced");
 }
 
 //Que la transparencia del texto vaya con la del fade

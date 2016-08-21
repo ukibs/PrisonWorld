@@ -115,6 +115,11 @@ if(status_locked == true){
         sprite_index = front_idle;
     image_index = 0;
 }
+
+//Keep them into the room
+    //De momento un poco de cualquier manera
+x = clamp(x, 100, room_width - 100);
+y = clamp(y, 100, room_height - 100);
 //Muerte
 if(life &lt;= 0 &amp;&amp; sprite_index != back_death &amp;&amp; sprite_index != front_death){
     if(direction &lt;= 180){

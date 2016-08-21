@@ -235,14 +235,14 @@ action = 0;
         key_action_1_pressed = gamepad_button_check_pressed(player_num, gp_face1);
         key_action_1_maintained = gamepad_button_check(player_num, gp_face1);
         key_action_1_released = gamepad_button_check_released(player_num, gp_face1);
+            //Estas dos las invertimos de momento
+        key_action_2_pressed = gamepad_button_check_pressed(player_num, gp_face3);
+        key_action_2_maintained = gamepad_button_check(player_num, gp_face3);
+        key_action_2_released = gamepad_button_check_released(player_num, gp_face3);
         
-        key_action_2_pressed = gamepad_button_check_pressed(player_num, gp_face2);
-        key_action_2_maintained = gamepad_button_check(player_num, gp_face2);
-        key_action_2_released = gamepad_button_check_released(player_num, gp_face2);
-        
-        key_action_3_pressed = gamepad_button_check_pressed(player_num, gp_face3);
-        key_action_3_maintained = gamepad_button_check(player_num, gp_face3);
-        key_action_3_released = gamepad_button_check_released(player_num, gp_face3);
+        key_action_3_pressed = gamepad_button_check_pressed(player_num, gp_face2);
+        key_action_3_maintained = gamepad_button_check(player_num, gp_face2);
+        key_action_3_released = gamepad_button_check_released(player_num, gp_face2);
         
         key_action_4_pressed = gamepad_button_check_pressed(player_num, gp_face4);
         key_action_4_maintained = gamepad_button_check(player_num, gp_face4);

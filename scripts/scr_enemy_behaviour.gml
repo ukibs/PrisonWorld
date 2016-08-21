@@ -105,7 +105,7 @@
                     direction += 90;
                     if(direction > 360) direction -= 360;
                     //
-                    direction_to_move = round((direction) / 90);
+                    direction_to_move = round((direction + 45) / 90);
                     switch(direction_to_move){
                         //Right
                         case 0: x += movement_speed; break;
@@ -152,7 +152,8 @@
                     done = true;
                 }
                 //Determine if start the charge
-                if(distanceX < 20 || distanceY < 20 && charge == false){
+                else if(distanceX < 20 || distanceY < 20){
+                //if((distanceX < 20 || distanceY < 20) && charge == false){
                     charge = true;
                     charge_direction = round((direction) / 90);
                     switch(charge_direction){
@@ -167,12 +168,22 @@
                     }
                     //Asign it an attack id
                     last_attack_done = random(100);
+                    //Sprite using the direction parameter
+                    if(direction <= 180)
+                        sprite_index = back_attack;
+                    else
+                        sprite_index = front_attack;
+                    //And orientation
+                    if(direction >= 90 && direction <= 270)
+                        image_xscale = 1;
+                    else
+                        image_xscale = -1;
                     //Aaaand done
                     done = true;
                 }
             break;
         }
-        //If the attide has been selected...
+        //If the attitude has been selected...
         if(done == true)
             break;
     }

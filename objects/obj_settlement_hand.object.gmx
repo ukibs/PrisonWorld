@@ -106,6 +106,10 @@ if(action_button){
             <kind>1</kind>
             <string>//
 status = 2;
+//
+if(action_button){
+    room_goto(room_tabern);
+}
 </string>
           </argument>
         </arguments>

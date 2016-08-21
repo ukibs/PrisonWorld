@@ -156,6 +156,7 @@
   <backgrounds name="background">
     <background>background\bg_forest1</background>
     <background>background\bg_horizon1</background>
+    <background>background\bg_forest2</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -242,6 +243,7 @@
     <room>rooms\room_map</room>
     <room>rooms\room_castle</room>
     <room>rooms\room_forest1</room>
+    <room>rooms\room_forest2</room>
     <room>rooms\room_store</room>
   </rooms>
   <help>

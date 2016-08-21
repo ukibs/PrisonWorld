@@ -8,6 +8,30 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//
+average_hostility = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -33,7 +57,7 @@ if(global.mission == 0 &amp;&amp; !instance_exists(obj_quest_button)){
         quest_type = irandom_range(1, 2);
         //Decide if the mission meets the requisites
             //Hostility comprobation for some of the missions
-        average_hostility = 0;  //Lo retocaremos para que trabaje con más asentamientos
+            //Lo retocaremos para que trabaje con más asentamientos
         for(j = 1; j &lt; array_height_2d(global.hex); j++){
             average_hostility += global.hex[i, 3];
         }
@@ -118,6 +142,8 @@ else{
         break;
     }
 }
+//Check stuff
+draw_text(30, 30, average_hostility);
 </string>
           </argument>
         </arguments>

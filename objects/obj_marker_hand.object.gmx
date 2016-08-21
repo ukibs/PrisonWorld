@@ -203,7 +203,7 @@ terrain_hostility = other.hostility;
 //draw_text(10, 10, direction_drawing);
 
 draw_text(1300, 700, "A GO");
-draw_text(1200, 700, "X SHOW HOSTILITY");
+draw_text(1200, 550, "X SHOW HOSTILITY");
 </string>
           </argument>
         </arguments>
