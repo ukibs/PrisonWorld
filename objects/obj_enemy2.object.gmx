@@ -51,6 +51,8 @@ charge_direction = 0;
     //Default behaviour for the enemies
 behaviour[0] = "Melee Attack";
 behaviour[1] = "Aproach";
+    //For testing
+last_action = "";
 </string>
           </argument>
         </arguments>
@@ -203,11 +205,13 @@ if(sprite_index == front_attack ||
         attack_instance.damage = attack;
     }
     else{
-        charge = false;
+        //charge = false;
     }
     //Return to normal sprite
     sprite_index = front_idle;
 }
+//Make outisde the charge control
+charge = false;
 </string>
           </argument>
         </arguments>
@@ -231,7 +235,7 @@ if(sprite_index == front_attack ||
           <argument>
             <kind>1</kind>
             <string>//
-draw_text(10, 10, array_length_1d(behaviour));
+draw_text(10, 10, last_action);
 </string>
           </argument>
         </arguments>

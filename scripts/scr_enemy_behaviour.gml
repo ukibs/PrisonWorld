@@ -1,4 +1,4 @@
-    //
+    //Yeah, enemy behaviour
     done = false;
     for(i = 0; i < array_length_1d(behaviour); i++){
         switch(behaviour[i]){
@@ -100,12 +100,12 @@
             break;
             //Move around
             case "Move Around":
-                if(distance_to_object(objective) < 300){
+                if(distance_to_object(objective) < 200){
                     //Point it looking to one side
                     direction += 90;
                     if(direction > 360) direction -= 360;
                     //
-                    direction_to_move = round((direction + 45) / 90);
+                    direction_to_move = round((direction - 45) / 90);
                     switch(direction_to_move){
                         //Right
                         case 0: x += movement_speed; break;
@@ -140,19 +140,20 @@
                     //Continue the charge
                     switch(charge_direction){
                         //Right
-                        case 0: x += movement_speed; break;
+                        case 0: x += movement_speed * 2; break;
                         //Up
-                        case 1: y -= movement_speed; break;
+                        case 1: y -= movement_speed * 2; break;
                         //Left
-                        case 2: x -= movement_speed; break;
+                        case 2: x -= movement_speed * 2; break;
                         //Down
-                        default: y += movement_speed; break;
+                        default: y += movement_speed * 2; break;
                     }
                     //Aaaand done
                     done = true;
                 }
                 //Determine if start the charge
-                else if(distanceX < 20 || distanceY < 20){
+                else if((distanceX < 20 || distanceY < 20) && 
+                            distance_to_object(objective) < 200){
                 //if((distanceX < 20 || distanceY < 20) && charge == false){
                     charge = true;
                     charge_direction = round((direction) / 90);
@@ -178,11 +179,15 @@
                         image_xscale = 1;
                     else
                         image_xscale = -1;
+                    //Put the animation on the begining
+                    image_index = 0;
                     //Aaaand done
                     done = true;
                 }
             break;
         }
+        //Save the last action for tests
+        last_action = behaviour[i];
         //If the attitude has been selected...
         if(done == true)
             break;

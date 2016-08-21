@@ -31,7 +31,7 @@ destinationY = y;
 movement_speed = 5;
 terrain_multiplier = 1;
 actual_hostility = 0;
-time_between_checks = 60;
+time_between_checks = 30;
 accumulated_time = time_between_checks;
 direction = 270;
 /*Actions
@@ -120,6 +120,14 @@ else{
 //Save the position
 global.lastX = x;
 global.lastY = y;
+
+//Level and experience check
+if(global.experience &gt;= global.level * 100){
+    global.experience -= global.level * 100;
+    global.level ++;
+    displayer = instance_create(x, y, obj_map_displayer);
+    displayer.message = "Level Up";
+}
 </string>
           </argument>
         </arguments>
@@ -228,6 +236,10 @@ global.lastY = y;
 if(global.mission == 1 &amp;&amp; global.mission_progress &lt; global.mission_requirement){
     global.mission_progress ++;
 }
+//And gain experience
+displayer = instance_create(x, y, obj_map_displayer);
+displayer.message = "+ 10 xp";
+global.experience += 10;
 </string>
           </argument>
         </arguments>
@@ -330,10 +342,14 @@ actual_hex = other.hex_id;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Show players stats
+            <string>//Show group level
+draw_text(50, 40, "Level: " + string(global.level));
+draw_text(50, 65, string(global.experience) + "/" + string(global.level * 100));
+
+//Show players stats
 for(i = 0; i &lt; global.num_players; i++){
     if(global.player[i, 0] &gt; 0)
-        draw_text(50, 50 + (i * 50), string(global.player[i, 3]) + "/" +
+        draw_text(50, 100 + (i * 50), string(global.player[i, 3]) + "/" +
                                         string(global.player[i, 2]));
 }
 

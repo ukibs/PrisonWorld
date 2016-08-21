@@ -40,8 +40,13 @@ global.mission = 0;
 global.mission_progress = 0;
 global.mission_requirement = 0;
 //Days lapsed
+global.darkening = true;
+global.darkness = 0;
 global.day = 1;
 global.generation = 1;
+//Level and experience
+global.level = 1;
+global.experience = 0;
 //Money
 global.currency = 100;
 //Events

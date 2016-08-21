@@ -39,6 +39,8 @@ movement_speed = 10;    //La acabaremos asignando junto con los stats
     1 - Raise mate
 */
 action = 0; 
+    //Para habilidades de mantener pulsado el botón
+last_skill = 0;
 
 //Types of lock
 total_lock = false;
@@ -320,6 +322,7 @@ if(total_lock == false){
             //The proper ability will decide wich one it uses
             //In some abilities it doesn´t matter
     if((key_action_1_pressed || key_action_1_maintained || key_action_1_released) 
+        &amp;&amp; (last_skill == 0 || last_skill == 1)
         &amp;&amp; alarm_get(1) == -1){
         //Le pasamos el nombre de la habilidad y las alarmas que usa
         script_execute(scr_abilities, global.player[player_num, 6], 
@@ -328,6 +331,7 @@ if(total_lock == false){
     }
     //Second
     if((key_action_2_pressed || key_action_2_maintained || key_action_2_released) 
+        &amp;&amp; (last_skill == 0 || last_skill == 2)
         &amp;&amp; alarm_get(3) == -1){
         script_execute(scr_abilities, global.player[player_num, 11], 
                         global.player[player_num, 13], 
@@ -335,6 +339,7 @@ if(total_lock == false){
     }
     //Third
     if((key_action_3_pressed || key_action_3_maintained || key_action_3_released) 
+        &amp;&amp; (last_skill == 0 || last_skill == 3)
         &amp;&amp; alarm_get(5) == -1){
         script_execute(scr_abilities, global.player[player_num, 16], 
                         global.player[player_num, 18], 
@@ -387,6 +392,7 @@ if(key_action_4_pressed){
     //De momento fija, pero más adelante ya pondremos que la saques del objeto
     charge_required = 30;
     charge_amount = 1;
+    movement_lock = true;
 }
 if(key_action_4_maintained){
     charge_done += charge_amount;
@@ -400,6 +406,8 @@ if(key_action_4_released){
         with(other) instance_destroy();
     }
     charge_done = 0;
+    movement_lock = false;
+    global.experience += 1;
 }
 </string>
           </argument>

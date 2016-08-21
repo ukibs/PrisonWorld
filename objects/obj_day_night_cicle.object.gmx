@@ -26,9 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>//Day/night cicle
-darkening = true;
-darkness = 0;
-fading_speed = 0.005;
+    //Hacemos estas dos globales
+//global.darkening = true;
+//global.darkness = 0;      
+fading_speed = 0.01;
 </string>
           </argument>
         </arguments>
@@ -53,18 +54,18 @@ fading_speed = 0.005;
             <kind>1</kind>
             <string>//Day / night cicle
 if(obj_adventurer_group.speed &gt; 0){
-    if(darkening == true){
-        darkness += fading_speed;
-        if(darkness &gt; 0.6){
+    if(global.darkening == true){
+        global.darkness += fading_speed;
+        if(global.darkness &gt; 0.6){
             //darkness = 0.8;
-            darkening = false;
+            global.darkening = false;
         }
     }
     else{
-        darkness -= fading_speed;
-        if(darkness &lt;= 0){
+        global.darkness -= fading_speed;
+        if(global.darkness &lt;= 0){
             //darkness = 0;
-            darkening = true;
+            global.darkening = true;
             //A new day
             global.day ++;
             //Raise a little the  hostilty
@@ -154,7 +155,7 @@ draw_text(1200, 80, "Rations: " + string(global.inventory[0]));
             <kind>1</kind>
             <string>//Stuff to draw during the fades
 draw_set_colour(c_black);
-draw_set_alpha(darkness);
+draw_set_alpha(global.darkness);
 draw_rectangle(0,0,room_width, room_height, false);
 draw_set_alpha(1);
 </string>

@@ -19,10 +19,12 @@ switch(argument0){
             turning_lock = true;
             icon_to_use = spr_shield;
             action = 1;
+            last_skill = 2;
         }
         if(key_action_2_released){
             bonus_defense = 0;
             turning_lock = false;
+            last_skill = 0;
         }
     break;
     //Tercera del guerrero
@@ -62,6 +64,7 @@ switch(argument0){
             icon_to_use = spr_arrow;
             charge_required = 8;
             charge_amount = 0.1;
+            last_skill = 1;
         }
         if(key_action_1_maintained){
             shoot_force += charge_amount;
@@ -87,6 +90,7 @@ switch(argument0){
             //Para el icona de carga
             action = 0;
             charge_done = 0;
+            last_skill = 0;
         }
     break;
     //Segunda de la exploradora
