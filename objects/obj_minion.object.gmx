@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>//Varaibles
 damage = 0;
-master = 0;
+master = instance_nearest(x, y, obj_player);
 </string>
           </argument>
         </arguments>
@@ -75,7 +75,7 @@ master = 0;
             <kind>1</kind>
             <string>//Check if the master is alive
 if(instance_exists(master)){
-    if(distance_to_object(master) &gt; 100)
+    if(distance_to_object(master) &gt; 50)
         move_towards_point(master.x, master.y, 10);
     else
         speed = 0;
@@ -83,9 +83,22 @@ if(instance_exists(master)){
 else{
     instance_destroy();
 }   
+
+//If he has gone to revive someone...
+    //Mañana lo revisamos
+if(master == obj_downed_player &amp;&amp; distance_to_object(master) &lt; 50){
+    mate_number = other.player_num;
+    raised_mate = instance_create(other.x, other.y, obj_player);
+    raised_mate.player_num = mate_number;
+    global.player[mate_number, 3] = round(global.player[mate_number, 2] / 2);
+    with(other) instance_destroy();
+    instance_destroy();
+}
+
+
 //And search for enemies
     //Vamos a hacer el cafre
-if(instance_exists(obj_enemy) &amp;&amp; alarm_get(0) == -1){
+/*if(instance_exists(obj_enemy) &amp;&amp; alarm_get(0) == -1){
     objective = instance_nearest(x, y, obj_enemy);
     direction = point_direction(x, y, objective.x, objective.y);
     if(distance_to_object(objective) &lt; 100){
@@ -97,7 +110,31 @@ if(instance_exists(obj_enemy) &amp;&amp; alarm_get(0) == -1){
         missile.damage = 5;   
         alarm_set(0, 30);    
     }
-}
+}*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Check stuff
+draw_text(10, 10, master);
 </string>
           </argument>
         </arguments>

@@ -262,7 +262,7 @@ charge = false;
           <argument>
             <kind>1</kind>
             <string>//
-draw_text(10, 10, last_action);
+//draw_text(10, 10, last_action);
 </string>
           </argument>
         </arguments>

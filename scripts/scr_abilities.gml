@@ -174,14 +174,20 @@ switch(argument0){
             turning_lock = false;   
             shoot_force = min(10, shoot_force);
             shoot_force = round(shoot_force);
+            //Your ball
             proyectile = instance_create(x, y, obj_magic_missile);
-            if(!instance_exists(obj_mark))
-                proyectile.direction = looking_direction;
-            else
-                proyectile.direction = direction;
+            proyectile.direction = looking_direction;
             proyectile.image_angle = proyectile.direction;
             proyectile.speed = 25;  //Igual la cambiamos
             proyectile.damage = shoot_force;
+            //And the ghost´s one
+            if(instance_exists(obj_minion)){
+                proyectile2 = instance_create(ghost.x, ghost.y, obj_magic_missile);
+                proyectile2.direction = looking_direction;
+                proyectile2.image_angle = proyectile2.direction;
+                proyectile2.speed = 25;  //Igual la cambiamos
+                proyectile2.damage = shoot_force / 2;
+            }
             //Cooldown of the ability
             alarm_set(argument2, global.player[player_num, 10]);
             //Para el icona de carga
@@ -194,33 +200,54 @@ switch(argument0){
     case "Spectral Ray":
         if(key_action_2_pressed){
             movement_lock = true;
+            //Your ray
             ray = instance_create(x, y, obj_ray);
             ray.direction = looking_direction;
             ray.image_angle = ray.direction;
             ray.damage = 4;
+            if(instance_exists(obj_minion)){
+                ray2 = instance_create(ghost.x, ghost.y, obj_ray);
+                ray2.direction = looking_direction;
+                ray2.image_angle = ray2.direction;
+                ray2.damage = 3;
+            }
             last_skill = 2;
         }
         if(key_action_2_maintained){
             ray.direction = looking_direction;
             ray.image_angle = ray.direction;
+            if(instance_exists(obj_minion)){
+                ray2.direction = looking_direction;
+                ray2.image_angle = ray2.direction;
+                ray2.x = ghost.x;
+                ray2.y = ghost.y;
+            }
         }
         if(key_action_2_released){
             with(ray) instance_destroy();
+            if(instance_exists(obj_minion))
+                with(ray2) instance_destroy();
             movement_lock = false;
             last_skill = 0;
         }
     break;
     //Tercera de la hechicera
     case "Lil Ghost":
-        //Destroy it if previously created
-        if(!instance_exists(obj_minion))
-            with(obj_minion) instance_destroy();
-        //And create a new one
-        ghost = instance_create(x, y, obj_minion);
-        ghost.master = self;
-            //Lo revisaremos
-        ghost.damage = 5;
-        //Cooldown of the ability
-        alarm_set(argument2, global.player[player_num, 15]);
+        //Active it if ti doesn´t exist
+        if(!instance_exists(obj_minion)){
+            ghost = instance_create(x, y, obj_minion);
+            //ghost.master = instance_id;
+                //Lo revisaremos
+            //ghost.damage = 5;
+            //Cooldown of the ability
+            //alarm_set(argument2, global.player[player_num, 15]);
+        }
+        else{   //If not check for another thing
+            if(instance_exists(obj_downed_player)){
+                ghost.master = instance_nearest(x, y, obj_downed_player);
+                //Cooldown of the ability
+                alarm_set(argument2, global.player[player_num, 20]);
+            }
+        }
     break;
 }

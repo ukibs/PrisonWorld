@@ -208,7 +208,7 @@ global.character[3, 13] = "Lil Ghost";   //Third ability
 global.character[3, 14] = spr_flash;     //Icon
 global.character[3, 15] = 4;             //Duration alarm
 global.character[3, 16] = 5;            //Cooldown alarm
-global.character[3, 17] = 90;             //Cooldown duration
+global.character[3, 17] = 30 * 30;             //Cooldown duration
         //Skins
 global.character[3, 18] = spr_sorcerer_front_move;   //Fornt move
 global.character[3, 19] = spr_sorcerer_left_move;   //Left move
