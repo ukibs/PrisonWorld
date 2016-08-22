@@ -90,8 +90,12 @@
         <sprite>sprites\spr_warrior_back_move</sprite>
         <sprite>sprites\spr_warrior_down</sprite>
       </sprites>
-      <sprites name="Wizard">
-        <sprite>sprites\spr_wizard_front_idle</sprite>
+      <sprites name="Ranger">
+        <sprite>sprites\spr_ranger_front_move</sprite>
+        <sprite>sprites\spr_ranger_back_move</sprite>
+        <sprite>sprites\spr_ranger_left_move</sprite>
+        <sprite>sprites\spr_ranger_right_move</sprite>
+        <sprite>sprites\spr_ranger_down</sprite>
       </sprites>
       <sprites name="Monk">
         <sprite>sprites\spr_monk_front_move</sprite>
@@ -100,12 +104,12 @@
         <sprite>sprites\spr_monk_left_move</sprite>
         <sprite>sprites\spr_monk_down</sprite>
       </sprites>
-      <sprites name="Ranger">
-        <sprite>sprites\spr_ranger_front_move</sprite>
-        <sprite>sprites\spr_ranger_back_move</sprite>
-        <sprite>sprites\spr_ranger_left_move</sprite>
-        <sprite>sprites\spr_ranger_right_move</sprite>
-        <sprite>sprites\spr_ranger_down</sprite>
+      <sprites name="Socerer">
+        <sprite>sprites\spr_socerer_front_move</sprite>
+        <sprite>sprites\spr_socerer_left_move</sprite>
+        <sprite>sprites\spr_socerer_right_move</sprite>
+        <sprite>sprites\spr_socerer_back_move</sprite>
+        <sprite>sprites\spr_socerer_down</sprite>
       </sprites>
     </sprites>
     <sprites name="Markers">

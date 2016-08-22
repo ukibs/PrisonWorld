@@ -163,27 +163,27 @@ if(action_button){
           <argument>
             <kind>1</kind>
             <string>//Draw the button to quit
-draw_text(1300, 600, "B EXIT");
+draw_text(1250, 630, "B EXIT");
 //Depending of the status
 switch(status){
     //Castle/missions
     case 1:
-        draw_text(room_width/2, 100, "CASTLE");
-        draw_text(1300, 630, "A GET MISSIONS");
+        draw_text((room_width/2)-30, 50, "CASTLE");
+        draw_text(1250, 600, "A GET MISSIONS");
     break;
     //Tabern/heal
     case 2:
-        draw_text(room_width/2, 100, "TABERN");
-        draw_text(1300, 630, "A CHANGE HEROES");
+        draw_text((room_width/2)-30, 50, "TABERN");
+        draw_text(1250, 600, "A CHANGE HEROES");
     break;
     //Tabern/heal
     case 3:
-        draw_text(room_width/2, 100, "GOODS STORE");
-        draw_text(1300, 630, "A BUY STUFF");
+        draw_text((room_width/2)-30, 50, "GOODS STORE");
+        draw_text(1250, 600, "A BUY STUFF");
     break;
 }
 //Draw the actual currency
-draw_text(1300, 50, "GOLD: " + string(global.currency));
+draw_text(1250, 50, "GOLD: " + string(global.currency));
 </string>
           </argument>
         </arguments>

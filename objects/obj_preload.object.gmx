@@ -177,12 +177,12 @@ global.character[2, 8] = "Heal";   //Second ability
 global.character[2, 9] = spr_heal;     //Icon
 global.character[2, 10] = 2;             //Duration alarm
 global.character[2, 11] = 3;            //Cooldown alarm
-global.character[2, 12] = 90;             //Cooldown duration
+global.character[2, 12] = 150;             //Cooldown duration
 global.character[2, 13] = "Flash";   //Third ability
 global.character[2, 14] = spr_flash;     //Icon
 global.character[2, 15] = 4;             //Duration alarm
 global.character[2, 16] = 5;            //Cooldown alarm
-global.character[2, 17] = 90;             //Cooldown duration
+global.character[2, 17] = 240;             //Cooldown duration
         //Skins
 global.character[2, 18] = spr_monk_front_move;   //Fornt move
 global.character[2, 19] = spr_monk_left_move;   //Left move
@@ -190,32 +190,32 @@ global.character[2, 20] = spr_monk_right_move;   //Rigth move
 global.character[2, 21] = spr_monk_back_move;   //Back move
 global.character[2, 22] = spr_monk_down;   //Down
 
-        //Socerer -----&gt; modificar, stats de Monk
-global.character[2, 0] = 8; //Max life (use it for actual too)
-global.character[2, 1] = 7; //Attack
-global.character[2, 2] = 0; //Defense
-global.character[2, 3] = "Soul blast";   //First ability
-global.character[2, 4] = spr_punch;      //Icon
-global.character[2, 5] = 0;             //Duration alarm
-global.character[2, 6] = 1;            //Cooldown alarm
-global.character[2, 7] = 10;             //Cooldown duration
-global.character[2, 8] = "Soul Wave";   //Second ability
-global.character[2, 9] = spr_heal;     //Icon
-global.character[2, 10] = 2;             //Duration alarm
-global.character[2, 11] = 3;            //Cooldown alarm
-global.character[2, 12] = 90;             //Cooldown duration
-global.character[2, 13] = "Spectral Ray";   //Third ability
-global.character[2, 14] = spr_flash;     //Icon
-global.character[2, 15] = 4;             //Duration alarm
-global.character[2, 16] = 5;            //Cooldown alarm
-global.character[2, 17] = 90;             //Cooldown duration
+/*        //Socerer -----&gt; modificar, stats de Monk
+global.character[3, 0] = 8; //Max life (use it for actual too)
+global.character[3, 1] = 7; //Attack
+global.character[3, 2] = 0; //Defense
+global.character[3, 3] = "Soul blast";   //First ability
+global.character[3, 4] = spr_punch;      //Icon
+global.character[3, 5] = 0;             //Duration alarm
+global.character[3, 6] = 1;            //Cooldown alarm
+global.character[3, 7] = 10;             //Cooldown duration
+global.character[3, 8] = "Soul Wave";   //Second ability
+global.character[3, 9] = spr_heal;     //Icon
+global.character[3, 10] = 2;             //Duration alarm
+global.character[3, 11] = 3;            //Cooldown alarm
+global.character[3, 12] = 90;             //Cooldown duration
+global.character[3, 13] = "Spectral Ray";   //Third ability
+global.character[3, 14] = spr_flash;     //Icon
+global.character[3, 15] = 4;             //Duration alarm
+global.character[3, 16] = 5;            //Cooldown alarm
+global.character[3, 17] = 90;             //Cooldown duration
         //Skins
-global.character[2, 18] = spr_monk_front_move;   //Fornt move
-global.character[2, 19] = spr_monk_left_move;   //Left move
-global.character[2, 20] = spr_monk_right_move;   //Rigth move
-global.character[2, 21] = spr_monk_back_move;   //Back move
-global.character[2, 22] = spr_monk_down;   //Down
-
+global.character[3, 18] = spr_monk_front_move;   //Fornt move
+global.character[3, 19] = spr_monk_left_move;   //Left move
+global.character[3, 20] = spr_monk_right_move;   //Rigth move
+global.character[3, 21] = spr_monk_back_move;   //Back move
+global.character[3, 22] = spr_monk_down;   //Down
+*/
 /*
 //Characters, with enum
 enum character {

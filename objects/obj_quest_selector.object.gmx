@@ -122,22 +122,22 @@ if(action_button){
           <argument>
             <kind>1</kind>
             <string>//Draw the button to quit
-draw_text(1300, 600, "B EXIT");
+draw_text(1250, 630, "B EXIT");
 //Depending of the status
 switch(status){
     //Castle/missions
     case 1:
-        draw_text(1300, 630, "A CHOOSE");
+        draw_text(1250, 600, "A CHOOSE");
     break;
     case 2:
-        draw_text(1300, 630, "A GIVE UP");
+        draw_text(1250, 600, "A GIVE UP");
     break;
     case 3:
-        draw_text(1300, 630, "A GET REWARD");
+        draw_text(1250, 600, "A GET REWARD");
     break;
 }
 //Draw the actual currency
-draw_text(1300, 50, "GOLD: " + string(global.currency));
+draw_text(1250, 50, "GOLD: " + string(global.currency));
 </string>
           </argument>
         </arguments>

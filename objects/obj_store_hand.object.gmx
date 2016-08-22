@@ -134,13 +134,13 @@ if(action_button){
           <argument>
             <kind>1</kind>
             <string>//Title
-draw_text(room_width/2, 50, "GOODS STORE");
+draw_text((room_width/2)-30, 50, "GOODS STORE");
 
 //Draw the button to quit
-draw_text(1300, 600, "B EXIT");
+draw_text(1250, 630, "B EXIT");
 
 //Draw the actual currency
-draw_text(1300, 50, "GOLD: " + string(global.currency));
+draw_text(1250, 50, "GOLD: " + string(global.currency));
 </string>
           </argument>
         </arguments>

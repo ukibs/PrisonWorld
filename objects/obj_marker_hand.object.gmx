@@ -63,7 +63,7 @@ gamepad_set_axis_deadzone(0, 0.2);
 v_axis = gamepad_axis_value(0, gp_axislv);
 h_axis = gamepad_axis_value(0, gp_axislh);
 moving_button = gamepad_button_check_released(0, gp_face1) || keyboard_check_released(ord('E'));
-action_button = gamepad_button_check_released(0, gp_face2) || keyboard_check_released(vk_space);
+action_button = gamepad_button_check_released(0, gp_face4) || keyboard_check_released(vk_space);
 show_button = gamepad_button_check(0, gp_face3) || keyboard_check(ord('Q'));
 
 //Move it
@@ -169,10 +169,10 @@ switch(terrain){
         terrain_text = "Plains";
     break;
     case 2:
-        terrain_text = "Forest";
+        terrain_text = "Swamp";
     break;
     case 3:
-        terrain_text = "Swamp";
+        terrain_text = "Forest";
     break;
 }
 terrain_hostility = other.hostility;
@@ -202,7 +202,7 @@ terrain_hostility = other.hostility;
 //draw_set_colour(c_white);
 //draw_text(10, 10, direction_drawing);
 
-draw_text(1300, 700, "A GO");
+draw_text(1200, 650, "A GO");
 draw_text(1200, 550, "X SHOW HOSTILITY");
 </string>
           </argument>
