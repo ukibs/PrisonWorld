@@ -70,7 +70,7 @@ else{
     key_left = keyboard_check(vk_left);
     key_right = keyboard_check(vk_right);
     action_button = keyboard_check_released(ord('E'));
-    return_button = keyboard_check_released(ord('R'));
+    return_button = keyboard_check_released(ord('W'));
 }
 
 //Move it

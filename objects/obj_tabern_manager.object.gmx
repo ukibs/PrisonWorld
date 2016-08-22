@@ -97,7 +97,7 @@ players_done = 0;
         if(global.player[i, 1] &gt; 0)
             players_done ++;
     }
-if(gamepad_button_check_released(0, gp_face2) || keyboard_check_released(ord('R'))){
+if(gamepad_button_check_released(0, gp_face2) || keyboard_check_released(ord('W'))){
     //Que no deje salir si no han elegido todos personaje
     
     if(players_done == global.num_players)

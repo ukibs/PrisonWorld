@@ -62,8 +62,8 @@ key_right = gamepad_button_check(0, gp_padr) || keyboard_check(vk_right);
 gamepad_set_axis_deadzone(0, 0.2);
 v_axis = gamepad_axis_value(0, gp_axislv);
 h_axis = gamepad_axis_value(0, gp_axislh);
-moving_button = gamepad_button_check_released(0, gp_face1) || keyboard_check_released(ord('W'));
-action_button = gamepad_button_check_released(0, gp_face2) || keyboard_check_released(ord('E'));
+moving_button = gamepad_button_check_released(0, gp_face1) || keyboard_check_released(ord('E'));
+action_button = gamepad_button_check_released(0, gp_face2) || keyboard_check_released(vk_space);
 show_button = gamepad_button_check(0, gp_face3) || keyboard_check(ord('Q'));
 
 //Move it
