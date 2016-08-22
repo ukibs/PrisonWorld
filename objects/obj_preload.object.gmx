@@ -190,32 +190,32 @@ global.character[2, 20] = spr_monk_right_move;   //Rigth move
 global.character[2, 21] = spr_monk_back_move;   //Back move
 global.character[2, 22] = spr_monk_down;   //Down
 
-/*        //Socerer -----&gt; modificar, stats de Monk
+        //Socerer -----&gt; modificar, stats de Monk
 global.character[3, 0] = 8; //Max life (use it for actual too)
 global.character[3, 1] = 7; //Attack
 global.character[3, 2] = 0; //Defense
-global.character[3, 3] = "Soul blast";   //First ability
+global.character[3, 3] = "Soul Blast";   //First ability
 global.character[3, 4] = spr_punch;      //Icon
 global.character[3, 5] = 0;             //Duration alarm
 global.character[3, 6] = 1;            //Cooldown alarm
 global.character[3, 7] = 10;             //Cooldown duration
-global.character[3, 8] = "Soul Wave";   //Second ability
+global.character[3, 8] = "Spectral Ray";   //Second ability
 global.character[3, 9] = spr_heal;     //Icon
 global.character[3, 10] = 2;             //Duration alarm
 global.character[3, 11] = 3;            //Cooldown alarm
-global.character[3, 12] = 90;             //Cooldown duration
-global.character[3, 13] = "Spectral Ray";   //Third ability
+global.character[3, 12] = 30;             //Cooldown duration
+global.character[3, 13] = "Lil Ghost";   //Third ability
 global.character[3, 14] = spr_flash;     //Icon
 global.character[3, 15] = 4;             //Duration alarm
 global.character[3, 16] = 5;            //Cooldown alarm
 global.character[3, 17] = 90;             //Cooldown duration
         //Skins
-global.character[3, 18] = spr_monk_front_move;   //Fornt move
-global.character[3, 19] = spr_monk_left_move;   //Left move
-global.character[3, 20] = spr_monk_right_move;   //Rigth move
-global.character[3, 21] = spr_monk_back_move;   //Back move
-global.character[3, 22] = spr_monk_down;   //Down
-*/
+global.character[3, 18] = spr_sorcerer_front_move;   //Fornt move
+global.character[3, 19] = spr_sorcerer_left_move;   //Left move
+global.character[3, 20] = spr_sorcerer_right_move;   //Rigth move
+global.character[3, 21] = spr_sorcerer_back_move;   //Back move
+global.character[3, 22] = spr_sorcerer_down;   //Down
+
 /*
 //Characters, with enum
 enum character {

@@ -54,9 +54,7 @@ switch(argument0){
         if(instance_exists(obj_mark)){
             direction = point_direction(x, y, obj_mark.x, obj_mark.y);
             looking_direction = round(direction / 90) * 90 + 45;
-        }
-        //Añadiremos un indicador de cargado de tiro
-        
+        }        
         //Mas adelante haremos que atrape la tecla por parámetro
         if(key_action_1_pressed){
             movement_lock = true;
@@ -84,7 +82,7 @@ switch(argument0){
             proyectile.speed = 25;
             proyectile.damage = shoot_force;
             //Duration of the ability
-            alarm_set(argument1, 6);
+            //alarm_set(argument1, 6);
             //Cooldown of the ability
             alarm_set(argument2, global.player[player_num, 10]);
             //Para el icona de carga
@@ -155,5 +153,74 @@ switch(argument0){
         }
         //Cooldown of the ability
         alarm_set(argument2, global.player[player_num, 20]);
+    break;
+    //Primera de la hechicera
+    case "Soul Blast":
+        //Mas adelante haremos que atrape la tecla por parámetro
+        if(key_action_1_pressed){
+            turning_lock = true;
+            shoot_force = 3;
+            icon_to_use = spr_arrow;    //Luego lo cambiamos
+            charge_required = 10;
+            charge_amount = 0.1;
+            last_skill = 1;
+        }
+        if(key_action_1_maintained){
+            shoot_force += charge_amount;
+            charge_done += charge_amount;
+            action = 1;
+        }
+        if(key_action_1_released){ 
+            turning_lock = false;   
+            shoot_force = min(10, shoot_force);
+            shoot_force = round(shoot_force);
+            proyectile = instance_create(x, y, obj_magic_missile);
+            if(!instance_exists(obj_mark))
+                proyectile.direction = looking_direction;
+            else
+                proyectile.direction = direction;
+            proyectile.image_angle = proyectile.direction;
+            proyectile.speed = 25;  //Igual la cambiamos
+            proyectile.damage = shoot_force;
+            //Cooldown of the ability
+            alarm_set(argument2, global.player[player_num, 10]);
+            //Para el icona de carga
+            action = 0;
+            charge_done = 0;
+            last_skill = 0;
+        }
+    break;
+    //Segunda de la hechicera
+    case "Spectral Ray":
+        if(key_action_2_pressed){
+            movement_lock = true;
+            ray = instance_create(x, y, obj_ray);
+            ray.direction = looking_direction;
+            ray.image_angle = ray.direction;
+            ray.damage = 4;
+            last_skill = 2;
+        }
+        if(key_action_2_maintained){
+            ray.direction = looking_direction;
+            ray.image_angle = ray.direction;
+        }
+        if(key_action_2_released){
+            with(ray) instance_destroy();
+            movement_lock = false;
+            last_skill = 0;
+        }
+    break;
+    //Tercera de la hechicera
+    case "Lil Ghost":
+        //Destroy it if previously created
+        if(!instance_exists(obj_minion))
+            with(obj_minion) instance_destroy();
+        //And create a new one
+        ghost = instance_create(x, y, obj_minion);
+        ghost.master = self;
+            //Lo revisaremos
+        ghost.damage = 5;
+        //Cooldown of the ability
+        alarm_set(argument2, global.player[player_num, 15]);
     break;
 }

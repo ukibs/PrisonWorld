@@ -52,9 +52,10 @@
   </views>
   <instances>
     <instance objName="obj_tabern_manager" x="32" y="32" name="inst_408AEF43" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_warrior_image" x="320" y="416" name="inst_0B9E1BF3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ranger_image" x="672" y="416" name="inst_85EBE53C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_monk_image" x="1024" y="416" name="inst_7B0975AE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warrior_image" x="192" y="416" name="inst_0B9E1BF3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ranger_image" x="512" y="416" name="inst_85EBE53C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_monk_image" x="832" y="416" name="inst_7B0975AE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sorecerer_image" x="1152" y="416" name="inst_C3244522" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
