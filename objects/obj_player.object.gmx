@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_stepless_terrain</parentName>
   <maskName>spr_player_mask</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -366,6 +366,31 @@ depth = room_height - y;
 //Control to not go out of the camera view
 x = clamp(x, view_xview, view_xview + view_wview);
 y = clamp(y, view_yview, view_yview + view_hview);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_stepless_terrain">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Get it out of the collider
+direction_to_adjust = point_direction(x, y, other.x, other.y);
+move_outside_all(direction_to_adjust + 180, distance_to_object(other));
 </string>
           </argument>
         </arguments>
