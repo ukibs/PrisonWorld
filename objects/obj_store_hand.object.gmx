@@ -34,8 +34,8 @@ key_right = gamepad_button_check(0, gp_padr) || keyboard_check(vk_right);
 gamepad_set_axis_deadzone(0, 0.2);
 v_axis = gamepad_axis_value(0, gp_axislv);
 h_axis = gamepad_axis_value(0, gp_axislh);
-action_button = gamepad_button_check_pressed(0, gp_face1) || keyboard_check_pressed(ord('S'));
-return_button = gamepad_button_check_pressed(0, gp_face2) || keyboard_check_pressed(ord('D'));
+action_button = gamepad_button_check_released(0, gp_face1) || keyboard_check_released(ord('E'));
+return_button = gamepad_button_check_released(0, gp_face2) || keyboard_check_released(ord('R'));
 
 //Move it
 //Joystick

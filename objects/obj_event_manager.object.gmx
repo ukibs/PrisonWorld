@@ -162,7 +162,7 @@ if(instance_number(obj_player) == 0 &amp;&amp; game_over == false){
 }
 //Button to quit the event if finished
     //De momento muy anidado, igual lo subo arriba
-if(gamepad_button_check_released(0, gp_face1) || keyboard_check_released(ord('S'))){
+if(gamepad_button_check_released(0, gp_face1) || keyboard_check_released(ord('E'))){
     if(alpha == 1){
         if(!instance_exists(obj_enemy2))
             room_goto(room_map);
@@ -205,6 +205,7 @@ draw_set_halign(fa_center);
 //Si se mueren
 if(game_over == true){
     draw_text(600, 300, "BUT THE HEROES NEVER RETURNED");
+    draw_text(600, 350, "Press Action to start the next generation");
 }
 
 //Si derrotan al enemigo
@@ -212,6 +213,7 @@ if(!instance_exists(obj_enemy2)){
     draw_text(600, 300, "Experience: " + string(force_deployed));
     if(next_hostility &lt; previous_hostility)
         draw_text(600, 350, "Hostility reduced");
+    draw_text(600, 400, "Press Action to continue");
 }
 
 //Que la transparencia del texto vaya con la del fade

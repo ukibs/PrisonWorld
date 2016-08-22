@@ -52,10 +52,11 @@ paused = false;
             <string>//Hacemos que este pause vaya para todos los mandos
     //Ya veremos con el teclado
 //Get controls
-key_pause = gamepad_button_check_pressed(0, gp_start) || 
-            gamepad_button_check_pressed(1, gp_start) ||
-            gamepad_button_check_pressed(2, gp_start) ||
-            gamepad_button_check_pressed(3, gp_start);
+key_pause = gamepad_button_check_released(0, gp_start) || 
+            gamepad_button_check_released(1, gp_start) ||
+            gamepad_button_check_released(2, gp_start) ||
+            gamepad_button_check_released(3, gp_start) ||
+            keyboard_check_released(vk_escape);
 
 //Pausa / despausa
 if(key_pause){

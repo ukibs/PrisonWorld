@@ -31,9 +31,10 @@ connected_gamepads = 0;
 
 //Maker appear selectors if there are already active players
 for(i = 0; i &lt; global.num_players; i++){
-    if(global.player[i, 0] == 1)
+    if(global.player[i, 0] &gt; 0){
         selector = instance_create(250 + (i * 100), 150 + (i * 100), obj_character_selector);
         selector.player_num = i;
+    }
 }
 </string>
           </argument>
@@ -69,7 +70,7 @@ possible_players = min(possible_players, 4);
 
 //Control de aceptado
 for(i = 0; i &lt; connected_gamepads; i++){
-    if(gamepad_button_check_pressed(i, gp_face1) &amp;&amp; global.player[i, 0] == 0){
+    if(gamepad_button_check_released(i, gp_start) &amp;&amp; global.player[i, 0] == 0){
         global.player[i, 0] = 1;
         selector = instance_create(250 + (i * 100), 150 + (i * 100), obj_character_selector);
         selector.player_num = i;
@@ -77,7 +78,7 @@ for(i = 0; i &lt; connected_gamepads; i++){
     }
 }
 //Con teclado
-if(keyboard_check_pressed(vk_enter) &amp;&amp; possible_players &gt; connected_gamepads
+if(keyboard_check_released(vk_enter) &amp;&amp; possible_players &gt; connected_gamepads
     &amp;&amp; global.player[possible_players - 1, 0] == 0){
      global.player[possible_players - 1, 0] = 2;
      selector = instance_create(250 + (i * 100), 150 + (i*100), obj_character_selector);
@@ -96,7 +97,7 @@ players_done = 0;
         if(global.player[i, 1] &gt; 0)
             players_done ++;
     }
-if(gamepad_button_check_pressed(0, gp_face2) || keyboard_check_pressed(vk_escape)){
+if(gamepad_button_check_released(0, gp_face2) || keyboard_check_released(ord('R'))){
     //Que no deje salir si no han elegido todos personaje
     
     if(players_done == global.num_players)

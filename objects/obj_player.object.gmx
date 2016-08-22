@@ -255,18 +255,22 @@ action = 0;
         key_down = keyboard_check(vk_down);
         key_left = keyboard_check(vk_left);
         key_right = keyboard_check(vk_right);
-        key_action_1_pressed = keyboard_check_pressed(ord('S'));
-        key_action_1_maintained = keyboard_check(ord('S'));
-        key_action_1_released = keyboard_check_released(ord('S'));
-        key_action_2_pressed = keyboard_check_pressed(ord('D'));
-        key_action_2_maintained = keyboard_check(ord('D'));
-        key_action_2_released = keyboard_check_released(ord('D'));
-        key_action_3_pressed = keyboard_check_pressed(ord('A'));
-        key_action_3_maintained = keyboard_check(ord('A'));
-        key_action_3_released = keyboard_check_released(ord('A'));
-        key_action_4_pressed = keyboard_check_pressed(ord('W'));
-        key_action_4_maintained = keyboard_check(ord('W'));
-        key_action_4_released = keyboard_check_released(ord('W'));
+        // Use Skill 1 (basic attack)
+        key_action_1_pressed = keyboard_check_pressed(ord('Q'));
+        key_action_1_maintained = keyboard_check(ord('Q'));
+        key_action_1_released = keyboard_check_released(ord('Q'));
+        // Use Skill 2
+        key_action_2_pressed = keyboard_check_pressed(ord('W'));
+        key_action_2_maintained = keyboard_check(ord('W'));
+        key_action_2_released = keyboard_check_released(ord('W'));
+        // Use Skill 3
+        key_action_3_pressed = keyboard_check_pressed(ord('E'));
+        key_action_3_maintained = keyboard_check(ord('E'));
+        key_action_3_released = keyboard_check_released(ord('E'));
+        // Interact with environment
+        key_action_4_pressed = keyboard_check_pressed(vk_space);
+        key_action_4_maintained = keyboard_check(vk_space);
+        key_action_4_released = keyboard_check_released(vk_space);
     }
 //}
 //If not locked (not here now)

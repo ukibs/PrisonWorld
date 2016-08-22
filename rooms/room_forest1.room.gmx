@@ -64,6 +64,7 @@
     <instance objName="obj_harvestable" x="1760" y="1088" name="inst_0A4BEAF8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_harvestable" x="2176" y="864" name="inst_CBD0BE61" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_harvestable" x="1568" y="448" name="inst_610E566E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_obscureitor" x="32" y="96" name="inst_8E96C550" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

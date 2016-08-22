@@ -119,8 +119,8 @@ map_marker = instance_create(global.lastX, global.lastY, obj_marker_hand);
           <argument>
             <kind>1</kind>
             <string>//Get keys
-key_pause = gamepad_button_check_pressed(0, gp_start) || keyboard_check_pressed(vk_escape);
-key_quit = gamepad_button_check_pressed(0, gp_face1) || keyboard_check_pressed(vk_enter);
+key_pause = gamepad_button_check_released(0, gp_start) || keyboard_check_released(vk_escape);
+key_quit = gamepad_button_check_released(0, gp_face1) || keyboard_check_released(vk_space);
 
 //Pause
 if(key_pause){
