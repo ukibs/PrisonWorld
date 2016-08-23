@@ -36,6 +36,8 @@ type = 1;
 
 //
 status_locked = false;
+staggered = false;
+stunned = false;
 
 //For some abilities
 last_attack_done = 0;
@@ -53,6 +55,30 @@ behaviour[0] = "Melee Attack";
 behaviour[1] = "Aproach";
     //For testing
 last_action = "";
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//
+stunned = false;
 </string>
           </argument>
         </arguments>
@@ -77,6 +103,8 @@ last_action = "";
             <kind>1</kind>
             <string>//Alarm for unlocking
 status_locked = false;
+//Luego cambiaremos a esto
+staggered = false;
 </string>
           </argument>
         </arguments>
@@ -106,11 +134,14 @@ if(instance_exists(obj_player)){
 }
 
 //Check behaviour
-if(life &gt; 0 &amp;&amp; status_locked == false &amp;&amp; instance_exists(obj_player)){
+if(life &gt; 0 &amp;&amp; status_locked == false &amp;&amp; 
+    stunned == false &amp;&amp;
+    instance_exists(obj_player)){
     script_execute(scr_enemy_behaviour);
 }
 //Stun control
-if(status_locked == true){
+    //Lugo retocamos el staggered
+if(status_locked == true || stunned == true){
     if(direction &lt;= 180)
         sprite_index = back_idle;
     else
@@ -262,7 +293,7 @@ charge = false;
           <argument>
             <kind>1</kind>
             <string>//
-//draw_text(10, 10, last_action);
+draw_text(10, 10, stunned);
 </string>
           </argument>
         </arguments>

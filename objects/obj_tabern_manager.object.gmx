@@ -100,7 +100,7 @@ players_done = 0;
 if(gamepad_button_check_released(0, gp_face2) || keyboard_check_released(ord('W'))){
     //Que no deje salir si no han elegido todos personaje
     
-    if(players_done == global.num_players)
+    if(players_done == global.num_players &amp;&amp; global.num_players &gt; 0)
         room_goto(room_settlement);
 }
 </string>

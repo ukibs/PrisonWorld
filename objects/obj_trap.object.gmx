@@ -84,10 +84,10 @@ if(triggered == false){
     final_damage = damage - other.defense;
     other.life -= final_damage;
     //Esto lo asignaremos con un atributo mas adelante
-    other.status_locked = true;
-    other.alarm[0] = 30;
+    other.stunnned = true;
+    other.alarm[1] = 60;
     //For the trap
-    alarm[0] = 30;
+    alarm[0] = 60;
     damage_display = instance_create(other.x, other.y, obj_damage_displayer);
     damage_display.value = -final_damage;
     damage_display.alarm[0] = 10;

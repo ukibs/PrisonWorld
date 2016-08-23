@@ -464,8 +464,8 @@ if(key_action_4_released){
 if(pushing == true){
     other.x += hspeed;
     other.y += vspeed;
-    other.status_locked = true;
-    other.alarm[0] = 2;
+    other.stunned = true;
+    other.alarm[1] = 10;
     if(last_attack_done != other.last_attack_received){
         other.last_attack_received = last_attack_done;
         final_damage = 5 - other.defense;   //Ya le asignaremos el daño desde otro lado

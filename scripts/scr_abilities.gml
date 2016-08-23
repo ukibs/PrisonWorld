@@ -73,7 +73,7 @@ switch(argument0){
             movement_lock = false;   
             shoot_force = min(8, shoot_force);
             shoot_force = round(shoot_force);
-            proyectile = instance_create(x, y, obj_arrow);
+            proyectile = instance_create(x, y - 20, obj_arrow);
             if(!instance_exists(obj_mark))
                 proyectile.direction = looking_direction;
             else
