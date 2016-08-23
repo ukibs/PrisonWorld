@@ -160,7 +160,7 @@ depth = room_height - y;
     //Works well with terrain
     //But not between them
 direction_to_adjust = point_direction(x, y, other.x, other.y);
-move_outside_all(direction_to_adjust + 180, distance_to_object(other));
+move_outside_all(direction_to_adjust + 180, movement_speed);
 </string>
           </argument>
         </arguments>
