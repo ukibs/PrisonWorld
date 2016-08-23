@@ -89,6 +89,7 @@ if(keyboard_check_released(vk_enter) &amp;&amp; possible_players &gt; connected_
 // In case of disconected controller
     //Fallaría en el caso de consiguieran desconectar más de un mando en el mismo frame
 global.player[possible_players, 0] = 0;
+global.player[possible_players, 1] = 0;
 global.num_players = min(global.num_players, possible_players);
 
 //En feo
