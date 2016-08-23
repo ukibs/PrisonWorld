@@ -76,9 +76,9 @@ master = instance_nearest(x, y, obj_player);
             <string>//Check if the master is alive
 if(instance_exists(master)){
     if(distance_to_object(master) &gt; 50)
-        move_towards_point(master.x, master.y, 10);
-    else
-        speed = 0;
+        move_towards_point(master.x, master.y, 6);
+    /*else
+        speed = 0;*/
 }
 else{
     instance_destroy();
@@ -86,14 +86,14 @@ else{
 
 //If he has gone to revive someone...
     //Mañana lo revisamos
-if(master == obj_downed_player &amp;&amp; distance_to_object(master) &lt; 50){
-    mate_number = other.player_num;
+/*if(master == obj_downed_player &amp;&amp; distance_to_object(master) &lt; 50){
+    mate_number = master.player_num;
     raised_mate = instance_create(other.x, other.y, obj_player);
     raised_mate.player_num = mate_number;
     global.player[mate_number, 3] = round(global.player[mate_number, 2] / 2);
     with(other) instance_destroy();
     instance_destroy();
-}
+}*/
 
 
 //And search for enemies
@@ -111,6 +111,35 @@ if(master == obj_downed_player &amp;&amp; distance_to_object(master) &lt; 50){
         alarm_set(0, 30);    
     }
 }*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_downed_player">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Revive it
+mate_number = other.player_num;
+raised_mate = instance_create(other.x, other.y, obj_player);
+raised_mate.player_num = mate_number;
+global.player[mate_number, 3] = round(global.player[mate_number, 2] / 2);
+with(other) instance_destroy();
+instance_destroy();
 </string>
           </argument>
         </arguments>
