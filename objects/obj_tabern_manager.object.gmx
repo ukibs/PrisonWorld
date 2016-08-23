@@ -135,7 +135,7 @@ draw_text(room_width/2, 50, "GENERATION " + string(global.generation));
 
 //Mostramos por pantalla
 for(i = 0; i &lt; possible_players; i++){
-    draw_text(75, i * 40 + 10, "Player " + string(i));
+    draw_text(75, i * 40 + 10, "Player " + string(i+1));
     if(global.player[i, 0] == 0){
         if(i == connected_gamepads) //Control para jugador de tclado
             draw_text(75, i * 40 + 30, "Press Enter");
@@ -155,6 +155,9 @@ for(i = 0; i &lt; possible_players; i++){
             break;
             case 3:
                 draw_text(75, i * 40 + 30, "Monk");
+            break;
+            case 4:
+                draw_text(75, i * 40 + 30, "Witch");
             break;
         }
     }
