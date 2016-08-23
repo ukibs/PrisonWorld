@@ -141,7 +141,8 @@ if(life &gt; 0 &amp;&amp; status_locked == false &amp;&amp;
 }
 //Stun control
     //Lugo retocamos el staggered
-if(status_locked == true || stunned == true){
+if((status_locked == true || stunned == true) &amp;&amp;
+    life &gt;= 0){
     if(direction &lt;= 180)
         sprite_index = back_idle;
     else

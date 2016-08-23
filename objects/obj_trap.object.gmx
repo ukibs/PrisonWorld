@@ -84,7 +84,8 @@ if(triggered == false){
     final_damage = damage - other.defense;
     other.life -= final_damage;
     //Esto lo asignaremos con un atributo mas adelante
-    other.stunnned = true;
+        //Algo falla aqui
+    other.stunned = true;
     other.alarm[1] = 60;
     //For the trap
     alarm[0] = 60;
