@@ -234,6 +234,7 @@
         <object>objects\obj_big_mushroom</object>
         <object>objects\obj_forest_cover1</object>
       </objects>
+      <object>objects\obj_exit</object>
     </objects>
     <objects name="TabernStuff">
       <object>objects\obj_tabern_manager</object>

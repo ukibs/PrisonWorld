@@ -94,7 +94,8 @@ if(action_button){
             }
             else{
                     //Cuando la hagamos
-                    //room_goto(room_camp);
+                        //Ahora directos a la acción
+                    room_goto(room_forest2);
             }
         break;
     }

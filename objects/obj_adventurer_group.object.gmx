@@ -359,8 +359,9 @@ if(action == 0)
 else{
     if(speed &gt; 0)
         draw_text(1200, 680, "B STOP");
-    else
-        draw_text(1200, 680, "B CAMP");   
+    else{
+        draw_text(1200, 680, "B EXPLORE THE PLACE"); 
+    }  
  }  
 //Test stuff
 //draw_text(10, 10, alarm[0]);

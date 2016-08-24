@@ -36,9 +36,10 @@ looking_direction = 270; //Alternativa
 movement_speed = 10;    //La acabaremos asignando junto con los stats
 /*Actions
     0 - No action
-    1 - Raise mate
+    1 - Action
 */
 action = 0; 
+quiting = 0;
     //Para habilidades de mantener pulsado el botón
 last_skill = 0;
 
@@ -371,6 +372,49 @@ y = clamp(y, view_yview, view_yview + view_hview);
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_exit">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//
+action = 1;
+icon_to_use = spr_raise;
+//Raising depending on the button state
+if(key_action_4_pressed){
+    charge_required = 30;
+    charge_amount = 1;
+    status_locked = true;
+}
+if(key_action_4_maintained){
+    charge_done += charge_amount;
+    if(charge_done &gt;= charge_required){
+        quiting = 1;
+        charge_done = min(charge_done, charge_required);
+    }
+}
+if(key_action_4_released){
+    charge_done = 0;
+    quiting = 0;
+    status_locked = false;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_stepless_terrain">
       <action>
         <libid>1</libid>
@@ -505,6 +549,7 @@ icon_to_use = spr_raise;
 if(key_action_4_pressed){
     charge_required = 30;
     charge_amount = 1;
+    status_locked = true;
 }
 if(key_action_4_maintained){
     charge_done += charge_amount;
@@ -520,6 +565,7 @@ if(key_action_4_released){
         with(other) instance_destroy();
     }
     charge_done = 0;
+    status_locked = false;
 }
 </string>
           </argument>

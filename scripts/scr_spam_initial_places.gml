@@ -43,7 +43,10 @@ for(i = 0; i < 7; i++){
     }
     else{
         //Terrain type
-        //Vamos a prbar de otra forma
+            //Not random
+        global.hex[i, 2] = round((i + 1) / 3);   //Así debería dar llanos y bosque
+        global.map_tile[i].terrain = global.hex[i, 2];
+        /*//Vamos a prbar de otra forma
         adjacent = 0;   
         adjacent_places[0] = 0;
         //Si, hay que tragarse la array entera 
@@ -65,10 +68,11 @@ for(i = 0; i < 7; i++){
         else    //Si no random y a tomar por culo
             global.hex[i, 2] = irandom_range(1, 4);
         global.map_tile[i].terrain = global.hex[i, 2];
+        */        
         
         //A not very moderate hostilty for the initial places
         global.hex[i, 3] = irandom_range(35, 75);
-        global.map_tile[i].hostility = global.hex[i, 3];
+        global.map_tile[i].hostility = global.hex[i, 3];      
         //Id
         global.hex[i, 4] = i;
         global.map_tile[i].hex_id = global.hex[i, 4];
