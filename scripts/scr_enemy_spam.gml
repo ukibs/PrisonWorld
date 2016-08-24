@@ -45,8 +45,8 @@ while(force_deployed < enemy_force * player_amount){
             enemy.movement_speed = 1;
             enemy_strength = 4;
             //Behaviour
-            enemy.behaviour[0] = "Distance Attack";
-            enemy.behaviour[1] = "Aproach";
+            enemy.combat_behaviour[0] = "Distance Attack";
+            enemy.combat_behaviour[1] = "Aproach";
         break;
         //Skeleton
         case "Skeleton":
@@ -96,9 +96,9 @@ while(force_deployed < enemy_force * player_amount){
             enemy.movement_speed = 3;
             enemy_strength = 1;
             //Beahciour
-            enemy.behaviour[0] = "Melee Attack";
-            enemy.behaviour[1] = "Move Away";
-            enemy.behaviour[2] = "Offensive Teleport";
+            enemy.combat_behaviour[0] = "Melee Attack";
+            enemy.combat_behaviour[1] = "Move Away";
+            enemy.combat_behaviour[2] = "Offensive Teleport";
         break;
         //Teeth ball
         case "Teeth Ball":
@@ -116,9 +116,9 @@ while(force_deployed < enemy_force * player_amount){
             enemy.movement_speed = 6;
             enemy_strength = 2;
             //Behaviour
-            enemy.behaviour[0] = "Charge";
-            enemy.behaviour[1] = "Move Around";
-            enemy.behaviour[2] = "Aproach";
+            enemy.combat_behaviour[0] = "Charge";
+            enemy.combat_behaviour[1] = "Move Around";
+            enemy.combat_behaviour[2] = "Aproach";
         break;
     }
     //enemy.type = enemy_type;

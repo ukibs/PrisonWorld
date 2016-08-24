@@ -71,7 +71,7 @@ for(i = 0; i < 7; i++){
         */        
         
         //A not very moderate hostilty for the initial places
-        global.hex[i, 3] = irandom_range(35, 75);
+        global.hex[i, 3] = irandom_range(25, 50);
         global.map_tile[i].hostility = global.hex[i, 3];      
         //Id
         global.hex[i, 4] = i;

@@ -362,11 +362,21 @@ if(global.player[player_num, 3] &lt;= 0){
 }
 
 //Adjust depth
-depth = room_height - y;
+depth = room_height - y + 10;
 
 //Control to not go out of the camera view
 x = clamp(x, view_xview, view_xview + view_wview);
 y = clamp(y, view_yview, view_yview + view_hview);
+
+//Guarrada pa probar
+if(gamepad_button_check_pressed(player_num, gp_shoulderr)){
+    if(instance_exists(obj_enemy)){
+        if(obj_enemy.alerted == true)
+            obj_enemy.alerted = false;
+        else
+            obj_enemy.alerted = true;
+    }
+}
 </string>
           </argument>
         </arguments>

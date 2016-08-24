@@ -360,7 +360,7 @@ else{
     if(speed &gt; 0)
         draw_text(1200, 680, "B STOP");
     else{
-        draw_text(1200, 680, "B EXPLORE THE PLACE"); 
+        draw_text(1200, 680, "Y EXPLORE THE PLACE"); 
     }  
  }  
 //Test stuff

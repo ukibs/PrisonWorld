@@ -176,7 +176,8 @@
     <script>scripts\scr_enemy_spam.gml</script>
     <script>scripts\scr_abilities.gml</script>
     <script>scripts\scr_abilities_end.gml</script>
-    <script>scripts\scr_enemy_behaviour.gml</script>
+    <script>scripts\scr_combat_behaviour.gml</script>
+    <script>scripts\scr_quiet_behaviour.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_preload</object>

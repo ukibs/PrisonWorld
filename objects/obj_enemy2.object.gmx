@@ -25,16 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//
+            <string>//Stats a sobreescribir por cosa externa
 life = 20;
 defense = 1;
 attack = 4;
 movement_speed = 1;
 
-//
+//Ya no recuerdo si lo uso
 type = 1;
 
-//
+//Stagger, stun and other debuffs
 status_locked = false;
 staggered = false;
 stunned = false;
@@ -48,11 +48,17 @@ attack_to_use = obj_melee_attack;
 charge = false;
 charge_direction = 0;
 
+//Varaibles relatives to the behaviour
+alerted = false;
+
 //Behaviour (array of possible actions)
     //This requires a correct order to work well
     //Default behaviour for the enemies
-behaviour[0] = "Melee Attack";
-behaviour[1] = "Aproach";
+combat_behaviour[0] = "Melee Attack";
+combat_behaviour[1] = "Aproach";
+    //Default quiet behaviour for the enemies
+quiet_behaviour[0] = "Walk Around";
+quiet_behaviour[1] = "Stay Quiet";
     //For testing
 last_action = "";
 </string>
@@ -137,7 +143,13 @@ if(instance_exists(obj_player)){
 if(life &gt; 0 &amp;&amp; status_locked == false &amp;&amp; 
     stunned == false &amp;&amp;
     instance_exists(obj_player)){
-    script_execute(scr_enemy_behaviour);
+    //If not alerted, quiet behaviour
+    if(alerted == false){
+        script_execute(scr_quiet_behaviour);
+    }
+    else{   //If alerted_combat behaviour
+        script_execute(scr_combat_behaviour);
+    }
 }
 //Stun control
     //Lugo retocamos el staggered
