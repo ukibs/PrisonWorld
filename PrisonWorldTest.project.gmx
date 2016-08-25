@@ -183,6 +183,12 @@
     <object>objects\obj_preload</object>
     <object>objects\obj_introduction</object>
     <object>objects\obj_menu_manager</object>
+    <objects name="TutorialStuff">
+      <object>objects\obj_tutorial_introduction</object>
+      <object>objects\obj_post_tutorial_introduction</object>
+      <object>objects\obj_tutorial_selector</object>
+      <object>objects\obj_skip_button</object>
+    </objects>
     <objects name="MapStuff">
       <object>objects\obj_map_manager</object>
       <object>objects\obj_test_place</object>
@@ -257,13 +263,20 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\room_preload</room>
-    <room>rooms\room_tabern</room>
     <room>rooms\room_introduction</room>
     <room>rooms\room_menu</room>
-    <room>rooms\room_settlement</room>
     <room>rooms\room_map</room>
-    <room>rooms\room_castle</room>
-    <room>rooms\room_store</room>
+    <rooms name="Tutorial">
+      <room>rooms\room_tutorial_introduction</room>
+      <room>rooms\room_tutorial_selection</room>
+      <room>rooms\room_post_tutorial_introduction</room>
+    </rooms>
+    <rooms name="Settlement">
+      <room>rooms\room_tabern</room>
+      <room>rooms\room_settlement</room>
+      <room>rooms\room_castle</room>
+      <room>rooms\room_store</room>
+    </rooms>
     <rooms name="Encounters">
       <room>rooms\room_forest1</room>
       <room>rooms\room_forest2</room>

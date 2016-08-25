@@ -102,6 +102,32 @@ if(global.player[player_num, 0] == 2){
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_skip_button">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Only on the tutorial
+if(action_button){
+    room_goto(room_post_tutorial_introduction);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_character_image">
       <action>
         <libid>1</libid>
