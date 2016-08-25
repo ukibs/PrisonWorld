@@ -28,6 +28,42 @@
                     obj_enemy.general_alarm = true;
                 }
             break;
+            //Dar vueltas tranquilamente
+            case "Walk Around":
+                //Check the alarm to decide what to do
+                if(alarm_get(2) == -1){
+                    //Decide an action (0 - Stay, 1 - Walk)
+                    action = irandom(1);
+                    if(action == 1){
+                        //Decide a direction
+                        direction_to_move = irandom(3);
+                        direction = direction_to_move * 90;
+                        
+                    }
+                    //And put the alarm
+                    alarm_set(2, irandom_range(10, 60));
+                }
+                else{   //If not execute the action
+                    //Go walking
+                    if(action == 1){
+                        //De momento hacemos que vaya mas despacio de esta forma
+                            //Pero sería bueno ajustar el sprite en velcoidad
+                        switch(direction_to_move){
+                            //Right
+                            case 0: x += movement_speed/2; break;
+                            //Up
+                            case 1: y -= movement_speed/2; break;
+                            //Left
+                            case 2: x -= movement_speed/2; break;
+                            //Down
+                            default: y += movement_speed/2; break;
+                        }
+                    }
+                    else{   //Or stay in the place
+                        image_index = 0;
+                    }
+                }
+            break;
         }
         //Save the last action for tests
         last_action = quiet_behaviour[i];
