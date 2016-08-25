@@ -66,6 +66,8 @@
     <instance objName="obj_harvestable" x="1568" y="448" name="inst_610E566E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_obscureitor" x="32" y="96" name="inst_BDB8D2B1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_exit" x="1376" y="1504" name="inst_8DA5C27F" locked="0" code="" scaleX="5" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player_spawn_explore" x="1376" y="1408" name="inst_9C72D9B8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player_spawn_encounter" x="1312" y="384" name="inst_0CEC1C89" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

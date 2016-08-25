@@ -72,9 +72,9 @@ posY[3] = -20;
             <kind>1</kind>
             <string>//Testeo de eventos
 encounter_chance = random(100);
-if(encounter_chance &lt; actual_hostility){
-    global.hostility_to_use = actual_hostility;
-    global.hex_to_use = actual_hex;
+if(encounter_chance &lt; global.hostility_to_use){
+    //global.hostility_to_use = actual_hostility;
+    //global.hex_to_use = actual_hex;
     //room_goto(room_forest1);
     room_goto(room_forest2);
 }
@@ -295,8 +295,8 @@ switch(other.terrain){
     break;
 }
 //Get the ID and hostilty of the place
-actual_hostility = other.hostility;
-actual_hex = other.hex_id;
+global.hostility_to_use = other.hostility;
+global.hex_to_use = other.hex_id;
 
 </string>
           </argument>

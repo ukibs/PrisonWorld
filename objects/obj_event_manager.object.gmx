@@ -43,8 +43,9 @@ script_execute(scr_enemy_spam);
 //Spammeo jugadores
 //Datos
 //Positions
-spam_positionX = room_width/2;
-spam_positionY = room_height - 150;
+spam_position = obj_player_spawn_explore;
+//spam_positionX = room_width/2;
+//spam_positionY = room_height - 150;
 posX[0] = 0;
 posX[1] = 50;
 posX[2] = -50;
@@ -60,7 +61,7 @@ posY[3] = -50;
 for(i = 0; i &lt; global.num_players; i++){
     //Asign each instanced player his number
     if(global.player[i, 0] != 0){
-        player[i] = instance_create(spam_positionX + posX[i], spam_positionY + posY[i],
+        player[i] = instance_create(spam_position.x + posX[i], spam_position.y + posY[i],
                                     obj_player);
         player[i].player_num = i;
     }

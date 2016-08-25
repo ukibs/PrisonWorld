@@ -210,6 +210,8 @@
         <object>objects\obj_damage_displayer</object>
         <object>objects\obj_camera</object>
         <object>objects\obj_obscureitor</object>
+        <object>objects\obj_player_spawn_explore</object>
+        <object>objects\obj_player_spawn_encounter</object>
       </objects>
       <object>objects\obj_player</object>
       <object>objects\obj_downed_player</object>
