@@ -116,11 +116,15 @@ while(force_deployed < enemy_force * player_amount){
             enemy.movement_speed = 6;
             enemy_strength = 2;
             //Behaviour
-            enemy.combat_behaviour[0] = "Charge";
-            enemy.combat_behaviour[1] = "Move Around";
-            enemy.combat_behaviour[2] = "Aproach";
+            enemy.combat_behaviour[0] = "Calm Down";
+            enemy.combat_behaviour[1] = "Charge";
+            enemy.combat_behaviour[2] = "Move Around";
+            enemy.combat_behaviour[3] = "Aproach";
         break;
     }
+    //Common parameters
+    enemy.initial_life = enemy.life;
+    enemy.sprite_index = enemy.front_idle;
     //enemy.type = enemy_type;
     force_deployed += enemy_strength;
 }

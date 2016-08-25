@@ -1,7 +1,12 @@
-    //Yeah, enemy behaviour
+    //Yeah, enemy behaviour (combat)
     done = false;
-    for(i = 0; i < array_length_1d(behaviour); i++){
-        switch(behaviour[i]){
+    //Get the nearest player
+    if(instance_exists(obj_player)){
+        objective = instance_nearest(x, y, obj_player);
+        direction = point_direction(x, y, objective.x, objective.y);
+    }
+    for(i = 0; i < array_length_1d(combat_behaviour); i++){
+        switch(combat_behaviour[i]){
             //Basic melee attack
             case "Melee Attack":
                 //If the attack hasn´t started
@@ -42,6 +47,7 @@
             //Aproach to the player
                 //This should be the last one in all the enemies
             case "Aproach":
+                //Get the distance in both axis
                 distanceX = abs(objective.x - x);
                 distanceY = abs(objective.y - y);
                 //If it´s farer in x
@@ -54,11 +60,6 @@
                     sprite_index = back_idle;
                 else
                     sprite_index = front_idle;
-                //And orientation
-                if(direction >= 90 && direction <= 270)
-                    image_xscale = 1;
-                else
-                    image_xscale = -1;
                 //Aaaand done
                 done = true;
             break;
@@ -81,11 +82,6 @@
                         sprite_index = back_idle;
                     else
                         sprite_index = front_idle;
-                    //And orientation
-                    if(direction >= 90 && direction <= 270)
-                        image_xscale = 1;
-                    else
-                        image_xscale = -1;
                     //Aaaand done
                     done = true;
                 }
@@ -121,11 +117,6 @@
                         sprite_index = back_idle;
                     else
                         sprite_index = front_idle;
-                    //And orientation
-                    if(direction >= 90 && direction <= 270)
-                        image_xscale = 1;
-                    else
-                        image_xscale = -1;
                     //Aaaand done
                     done = true;
                 }
@@ -174,20 +165,20 @@
                         sprite_index = back_attack;
                     else
                         sprite_index = front_attack;
-                    //And orientation
-                    if(direction >= 90 && direction <= 270)
-                        image_xscale = 1;
-                    else
-                        image_xscale = -1;
                     //Put the animation on the begining
                     image_index = 0;
                     //Aaaand done
                     done = true;
                 }
             break;
+            //Return to a quiet behaviour
+            case "Calm Down":
+                if(distance_to_object(objective) > 250 && general_alert == false)
+                    alerted = false;
+            break;
         }
         //Save the last action for tests
-        last_action = behaviour[i];
+        last_action = combat_behaviour[i];
         //If the attitude has been selected...
         if(done == true)
             break;

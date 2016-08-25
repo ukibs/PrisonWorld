@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>//Stats a sobreescribir por cosa externa
+initial_life = 20;
 life = 20;
 defense = 1;
 attack = 4;
@@ -50,15 +51,18 @@ charge_direction = 0;
 
 //Varaibles relatives to the behaviour
 alerted = false;
+general_alert = false;
 
 //Behaviour (array of possible actions)
     //This requires a correct order to work well
     //Default behaviour for the enemies
-combat_behaviour[0] = "Melee Attack";
-combat_behaviour[1] = "Aproach";
+combat_behaviour[0] = "Calm Down";
+combat_behaviour[1] = "Melee Attack";
+combat_behaviour[2] = "Aproach";
     //Default quiet behaviour for the enemies
-quiet_behaviour[0] = "Walk Around";
-quiet_behaviour[1] = "Stay Quiet";
+quiet_behaviour[0] = "Become Aggressive";
+quiet_behaviour[1] = "Wild Alarm";
+quiet_behaviour[2] = "Walk Around";
     //For testing
 last_action = "";
 </string>
@@ -133,13 +137,7 @@ staggered = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Mira hacia el prota más cercano
-if(instance_exists(obj_player)){
-    objective = instance_nearest(x, y, obj_player);
-    direction = point_direction(x, y, objective.x, objective.y);
-}
-
-//Check behaviour
+            <string>//Check behaviour
 if(life &gt; 0 &amp;&amp; status_locked == false &amp;&amp; 
     stunned == false &amp;&amp;
     instance_exists(obj_player)){
@@ -151,10 +149,17 @@ if(life &gt; 0 &amp;&amp; status_locked == false &amp;&amp;
         script_execute(scr_combat_behaviour);
     }
 }
+
+//Sprite orientation
+if(direction &gt;= 90 &amp;&amp; direction &lt;= 270)
+    image_xscale = 1;
+else
+    image_xscale = -1;
+
 //Stun control
     //Lugo retocamos el staggered
 if((status_locked == true || stunned == true) &amp;&amp;
-    life &gt;= 0){
+    life &gt; 0){
     if(direction &lt;= 180)
         sprite_index = back_idle;
     else
@@ -306,7 +311,7 @@ charge = false;
           <argument>
             <kind>1</kind>
             <string>//
-draw_text(10, 10, stunned);
+draw_text(10, 10, last_action);
 </string>
           </argument>
         </arguments>
