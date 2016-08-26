@@ -425,6 +425,44 @@ if(key_action_4_released){
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_enemy">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Si embestimos...
+if(pushing == true){
+    other.x += hspeed;
+    other.y += vspeed;
+    other.stunned = true;
+    other.alarm[1] = 10;
+    if(last_attack_done != other.last_attack_received){
+        other.last_attack_received = last_attack_done;
+        final_damage = 5 - other.defense;   //Ya le asignaremos el daño desde otro lado
+        final_damage = max(final_damage, 0);
+        other.life -= final_damage;
+        damage_display = instance_create(other.x, other.y, obj_damage_displayer);
+        damage_display.value = -final_damage;
+        damage_display.alarm[0] = 10;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_stepless_terrain">
       <action>
         <libid>1</libid>
@@ -491,44 +529,7 @@ if(key_action_4_released){
     charge_done = 0;
     movement_lock = false;
     global.experience += 1;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_enemy">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//Si embestimos...
-if(pushing == true){
-    other.x += hspeed;
-    other.y += vspeed;
-    other.stunned = true;
-    other.alarm[1] = 10;
-    if(last_attack_done != other.last_attack_received){
-        other.last_attack_received = last_attack_done;
-        final_damage = 5 - other.defense;   //Ya le asignaremos el daño desde otro lado
-        final_damage = max(final_damage, 0);
-        other.life -= final_damage;
-        damage_display = instance_create(other.x, other.y, obj_damage_displayer);
-        damage_display.value = -final_damage;
-        damage_display.alarm[0] = 10;
-    }
+    obj_event_manager.experience_obtained += 1;
 }
 </string>
           </argument>

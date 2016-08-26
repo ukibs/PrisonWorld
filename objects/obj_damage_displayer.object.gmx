@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>//Variables
 value = 0;
+alarm_set(0, 10);
 </string>
           </argument>
         </arguments>

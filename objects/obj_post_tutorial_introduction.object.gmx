@@ -116,13 +116,13 @@ else if (fadeIn == false) {
             fadeIn = true;
         }
         else
-            room_goto_next();
+            room_goto_next();   //De momento no hace falta especificar la room
     }
 }
 
 //Quit if a button is pressed
 if(gamepad_button_check_pressed(0, gp_start)){
-    room_goto_next();
+    room_goto_next();   //De momento no hace falta especificar la room
 }
 </string>
           </argument>

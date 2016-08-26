@@ -36,6 +36,8 @@ fading_speed = 0.05;
     //For final checks
 previous_hostility = 0;
 next_hostility = 0;
+enemies_defeated = 0;
+experience_obtained = 0;
 
 //Spammeo enemigos
 script_execute(scr_enemy_spam);
@@ -227,7 +229,7 @@ if(game_over == true){
 
 //Si derrotan al enemigo
 if(finished == true){
-    draw_text(600, 300, "Experience: " + string(force_deployed));
+    draw_text(600, 300, "Experience: " + string(experience_obtained));
     if(next_hostility &lt; previous_hostility)
         draw_text(600, 350, "Hostility reduced");
     draw_text(600, 400, "Press Action to continue");

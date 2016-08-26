@@ -74,6 +74,14 @@
         <sprite>sprites\spr_ghost_back_attack</sprite>
         <sprite>sprites\spr_ghost_back_death</sprite>
       </sprites>
+      <sprites name="Goatnies">
+        <sprite>sprites\spr_goatnie_front_idle</sprite>
+        <sprite>sprites\spr_goatnie_front_death</sprite>
+        <sprite>sprites\spr_goatnie_front_attack</sprite>
+        <sprite>sprites\spr_goatnie_back_idle</sprite>
+        <sprite>sprites\spr_goatnie_back_death</sprite>
+        <sprite>sprites\spr_goatnie_back_attack</sprite>
+      </sprites>
     </sprites>
     <sprites name="Settlement">
       <sprite>sprites\spr_castle</sprite>
@@ -185,8 +193,8 @@
     <object>objects\obj_menu_manager</object>
     <objects name="TutorialStuff">
       <object>objects\obj_tutorial_introduction</object>
-      <object>objects\obj_post_tutorial_introduction</object>
       <object>objects\obj_tutorial_selector</object>
+      <object>objects\obj_post_tutorial_introduction</object>
       <object>objects\obj_skip_button</object>
     </objects>
     <objects name="MapStuff">
@@ -221,9 +229,6 @@
       </objects>
       <object>objects\obj_player</object>
       <object>objects\obj_downed_player</object>
-      <object>objects\obj_enemy</object>
-      <object>objects\obj_enemy1</object>
-      <object>objects\obj_enemy2</object>
       <object>objects\obj_harvestable</object>
       <objects name="Attacks/Skills">
         <object>objects\obj_basic_attack</object>
@@ -242,6 +247,12 @@
         <object>objects\obj_solid_terrain</object>
         <object>objects\obj_big_mushroom</object>
         <object>objects\obj_forest_cover1</object>
+      </objects>
+      <objects name="PNJs">
+        <object>objects\obj_pnj</object>
+        <object>objects\obj_enemy</object>
+        <object>objects\obj_wild</object>
+        <object>objects\obj_goatnie</object>
       </objects>
       <object>objects\obj_exit</object>
     </objects>
@@ -269,6 +280,7 @@
     <rooms name="Tutorial">
       <room>rooms\room_tutorial_introduction</room>
       <room>rooms\room_tutorial_selection</room>
+      <room>rooms\room_tutorial_mission</room>
       <room>rooms\room_post_tutorial_introduction</room>
     </rooms>
     <rooms name="Settlement">
