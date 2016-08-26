@@ -25,7 +25,7 @@ while(force_deployed < enemy_force * player_amount){
     randomY = irandom_range(100, room_height - 200);
     
     enemy_to_use = irandom(array_length_2d(zone_habitat, terrain_to_use) - 1);
-    enemy = instance_create(randomX, randomY, obj_enemy2);  //Esta vez con enemigo 2
+    enemy = instance_create(randomX, randomY, obj_enemy);  //Esta vez con enemigo 2
     //Choose skin for the enemy
     //For now with number
     switch(zone_habitat[terrain_to_use, enemy_to_use]){

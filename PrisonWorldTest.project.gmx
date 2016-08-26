@@ -274,6 +274,7 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\room_preload</room>
+    <room>rooms\room_tabern</room>
     <room>rooms\room_introduction</room>
     <room>rooms\room_menu</room>
     <room>rooms\room_map</room>
@@ -284,7 +285,6 @@
       <room>rooms\room_post_tutorial_introduction</room>
     </rooms>
     <rooms name="Settlement">
-      <room>rooms\room_tabern</room>
       <room>rooms\room_settlement</room>
       <room>rooms\room_castle</room>
       <room>rooms\room_store</room>
