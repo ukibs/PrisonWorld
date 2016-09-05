@@ -33,25 +33,13 @@ finished = false;
 fadeIn = true;
 alpha = 1;
 fading_speed = 0.05;
-    //For final checks
-previous_hostility = 0;
-next_hostility = 0;
-enemies_defeated = 0;
-experience_obtained = 0;
-
-//Spammeo enemigos
-/*    //Casos especiales para el tutorial
-if(global.tutorial_stage &lt; 5){
-    
-}
-else{ */  //Spammeo normal
-    script_execute(scr_enemy_spam);
-//}
+    //Mission ones
+mission_completion = 0;
 
 //Spammeo jugadores
 //Datos
 //Positions
-spam_position = obj_player_spawn_explore;
+spam_position = obj_player_spam_tutorial;
 posX[0] = 0;
 posX[1] = 50;
 posX[2] = -50;
@@ -60,6 +48,39 @@ posY[0] = 50;
 posY[1] = 0;
 posY[2] = 0;
 posY[3] = -50;
+
+//Enemies and other stuff
+    //Dependeding on the tutorial stage
+switch(global.tutorial_stage){
+    //First mission, pelea a casco porro
+    case 1:
+        //First, the melee goatnies
+            //De momento aquí en guarro
+        for(i = 0; i &lt; 10; i++){
+            //Position, upper half
+            randomX = irandom_range(200, room_width - 200);
+            randomY = irandom_range(100, room_height / 2);
+            enemy = instance_create(randomX, randomY, obj_enemy);
+            //Sprites
+            enemy.mask_index = spr_goatnie_mask;
+            enemy.front_idle = spr_goatnie_front_idle;
+            enemy.front_attack = spr_goatnie_front_attack;
+            enemy.front_death = spr_goatnie_front_death;
+            enemy.back_idle = spr_goatnie_back_idle;
+            enemy.back_attack = spr_goatnie_back_attack;
+            enemy.back_death = spr_goatnie_back_death;
+            //Stats
+            enemy.life = 8;
+            enemy.defense = 0;
+            enemy.attack = 4;
+            enemy.movement_speed = 5;
+            enemy_strength = 1;
+            //Behaviour
+                //Here we will use the default one
+        }
+        
+    break;
+}
 
 //Spawm
     //De momento un poco guarro
@@ -72,7 +93,6 @@ for(i = 0; i &lt; global.num_players; i++){
         player[i].player_num = i;
     }
 }
-
 </string>
           </argument>
         </arguments>
@@ -116,81 +136,35 @@ else if (fadeIn == false) {
     }
 }
 
-//De momento simplón
-    //Por muerte de enemigos
-/*if(!instance_exists(obj_enemy2) &amp;&amp; fadeIn == true){     //Ahora con enemigo 2
-    //Check if the hostility level has gone lower
-    previous_hostilty = global.hex[global.hex_to_use, 3];
-    previous_hostilty = round(previous_hostilty/20);
-    next_hostility = global.hex[global.hex_to_use, 3] - force_deployed;
-    next_hostility = round(next_hostility/20);
-    //Check if there is active an exterminate mission
-    if(global.mission == 2 &amp;&amp; global.mission_progress &lt; global.mission_requirement){
-        if(next_hostility &lt; previous_hostility)
-            global.mission_progress ++;
+//Victory condition
+if(finished == false &amp;&amp; game_over == false){
+    //Depending on the tutorial stage
+    switch(global.tutorial_stage){
+        //Primera misión, matar x enemigos
+        case 1:
+            if(mission_completion &gt;= 10){
+                finished = true;
+            }
+        break;
     }
-    //Reduce the hostility of the place
-    //En guarro
-    global.hex[global.hex_to_use, 3] -= force_deployed;
-    //Restore the fallen players
-    for(i = 0; i &lt; global.num_players; i++){
-        //Tengo que revisar de una vez este control
-        //if(global.player[i, 0] &gt; 0)
-        global.player[i, 3] = max(global.player[i, 3], 1);
-    }
-    //And give the expereince
-    global.experience += force_deployed;
-    //And go to the map
-    fadeIn = false;
-    //room_goto(room_map);
-}*/
-//Control de salida del mapa (por los jugadores
-leaving_players = 0;
-for(i = 0; i &lt; instance_number(obj_player); i++){
-    player_to_check = instance_find(obj_player, i);
-    if(player_to_check.quiting == 1)
-        leaving_players ++;
-}
-//Yeah, check that there are players alive to leave the place. You moron
-if(leaving_players == instance_number(obj_player) &amp;&amp; 
-    fadeIn == true &amp;&amp; instance_number(obj_player) &gt; 0){
-    fadeIn = false;
-    finished = true;
 }
 
 //Controlar también que se mueran los jugadores
 if(instance_number(obj_player) == 0 &amp;&amp; game_over == false &amp;&amp; finished == false){
-    game_over = true;
-    //Día y generación
-    global.days_lapsed = 0;
-    global.generation ++;
-    //Posición del grupo
-        //Se retocará más adelante
-    global.lastX = global.hex[0, 0];
-    global.lastY = global.hex[0, 1];
-    //Resetear seleccion de heroe y jugador
-    global.num_players = 0;
-    for(i = 0; i &lt; global.num_players; i++){
-        //global.player[i, 0] = 0;
-        global.player[i, 1] = 0;
-    }
-    //Resetear nivel y experiencia
-    global.level = 1;
-    global.experience = 0;
-    
-    //Luego pongo el resto
-    
+    game_over = true;    
     //And start the fade
     fadeIn = false;
 }
+
 //Button to quit the event if finished
     //De momento muy anidado, igual lo subo arriba
 if(gamepad_button_check_released(0, gp_face1) || keyboard_check_released(ord('E'))){
     if(alpha == 1){
+        //Avanzamos en el tuto si ganamos
         if(finished == true)
-            room_goto(room_map);
-        else if(game_over == true)
-            room_goto(room_tabern);
+            global.tutorial_stage ++;
+        //Y si o si vamos de nuevo a la selección
+        room_goto(room_tutorial_selection);
     }
 }
 </string>
@@ -198,7 +172,7 @@ if(gamepad_button_check_released(0, gp_face1) || keyboard_check_released(ord('E'
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="64">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -225,17 +199,23 @@ draw_set_color(c_white);
 draw_set_valign(fa_center);
 draw_set_halign(fa_center);
 
+//Para la mision
+switch(global.tutorial_stage){
+    //Primera matar x enemigos
+    case 1:
+        draw_text(600, 300, "Kill enemies: " + string(mission_completion) + "/10");
+    break;
+}
+
 //Si se mueren
 if(game_over == true){
-    draw_text(600, 300, "BUT THE HEROES NEVER RETURNED");
-    draw_text(600, 350, "Press Action to start the next generation");
+    draw_text(600, 300, "WE HAVE TO TRY HARDER");
+    draw_text(600, 400, "Press Action to return");
 }
 
 //Si derrotan al enemigo
 if(finished == true){
-    draw_text(600, 300, "Experience: " + string(experience_obtained));
-    if(next_hostility &lt; previous_hostility)
-        draw_text(600, 350, "Hostility reduced");
+    draw_text(600, 300, "SUCCESS");
     draw_text(600, 400, "Press Action to continue");
 }
 

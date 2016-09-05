@@ -75,6 +75,7 @@
         <sprite>sprites\spr_ghost_back_death</sprite>
       </sprites>
       <sprites name="Goatnies">
+        <sprite>sprites\spr_goatnie_mask</sprite>
         <sprite>sprites\spr_goatnie_front_idle</sprite>
         <sprite>sprites\spr_goatnie_front_death</sprite>
         <sprite>sprites\spr_goatnie_front_attack</sprite>
@@ -195,6 +196,8 @@
       <object>objects\obj_tutorial_introduction</object>
       <object>objects\obj_tutorial_selector</object>
       <object>objects\obj_post_tutorial_introduction</object>
+      <object>objects\obj_tutorial_encounter_manager</object>
+      <object>objects\obj_player_spam_tutorial</object>
       <object>objects\obj_skip_button</object>
     </objects>
     <objects name="MapStuff">
@@ -274,7 +277,6 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\room_preload</room>
-    <room>rooms\room_tabern</room>
     <room>rooms\room_introduction</room>
     <room>rooms\room_menu</room>
     <room>rooms\room_map</room>
@@ -286,6 +288,7 @@
     </rooms>
     <rooms name="Settlement">
       <room>rooms\room_settlement</room>
+      <room>rooms\room_tabern</room>
       <room>rooms\room_castle</room>
       <room>rooms\room_store</room>
     </rooms>
