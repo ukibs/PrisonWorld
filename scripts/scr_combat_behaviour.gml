@@ -1,8 +1,7 @@
     //Yeah, enemy behaviour (combat)
     done = false;
-    //Get the nearest player
-    if(instance_exists(obj_player)){
-        objective = instance_nearest(x, y, obj_player);
+    //Point to the objective
+    if(objective != noone){
         direction = point_direction(x, y, objective.x, objective.y);
     }
     for(i = 0; i < array_length_1d(combat_behaviour); i++){
@@ -19,7 +18,11 @@
                         sprite_index = front_attack;
                     }
                     image_index = 0;
-                    attack_to_use = obj_melee_attack;
+                    //Here we decide between ally or enemy attack
+                    if(type == "Enemy")
+                        attack_to_use = obj_melee_attack;
+                    else if(type == "Ally")
+                        attack_to_use = obj_basic_attack;
                     done = true;
                 }
                 if(sprite_index == back_attack || sprite_index == front_attack)

@@ -32,8 +32,11 @@ defense = 1;
 attack = 4;
 movement_speed = 1;
 
-//Ya no recuerdo si lo uso
-type = 1;
+//Declare the variable objective
+objective = noone;
+
+//Tipo de pnj, por defencto Enemigo
+type = "Enemy";
 
 //Stagger, stun and other debuffs
 status_locked = false;
@@ -166,10 +169,34 @@ staggered = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Check behaviour
+            <string>//Search objetive depending on its type
+switch(type){
+    //Enemigos
+        //Luego los separaremos en fauna y trabales
+    case "Enemy":
+        objective_player = instance_nearest(x, y, obj_player);
+        objective_ally = instance_nearest(x, y, obj_ally);
+        if(objective_ally == noone)
+            objective = objective_player;
+        else if(objective_player == noone)
+            objective = objective_ally;
+        else if(distance_to_object(objective_ally) &lt; distance_to_object(objective_player))
+            objective = objective_ally;
+        else if(distance_to_object(objective_player) &lt; distance_to_object(objective_ally))
+            objective = objective_player;
+        else
+            objective = noone;
+    break;
+    //Aliados
+    case "Ally":
+        objective = instance_nearest(x, y, obj_enemy);
+    break;
+}
+
+//Check behaviour
 if(life &gt; 0 &amp;&amp; status_locked == false &amp;&amp; 
     stunned == false &amp;&amp;
-    instance_exists(obj_player)){
+    objective != noone){
     //If not alerted, quiet behaviour
     if(alerted == false){
         script_execute(scr_quiet_behaviour);
@@ -315,6 +342,7 @@ if(charge == true){
 if(sprite_index == front_death ||
     sprite_index == back_death)
     instance_destroy();
+    
 //Realziar ataque
 if(sprite_index == front_attack ||
     sprite_index == back_attack){ //Habrá que retocarlo

@@ -97,10 +97,13 @@ switch(global.tutorial_stage){
             ally.attack = 5;
             ally.movement_speed = 3;
             //Behaviour
+                ally.type = "Ally";
                 //Here we will use the default one
         }
     break;
 }
+//And put them in alarm
+obj_pnj.general_alert = true;
 
 //Spawm
     //De momento un poco guarro
@@ -156,12 +159,61 @@ else if (fadeIn == false) {
     }
 }
 
-//Victory condition
+//Victory condition, and ohter checks
 if(finished == false &amp;&amp; game_over == false){
     //Depending on the tutorial stage
     switch(global.tutorial_stage){
         //Primera misión, matar x enemigos
         case 1:
+            //Mantenemos el flujo de enemigos
+                //De momento solo melee
+            if(instance_number(obj_enemy) &lt; 10){
+                    //Position, upper half
+                randomX = irandom_range(200, room_width - 200);
+                //randomY = irandom_range(100, room_height / 2);
+                enemy = instance_create(randomX, 100, obj_enemy);
+                //Sprites
+                enemy.mask_index = spr_goatnie_mask;
+                enemy.front_idle = spr_goatnie_front_idle;
+                enemy.front_attack = spr_goatnie_front_attack;
+                enemy.front_death = spr_goatnie_front_death;
+                enemy.back_idle = spr_goatnie_back_idle;
+                enemy.back_attack = spr_goatnie_back_attack;
+                enemy.back_death = spr_goatnie_back_death;
+                //Stats
+                enemy.life = 8;
+                enemy.defense = 0;
+                enemy.attack = 4;
+                enemy.movement_speed = 3;
+                //Behaviour
+                    enemy.general_alert = true;
+                    //Here we will use the default one
+            }
+            //Y de aliados
+                //Aquí también solo melee de momento
+            if(instance_number(obj_ally) &lt; 10){
+                    //Position, lower half
+                randomX = irandom_range(200, room_width - 200);
+                //randomY = irandom_range(room_height / 2, room_height - 100);
+                ally = instance_create(randomX, room_height - 100, obj_ally);
+                //Sprites
+                ally.mask_index = spr_soldier_mask;
+                ally.front_idle = spr_soldier_front_idle;
+                ally.front_attack = spr_soldier_front_attack;
+                ally.front_death = spr_soldier_front_death;
+                ally.back_idle = spr_soldier_back_idle;
+                ally.back_attack = spr_soldier_back_attack;
+                ally.back_death = spr_soldier_back_death;
+                //Stats
+                ally.life = 10;
+                ally.defense = 1;
+                ally.attack = 5;
+                ally.movement_speed = 3;
+                //Behaviour
+                    ally.type = "Ally";
+                    ally.general_alert = true;
+                    //Here we will use the default one
+            }
             if(mission_completion &gt;= 10){
                 finished = true;
             }

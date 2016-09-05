@@ -1,9 +1,9 @@
 //Yeah, enemy behaviour (combat)
     done = false;
     //Get the nearest player
-    if(instance_exists(obj_player)){
+    /*if(instance_exists(obj_player)){
         objective = instance_nearest(x, y, obj_player);
-    }
+    }*/
     //And check
     for(i = 0; i < array_length_1d(quiet_behaviour); i++){
         switch(quiet_behaviour[i]){
