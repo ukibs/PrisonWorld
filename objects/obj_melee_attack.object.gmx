@@ -79,12 +79,13 @@ instance_destroy();
             <kind>1</kind>
             <string>//
 if(triggered == false){
-    final_damage = damage - global.player[other.player_num, 5] - other.bonus_defense;
+    other.damage_received = damage;
+    /*final_damage = damage - global.player[other.player_num, 5] - other.bonus_defense;
     final_damage = max(final_damage, 0);
     global.player[other.player_num, 3] -= final_damage;
     damage_display = instance_create(other.x, other.y, obj_damage_displayer);
     damage_display.value = -final_damage;
-    damage_display.alarm[0] = 10;
+    damage_display.alarm[0] = 10;*/
     triggered = true;
 }
 </string>

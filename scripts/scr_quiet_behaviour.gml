@@ -17,7 +17,8 @@
             break;
             //Wild alarm if the beast is hurt
             case "Wild Alarm":
-                if(life < initial_life){
+                //Pequeño arreglo para prevenir fallos
+                if(life < initial_life && instance_exists(obj_enemy)){
                     obj_enemy.general_alert = true;
                 }
             break;

@@ -73,12 +73,32 @@ switch(global.tutorial_stage){
             enemy.life = 8;
             enemy.defense = 0;
             enemy.attack = 4;
-            enemy.movement_speed = 5;
-            enemy_strength = 1;
+            enemy.movement_speed = 3;
             //Behaviour
                 //Here we will use the default one
         }
-        
+        //After, the melee allies
+        for(i = 0; i &lt; 10; i++){
+            //Position, lower half
+            randomX = irandom_range(200, room_width - 200);
+            randomY = irandom_range(room_height / 2, room_height - 100);
+            ally = instance_create(randomX, randomY, obj_ally);
+            //Sprites
+            ally.mask_index = spr_soldier_mask;
+            ally.front_idle = spr_soldier_front_idle;
+            ally.front_attack = spr_soldier_front_attack;
+            ally.front_death = spr_soldier_front_death;
+            ally.back_idle = spr_soldier_back_idle;
+            ally.back_attack = spr_soldier_back_attack;
+            ally.back_death = spr_soldier_back_death;
+            //Stats
+            ally.life = 10;
+            ally.defense = 1;
+            ally.attack = 5;
+            ally.movement_speed = 3;
+            //Behaviour
+                //Here we will use the default one
+        }
     break;
 }
 

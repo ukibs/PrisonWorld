@@ -48,6 +48,9 @@ total_lock = false;
 movement_lock = false;
 turning_lock = false;
 
+//Now the proper receiver manages the damage
+damage_received = 0;
+
 //Bonus defense (for abilities and shit)
 bonus_defense = 0;
 
@@ -352,6 +355,17 @@ if(total_lock == false){
     }
 }
 
+//Damage management
+if(damage_received &gt; 0){
+    final_damage = damage_received - global.player[player_num, 5] - bonus_defense;
+    final_damage = max(final_damage, 0);
+    global.player[other.player_num, 3] -= final_damage;
+    damage_display = instance_create(other.x, other.y, obj_damage_displayer);
+    damage_display.value = -final_damage;
+    damage_display.alarm[0] = 20;
+    damage_received = 0;
+}
+
 //Out of combat
 if(global.player[player_num, 3] &lt;= 0){
     global.player[player_num, 3] = 0;
@@ -450,12 +464,13 @@ if(pushing == true){
     other.alarm[1] = 10;
     if(last_attack_done != other.last_attack_received){
         other.last_attack_received = last_attack_done;
-        final_damage = 5 - other.defense;   //Ya le asignaremos el daño desde otro lado
+        other.damage_received = 5;
+        /*final_damage = 5 - other.defense;   //Ya le asignaremos el daño desde otro lado
         final_damage = max(final_damage, 0);
         other.life -= final_damage;
         damage_display = instance_create(other.x, other.y, obj_damage_displayer);
         damage_display.value = -final_damage;
-        damage_display.alarm[0] = 10;
+        damage_display.alarm[0] = 10;*/
     }
 }
 </string>

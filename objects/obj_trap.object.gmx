@@ -81,17 +81,17 @@ if(triggered == false){
     //Change the sprite to the activated one
     sprite_index = spr_trap_active;
     //Damage it
-    final_damage = damage - other.defense;
+    other.damage_received = damage;
+    /*final_damage = damage - other.defense;
     other.life -= final_damage;
+    damage_display = instance_create(other.x, other.y, obj_damage_displayer);
+    damage_display.value = -final_damage;
+    damage_display.alarm[0] = 10;*/
     //Esto lo asignaremos con un atributo mas adelante
-        //Algo falla aqui
     other.stunned = true;
     other.alarm[1] = 60;
     //For the trap
     alarm[0] = 60;
-    damage_display = instance_create(other.x, other.y, obj_damage_displayer);
-    damage_display.value = -final_damage;
-    damage_display.alarm[0] = 10;
     triggered = true;
 }
 </string>

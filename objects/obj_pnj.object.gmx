@@ -40,6 +40,9 @@ status_locked = false;
 staggered = false;
 stunned = false;
 
+//Now the proper receiver manages the damage
+damage_received = 0;
+
 //For some abilities
 last_attack_done = 0;
 last_attack_received = 0;
@@ -48,6 +51,9 @@ attack_to_use = obj_melee_attack;
     //Charge
 charge = false;
 charge_direction = 0;
+
+//Bonus defense for some enemies
+bonus_defense = 0;
 
 //Varaibles relatives to the behaviour
 alerted = false;
@@ -194,7 +200,19 @@ if((status_locked == true || stunned == true) &amp;&amp;
     //De momento un poco de cualquier manera
 x = clamp(x, 100, room_width - 100);
 y = clamp(y, 100, room_height - 100);
-//Muerte
+
+//Damage management
+if(damage_received &gt; 0){
+    final_damage = damage_received - defense - bonus_defense;
+    final_damage = max(final_damage, 0);
+    life -= final_damage;
+    damage_display = instance_create(other.x, other.y, obj_damage_displayer);
+    damage_display.value = -final_damage;
+    damage_display.alarm[0] = 20;
+    damage_received = 0;
+}
+
+//Death
 if(life &lt;= 0 &amp;&amp; sprite_index != back_death &amp;&amp; sprite_index != front_death){
     if(direction &lt;= 180){
         sprite_index = back_death;
@@ -204,6 +222,7 @@ if(life &lt;= 0 &amp;&amp; sprite_index != back_death &amp;&amp; sprite_index !=
     }
     image_index = 0;
 }
+
 //Adjust depth
 depth = room_height - y;
 </string>

@@ -79,14 +79,15 @@ alarm_set(0, 10);
             <string>//Control frquency
 if(alarm_get(0) == 1){
     //Damage it
-    final_damage = damage - other.defense;
+    other.damage_received = damage;
+    /*final_damage = damage - other.defense;
     other.life -= final_damage;
     //Esto lo asignaremos con un atributo mas adelante
     other.status_locked = true;
     other.alarm[0] = 2;
     damage_display = instance_create(other.x, other.y, obj_damage_displayer);
     damage_display.value = -final_damage;
-    damage_display.alarm[0] = 10;
+    damage_display.alarm[0] = 10;*/
 }
 </string>
           </argument>

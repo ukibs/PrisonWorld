@@ -27,10 +27,10 @@
             <kind>1</kind>
             <string>//Variables
 damage = 0; //Assigned from the instataitor
-triggered = false;
+//triggered = false;
 
 //Lifetime
-alarm_set(0, 2);
+alarm_set(0, 1);
 </string>
           </argument>
         </arguments>
@@ -78,16 +78,8 @@ instance_destroy();
           <argument>
             <kind>1</kind>
             <string>//
-if(triggered == false){
-    other.damage_received = damage;
-    /*final_damage = damage - other.defense;
-    final_damage = max(final_damage, 0);
-    other.life -= final_damage;
-    damage_display = instance_create(other.x, other.y, obj_damage_displayer);
-    damage_display.value = -final_damage;*/
-    //damage_display.alarm[0] = 10;
-    triggered = true;
-}
+other.damage_received = damage;
+instance_destroy();
 </string>
           </argument>
         </arguments>
