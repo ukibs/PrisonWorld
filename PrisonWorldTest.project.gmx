@@ -9,6 +9,11 @@
     <sprite>sprites\spr_photo_placeholder</sprite>
     <sprite>sprites\spr_black</sprite>
     <sprite>sprites\spr_quest_button</sprite>
+    <sprites name="Allies">
+      <sprite>sprites\spr_soldier_mask</sprite>
+      <sprite>sprites\spr_soldier_front_idle</sprite>
+      <sprite>sprites\spr_soldier_back_idle</sprite>
+    </sprites>
     <sprites name="Map">
       <sprite>sprites\spr_settlement_hex</sprite>
       <sprite>sprites\spr_swamp_hex</sprite>
@@ -178,6 +183,8 @@
     <background>background\bg_forest1</background>
     <background>background\bg_horizon1</background>
     <background>background\bg_forest2</background>
+    <background>background\bg_ruins</background>
+    <background>background\bg_desert</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
