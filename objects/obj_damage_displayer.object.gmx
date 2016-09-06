@@ -27,7 +27,10 @@
             <kind>1</kind>
             <string>//Variables
 value = 0;
-alarm_set(0, 10);
+colour_to_use = c_white;
+
+//
+alarm_set(0, 20);   //Se lo asgina él mismo
 </string>
           </argument>
         </arguments>
@@ -99,7 +102,7 @@ y -= 2;
           <argument>
             <kind>1</kind>
             <string>//
-draw_set_colour(c_white);
+draw_set_colour(colour_to_use);
 
 //
 draw_text(x, y, value);

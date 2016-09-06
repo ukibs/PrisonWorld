@@ -49,6 +49,8 @@ damage_received = 0;
 //For some abilities
 last_attack_done = 0;
 last_attack_received = 0;
+last_attack_direction = 0;  //Received ones
+
     //Melee and distance attack
 attack_to_use = obj_melee_attack;
     //Charge

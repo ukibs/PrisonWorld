@@ -194,6 +194,7 @@
   <scripts name="scripts">
     <script>scripts\scr_spam_initial_places.gml</script>
     <script>scripts\scr_enemy_spam.gml</script>
+    <script>scripts\scr_pnj_assignment.gml</script>
     <script>scripts\scr_abilities.gml</script>
     <script>scripts\scr_abilities_end.gml</script>
     <script>scripts\scr_combat_behaviour.gml</script>

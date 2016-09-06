@@ -160,7 +160,9 @@ if(action_button){
           <argument>
             <kind>1</kind>
             <string>//Only on the tutorial
+    //Skip it
 if(action_button){
+    global.tutorial_stage = 5;
     room_goto(room_post_tutorial_introduction);
 }
 </string>

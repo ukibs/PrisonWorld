@@ -27,8 +27,11 @@ while(force_deployed < enemy_force * player_amount){
     enemy_to_use = irandom(array_length_2d(zone_habitat, terrain_to_use) - 1);
     enemy = instance_create(randomX, randomY, obj_enemy);  
     //Choose skin for the enemy
-    //For now with number
-    switch(zone_habitat[terrain_to_use, enemy_to_use]){
+        //For now with number
+        //Try with script
+        script_execute(scr_pnj_assignment, 
+            zone_habitat[terrain_to_use, enemy_to_use], enemy);
+    /*switch(zone_habitat[terrain_to_use, enemy_to_use]){
         //Living tree
         case "Living Tree":
             //Sprites
@@ -121,7 +124,7 @@ while(force_deployed < enemy_force * player_amount){
             enemy.combat_behaviour[2] = "Move Around";
             enemy.combat_behaviour[3] = "Aproach";
         break;
-    }
+    }*/
     //Common parameters
     enemy.initial_life = enemy.life;
     enemy.sprite_index = enemy.front_idle;

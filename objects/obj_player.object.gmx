@@ -57,6 +57,7 @@ bonus_defense = 0;
 //For some abilities
 last_attack_done = 0;
 last_attack_received = 0;
+last_attack_direction = 0;  //Received ones
 
 //Actions that require charge
 icon_to_use = 0;

@@ -132,17 +132,33 @@ switch(argument0){
             //Cura a los compis cercanos
             objective = instance_find(obj_player, i);
             if(distance_to_object(objective) < 200){
+                //Show amount healed
+                displayer = instance_create(objective.x, objective.y, obj_damage_displayer);
+                displayer.value = round(global.player[i, 2] / 2);
+                displayer.colour_to_use = c_green;
+                    //And apply
                 global.player[i, 3] += round(global.player[i, 2] / 2);
                 global.player[i, 3] = min(global.player[i, 3], global.player[i, 2]);
             }
         }
-        //Y a ti, no te coje con lo de arriba
+        //Y a ti, que no te coje con lo de arriba
+            //Show amount healed
+        displayer = instance_create(x, y, obj_damage_displayer);
+        displayer.value = round(global.player[player_num, 2] / 2);
+        displayer.colour_to_use = c_green;
+            //And apply
         global.player[player_num, 3] += round(global.player[player_num, 2] / 2);
-        global.player[player_num, 3] = min(global.player[player_num, 3], global.player[i, 2]);
+        global.player[player_num, 3] = min(global.player[player_num, 3], global.player[player_num, 2]);
         //Y a los soldaditos también
         for(i = 0; i < instance_number(obj_ally); i++){
             objective = instance_find(obj_ally, i);
             if(distance_to_object(objective) < 200){
+                //Show amount healed
+                displayer = instance_create(objective.x, objective.y, obj_damage_displayer);
+                    //Ñapa
+                displayer.value = 3;
+                displayer.colour_to_use = c_green;
+                //And apply
                     //De momento ñapa
                 objective.life += 3;
                     //Habrá que revisar la vida máxima
@@ -196,7 +212,7 @@ switch(argument0){
                 proyectile2.direction = looking_direction;
                 proyectile2.image_angle = proyectile2.direction;
                 proyectile2.speed = 25;  //Igual la cambiamos
-                proyectile2.damage = shoot_force / 2;
+                proyectile2.damage = round(shoot_force / 2);
             }
             //Cooldown of the ability
             alarm_set(argument2, global.player[player_num, 10]);

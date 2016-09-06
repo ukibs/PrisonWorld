@@ -62,21 +62,7 @@ switch(global.tutorial_stage){
             randomX = irandom_range(200, room_width - 200);
             randomY = irandom_range(100, room_height / 2);
             enemy = instance_create(randomX, randomY, obj_enemy);
-            //Sprites
-            enemy.mask_index = spr_goatnie_mask;
-            enemy.front_idle = spr_goatnie_front_idle;
-            enemy.front_attack = spr_goatnie_front_attack;
-            enemy.front_death = spr_goatnie_front_death;
-            enemy.back_idle = spr_goatnie_back_idle;
-            enemy.back_attack = spr_goatnie_back_attack;
-            enemy.back_death = spr_goatnie_back_death;
-            //Stats
-            enemy.life = 12;
-            enemy.defense = 0;
-            enemy.attack = 5;
-            enemy.movement_speed = 4;
-            //Behaviour
-                //Here we will use the default one
+            script_execute(scr_pnj_assignment, "Goatnie", enemy);
         }
         //After, the melee allies
         for(i = 0; i &lt; 10; i++){
@@ -84,32 +70,16 @@ switch(global.tutorial_stage){
             randomX = irandom_range(200, room_width - 200);
             randomY = irandom_range(room_height / 2, room_height - 100);
             ally = instance_create(randomX, randomY, obj_ally);
-            //Sprites
-            ally.mask_index = spr_soldier_mask;
-            ally.front_idle = spr_soldier_front_idle;
-            ally.front_attack = spr_soldier_front_attack;
-            ally.front_death = spr_soldier_front_death;
-            ally.back_idle = spr_soldier_back_idle;
-            ally.back_attack = spr_soldier_back_attack;
-            ally.back_death = spr_soldier_back_death;
-            //Stats
-            ally.life = 10;
-            ally.defense = 1;
-            ally.attack = 4;
-            ally.movement_speed = 3;
-            //Behaviour
-                ally.type = "Ally";
-                //Here we will use the default one
+            script_execute(scr_pnj_assignment, "Soldier", ally);
         }
+        //And put them in alarm
+        obj_pnj.general_alert = true;
         //And the mission requisite
         mission_requisite = 100;
     break;
 }
-//And put them in alarm
-    //Luego ponemos condicion para que no lo hagan en todas
-obj_pnj.general_alert = true;
 
-//Spawm
+//Player spawn
     //De momento un poco guarro
     //Habrá que revisarlo
 for(i = 0; i &lt; global.num_players; i++){
@@ -174,49 +144,18 @@ if(finished == false &amp;&amp; game_over == false){
             if(instance_number(obj_enemy) &lt; 20){
                     //Position, upper half
                 randomX = irandom_range(200, room_width - 200);
-                //randomY = irandom_range(100, room_height / 2);
                 enemy = instance_create(randomX, 100, obj_enemy);
-                //Sprites
-                enemy.mask_index = spr_goatnie_mask;
-                enemy.front_idle = spr_goatnie_front_idle;
-                enemy.front_attack = spr_goatnie_front_attack;
-                enemy.front_death = spr_goatnie_front_death;
-                enemy.back_idle = spr_goatnie_back_idle;
-                enemy.back_attack = spr_goatnie_back_attack;
-                enemy.back_death = spr_goatnie_back_death;
-                //Stats
-                enemy.life = 12;
-                enemy.defense = 0;
-                enemy.attack = 5;
-                enemy.movement_speed = 4;
-                //Behaviour
-                    enemy.general_alert = true;
-                    //Here we will use the default one
+                script_execute(scr_pnj_assignment, "Goatnie", enemy);
+                enemy.general_alert = true;
             }
             //Y de aliados
                 //Aquí también solo melee de momento
             if(instance_number(obj_ally) &lt; 10){
                     //Position, lower half
                 randomX = irandom_range(200, room_width - 200);
-                //randomY = irandom_range(room_height / 2, room_height - 100);
                 ally = instance_create(randomX, room_height - 100, obj_ally);
-                //Sprites
-                ally.mask_index = spr_soldier_mask;
-                ally.front_idle = spr_soldier_front_idle;
-                ally.front_attack = spr_soldier_front_attack;
-                ally.front_death = spr_soldier_front_death;
-                ally.back_idle = spr_soldier_back_idle;
-                ally.back_attack = spr_soldier_back_attack;
-                ally.back_death = spr_soldier_back_death;
-                //Stats
-                ally.life = 10;
-                ally.defense = 1;
-                ally.attack = 4;
-                ally.movement_speed = 3;
-                //Behaviour
-                    ally.type = "Ally";
-                    ally.general_alert = true;
-                    //Here we will use the default one
+                script_execute(scr_pnj_assignment, "Soldier", ally);
+                ally.general_alert = true;
             }
             if(mission_completion &gt;= mission_requisite){
                 finished = true;
@@ -225,6 +164,8 @@ if(finished == false &amp;&amp; game_over == false){
         break;
     }
 }
+//Completion overflow control
+mission_completion = min(mission_completion, mission_requisite);
 
 //Controlar también que se mueran los jugadores
 if(instance_number(obj_player) == 0 &amp;&amp; game_over == false &amp;&amp; finished == false){
