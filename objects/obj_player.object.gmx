@@ -358,7 +358,10 @@ if(total_lock == false){
 
 //Damage management
 if(damage_received &gt; 0){
-    final_damage = damage_received - global.player[player_num, 5] - bonus_defense;
+    final_damage = damage_received - global.player[player_num, 5];
+        //Direction control for the extra defense
+    if(abs(last_attack_direction - (looking_direction + 180)) &lt; 45)
+        final_damage -= bonus_defense;
     final_damage = max(final_damage, 0);
     global.player[other.player_num, 3] -= final_damage;
     damage_display = instance_create(other.x, other.y, obj_damage_displayer);
