@@ -135,9 +135,19 @@ switch(argument0){
                 global.player[i, 3] += round(global.player[i, 2] / 2);
                 global.player[i, 3] = min(global.player[i, 3], global.player[i, 2]);
             }
-            //Y a ti, no te coje con lo de arriba
-            global.player[player_num, 3] += round(global.player[player_num, 2] / 2);
-            global.player[player_num, 3] = min(global.player[player_num, 3], global.player[i, 2]);
+        }
+        //Y a ti, no te coje con lo de arriba
+        global.player[player_num, 3] += round(global.player[player_num, 2] / 2);
+        global.player[player_num, 3] = min(global.player[player_num, 3], global.player[i, 2]);
+        //Y a los soldaditos también
+        for(i = 0; i < instance_number(obj_ally); i++){
+            objective = instance_find(obj_ally, i);
+            if(distance_to_object(objective) < 200){
+                    //De momento ñapa
+                objective.life += 3;
+                    //Habrá que revisar la vida máxima
+                //objective = min(global.player[i, 3], global.player[i, 2]);
+            }
         }
         //Cooldown of the ability
         alarm_set(argument2, global.player[player_num, 15]);
@@ -158,7 +168,7 @@ switch(argument0){
     case "Soul Blast":
         //Mas adelante haremos que atrape la tecla por parámetro
         if(key_action_1_pressed){
-            turning_lock = true;
+            movement_lock = true;
             shoot_force = 3;
             icon_to_use = spr_arrow;    //Luego lo cambiamos
             charge_required = 10;
@@ -171,7 +181,7 @@ switch(argument0){
             action = 1;
         }
         if(key_action_1_released){ 
-            turning_lock = false;   
+            movement_lock = false;   
             shoot_force = min(10, shoot_force);
             shoot_force = round(shoot_force);
             //Your ball

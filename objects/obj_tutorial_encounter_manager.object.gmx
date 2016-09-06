@@ -35,6 +35,7 @@ alpha = 1;
 fading_speed = 0.05;
     //Mission ones
 mission_completion = 0;
+mission_requisite = 0;  //Luego lo cambiamos en los case
 
 //Spammeo jugadores
 //Datos
@@ -56,7 +57,7 @@ switch(global.tutorial_stage){
     case 1:
         //First, the melee goatnies
             //De momento aquí en guarro
-        for(i = 0; i &lt; 10; i++){
+        for(i = 0; i &lt; 20; i++){
             //Position, upper half
             randomX = irandom_range(200, room_width - 200);
             randomY = irandom_range(100, room_height / 2);
@@ -70,10 +71,10 @@ switch(global.tutorial_stage){
             enemy.back_attack = spr_goatnie_back_attack;
             enemy.back_death = spr_goatnie_back_death;
             //Stats
-            enemy.life = 8;
+            enemy.life = 12;
             enemy.defense = 0;
-            enemy.attack = 4;
-            enemy.movement_speed = 3;
+            enemy.attack = 5;
+            enemy.movement_speed = 4;
             //Behaviour
                 //Here we will use the default one
         }
@@ -94,15 +95,18 @@ switch(global.tutorial_stage){
             //Stats
             ally.life = 10;
             ally.defense = 1;
-            ally.attack = 5;
+            ally.attack = 4;
             ally.movement_speed = 3;
             //Behaviour
                 ally.type = "Ally";
                 //Here we will use the default one
         }
+        //And the mission requisite
+        mission_requisite = 100;
     break;
 }
 //And put them in alarm
+    //Luego ponemos condicion para que no lo hagan en todas
 obj_pnj.general_alert = true;
 
 //Spawm
@@ -167,7 +171,7 @@ if(finished == false &amp;&amp; game_over == false){
         case 1:
             //Mantenemos el flujo de enemigos
                 //De momento solo melee
-            if(instance_number(obj_enemy) &lt; 10){
+            if(instance_number(obj_enemy) &lt; 20){
                     //Position, upper half
                 randomX = irandom_range(200, room_width - 200);
                 //randomY = irandom_range(100, room_height / 2);
@@ -181,10 +185,10 @@ if(finished == false &amp;&amp; game_over == false){
                 enemy.back_attack = spr_goatnie_back_attack;
                 enemy.back_death = spr_goatnie_back_death;
                 //Stats
-                enemy.life = 8;
+                enemy.life = 12;
                 enemy.defense = 0;
-                enemy.attack = 4;
-                enemy.movement_speed = 3;
+                enemy.attack = 5;
+                enemy.movement_speed = 4;
                 //Behaviour
                     enemy.general_alert = true;
                     //Here we will use the default one
@@ -207,15 +211,16 @@ if(finished == false &amp;&amp; game_over == false){
                 //Stats
                 ally.life = 10;
                 ally.defense = 1;
-                ally.attack = 5;
+                ally.attack = 4;
                 ally.movement_speed = 3;
                 //Behaviour
                     ally.type = "Ally";
                     ally.general_alert = true;
                     //Here we will use the default one
             }
-            if(mission_completion &gt;= 10){
+            if(mission_completion &gt;= mission_requisite){
                 finished = true;
+                fadeIn = false;
             }
         break;
     }
@@ -244,7 +249,7 @@ if(gamepad_button_check_released(0, gp_face1) || keyboard_check_released(ord('E'
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -271,13 +276,6 @@ draw_set_color(c_white);
 draw_set_valign(fa_center);
 draw_set_halign(fa_center);
 
-//Para la mision
-switch(global.tutorial_stage){
-    //Primera matar x enemigos
-    case 1:
-        draw_text(600, 300, "Kill enemies: " + string(mission_completion) + "/10");
-    break;
-}
 
 //Si se mueren
 if(game_over == true){
@@ -293,6 +291,15 @@ if(finished == true){
 
 //Que la transparencia del texto vaya con la del fade
 draw_set_alpha(1);
+
+//Para la mision
+switch(global.tutorial_stage){
+    //Primera matar x enemigos
+    case 1:
+        draw_text(600, 50, "Draw back the enemy: " + string(mission_completion) + "/" +
+                    string(mission_requisite));
+    break;
+}
 </string>
           </argument>
         </arguments>
