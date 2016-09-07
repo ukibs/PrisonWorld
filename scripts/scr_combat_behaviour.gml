@@ -19,6 +19,7 @@
                     }
                     image_index = 0;
                     //Here we decide between ally or enemy attack
+                        //De momento un poco guarrete
                     if(type == "Enemy")
                         attack_to_use = obj_melee_attack;
                     else if(type == "Ally")
@@ -40,8 +41,16 @@
                         sprite_index = front_attack;
                     }
                     image_index = 0;
-                    attack_to_use = obj_enemy_proyectile;
-                    //De momento se autoasigna la velocidad
+                    //Here we decide between ally or enemy attack
+                        //De momento un poco guarrete
+                    if(type == "Enemy")
+                        //De momento se autoasigna la velocidad
+                        attack_to_use = obj_enemy_proyectile;
+                    else if(type == "Ally"){
+                        attack_to_use = obj_arrow;
+                        //attack_to_use.speed = 25;
+                    }
+                    
                     done = true;
                 }
                 if(sprite_index == back_attack || sprite_index == front_attack)

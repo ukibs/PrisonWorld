@@ -131,4 +131,26 @@ switch(argument0){
             argument1.type = "Ally";
             //Here we will use the default one
     break;
+    //Bow Soldier
+    case "Bow Soldier":
+        //Sprites
+        argument1.mask_index = spr_soldier_mask;    //Demomento la del soldado sin arco
+        argument1.front_idle = spr_soldier_bow_front;
+        argument1.front_attack = spr_soldier_bow_front_attack;
+        argument1.front_death = spr_soldier_bow_front_death;
+        argument1.back_idle = spr_soldier_bow_back;
+        argument1.back_attack = spr_soldier_bow_back_attack;
+        argument1.back_death = spr_soldier_bow_back_death;
+        //Stats
+        argument1.life = 8;
+        argument1.defense = 1;
+        argument1.attack = 5;
+        argument1.movement_speed = 3;
+        //Behaviour
+            argument1.type = "Ally";
+            //
+            //argument1.combat_behaviour[0] = "Move Away";
+            argument1.combat_behaviour[1] = "Distance Attack";
+            argument1.combat_behaviour[2] = "Approach";
+    break;
 }

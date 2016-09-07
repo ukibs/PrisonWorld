@@ -24,7 +24,7 @@
         <sprite>sprites\spr_soldier_bow_front_attack</sprite>
         <sprite>sprites\spr_soldier_bow_front_death</sprite>
         <sprite>sprites\spr_soldier_bow_back</sprite>
-        <sprite>sprites\spr_soldier_bow_bck_attack</sprite>
+        <sprite>sprites\spr_soldier_bow_back_attack</sprite>
         <sprite>sprites\spr_soldier_bow_back_death</sprite>
       </sprites>
     </sprites>

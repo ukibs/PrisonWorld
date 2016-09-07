@@ -65,12 +65,20 @@ switch(global.tutorial_stage){
             script_execute(scr_pnj_assignment, "Goatnie", enemy);
         }
         //After, the melee allies
-        for(i = 0; i &lt; 10; i++){
+        for(i = 0; i &lt; 8 - global.num_players; i++){
             //Position, lower half
             randomX = irandom_range(200, room_width - 200);
             randomY = irandom_range(room_height / 2, room_height - 100);
             ally = instance_create(randomX, randomY, obj_ally);
             script_execute(scr_pnj_assignment, "Soldier", ally);
+        }
+        //And ranged allies
+        for(i = 0; i &lt; 8 - global.num_players; i++){
+            //Position, lower half
+            randomX = irandom_range(200, room_width - 200);
+            randomY = irandom_range(room_height / 2, room_height - 100);
+            ally = instance_create(randomX, randomY, obj_ally);
+            script_execute(scr_pnj_assignment, "Bow Soldier", ally);
         }
         //And put them in alarm
         obj_pnj.general_alert = true;
