@@ -75,7 +75,18 @@ switch(global.tutorial_stage){
         //And put them in alarm
         obj_pnj.general_alert = true;
         //And the mission requisite
-        mission_requisite = 100;
+        mission_requisite = 100 * global.num_players;
+    break;
+    //Second mission, gather some supplies
+    case 2:
+        //We will spam a few unalarmed goatnies
+        for(i = 0; i &lt; 5; i++){
+            //Position, upper half
+            randomX = irandom_range(200, room_width - 200);
+            randomY = irandom_range(100, room_height / 2);
+            enemy = instance_create(randomX, randomY, obj_enemy);
+            script_execute(scr_pnj_assignment, "Goatnie", enemy);
+        }
     break;
 }
 

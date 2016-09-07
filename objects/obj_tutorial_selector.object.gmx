@@ -39,8 +39,8 @@ for(i = 0; i &lt; global.num_players; i++){
 
 //Text for the missions
 mission_text[0] = "Mission: Draw back the enemy";
-mission_text[1] = "Mission: Get a prisoner";
-mission_text[2] = "Mission: Gather food";
+mission_text[1] = "Mission: Gather supplies from the enemy";
+mission_text[2] = "Mission: Capture some of their cattle";
 mission_text[3] = "Mission: Defeat their leader";
 </string>
           </argument>
