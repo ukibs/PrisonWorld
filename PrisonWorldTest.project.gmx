@@ -10,13 +10,23 @@
     <sprite>sprites\spr_black</sprite>
     <sprite>sprites\spr_quest_button</sprite>
     <sprites name="Allies">
-      <sprite>sprites\spr_soldier_mask</sprite>
-      <sprite>sprites\spr_soldier_front_idle</sprite>
-      <sprite>sprites\spr_soldier_front_attack</sprite>
-      <sprite>sprites\spr_soldier_front_death</sprite>
-      <sprite>sprites\spr_soldier_back_idle</sprite>
-      <sprite>sprites\spr_soldier_back_attack</sprite>
-      <sprite>sprites\spr_soldier_back_death</sprite>
+      <sprites name="soldier_unarmed">
+        <sprite>sprites\spr_soldier_mask</sprite>
+        <sprite>sprites\spr_soldier_front_idle</sprite>
+        <sprite>sprites\spr_soldier_front_attack</sprite>
+        <sprite>sprites\spr_soldier_back_idle</sprite>
+        <sprite>sprites\spr_soldier_front_death</sprite>
+        <sprite>sprites\spr_soldier_back_attack</sprite>
+        <sprite>sprites\spr_soldier_back_death</sprite>
+      </sprites>
+      <sprites name="soldier_bow">
+        <sprite>sprites\spr_soldier_bow_front</sprite>
+        <sprite>sprites\spr_soldier_bow_front_attack</sprite>
+        <sprite>sprites\spr_soldier_bow_front_death</sprite>
+        <sprite>sprites\spr_soldier_bow_back</sprite>
+        <sprite>sprites\spr_soldier_bow_bck_attack</sprite>
+        <sprite>sprites\spr_soldier_bow_back_death</sprite>
+      </sprites>
     </sprites>
     <sprites name="Map">
       <sprite>sprites\spr_settlement_hex</sprite>
