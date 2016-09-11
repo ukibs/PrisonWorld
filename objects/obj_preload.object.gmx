@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>//Global variables
 //For the tutorial
-global.tutorial_stage = 1;  //De momento que empeice a 1
+global.tutorial_stage = 2;  //De momento que empeice a 1
 //Map stuff
 global.map_tile[0] = "Penish";
 global.hex[0, 0] = 0;   //x

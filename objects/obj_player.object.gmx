@@ -547,8 +547,13 @@ if(key_action_4_released){
     }
     charge_done = 0;
     movement_lock = false;
-    global.experience += 1;
-    obj_event_manager.experience_obtained += 1;
+    if(global.tutorial_stage &gt;= 5){
+        global.experience += 1;
+        obj_event_manager.experience_obtained += 1;
+    }
+    else if(global.tutorial_stage == 2){
+        obj_tutorial_encounter_manager.mission_completion += 1;
+    }
 }
 </string>
           </argument>

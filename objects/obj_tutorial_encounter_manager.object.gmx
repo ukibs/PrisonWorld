@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Mission finishers
+            <string>//Frist of all...
+randomize();
+
+//Mission finishers
 game_over = false;
 finished = false;
 
@@ -95,6 +98,18 @@ switch(global.tutorial_stage){
             enemy = instance_create(randomX, randomY, obj_enemy);
             script_execute(scr_pnj_assignment, "Goatnie", enemy);
         }
+        //And supplies to get
+        for(i = 0; i &lt; 4 + global.num_players; i++){
+            //Position, upper half
+            randomX = irandom_range(300, room_width - 300);
+            randomY = irandom_range(200, room_width - 200);
+            harvestable = instance_create(randomX, randomY, obj_harvestable);
+        }
+        //And put them unalarmed
+            //habrá que ver que falla aqui
+        obj_pnj.general_alert = false;
+        //And the mission requisite
+        mission_requisite = 4 + global.num_players;
     break;
 }
 
@@ -103,11 +118,11 @@ switch(global.tutorial_stage){
     //Habrá que revisarlo
 for(i = 0; i &lt; global.num_players; i++){
     //Asign each instanced player his number
-    if(global.player[i, 0] != 0){
+    //if(global.player[i, 0] != 0){
         player[i] = instance_create(spam_position.x + posX[i], spam_position.y + posY[i],
                                     obj_player);
         player[i].player_num = i;
-    }
+    //}
 }
 </string>
           </argument>
@@ -176,11 +191,36 @@ if(finished == false &amp;&amp; game_over == false){
                 script_execute(scr_pnj_assignment, "Soldier", ally);
                 ally.general_alert = true;
             }
+            //When mission is accomplished
             if(mission_completion &gt;= mission_requisite){
                 finished = true;
                 fadeIn = false;
             }
         break;
+        //Second mission, harvest some supplies
+        if(obj_enemy.general_alert == true &amp;&amp; instance_number(obj_enemy) &lt; 10 + (num_players * 4)){
+                //Position, upper half
+            randomX = irandom_range(200, room_width - 200);
+            enemy = instance_create(randomX, 100, obj_enemy);
+            script_execute(scr_pnj_assignment, "Goatnie", enemy);
+            enemy.general_alert = true;
+        }
+        //When mission is accomplished
+        if(mission_completion &gt;= mission_requisite){
+            //We take the one´s out of the tutotiral position as reference
+            exit_zone = instance_create(1376, 1504, obj_exit);
+            exit_zone.image_xscale = 5;
+            exit_zone.image_yscale = 2;
+        }
+        //Quit to complete
+        if(instance_exists(obj_exit)){
+            //Yeah, check that there are players alive to leave the place. You moron
+            if(leaving_players == instance_number(obj_player) &amp;&amp; 
+                fadeIn == true &amp;&amp; instance_number(obj_player) &gt; 0){
+                fadeIn = false;
+                finished = true;
+            }
+        }
     }
 }
 //Completion overflow control
@@ -259,7 +299,21 @@ switch(global.tutorial_stage){
         draw_text(600, 50, "Draw back the enemy: " + string(mission_completion) + "/" +
                     string(mission_requisite));
     break;
+    //Recolectar cosas
+    case 2:
+        if(mission_completion &lt; mission_requisite){
+            draw_text(600, 50, "Gather supplies" + string(mission_completion) + "/" +
+                    string(mission_requisite));
+            draw_text(600, 80, "They have set guards, better to not alert them");
+        }
+        else{
+            draw_text(600, 50, "Evacuate by the south exit");
+        }
+    break;
 }
+
+//Stuff to check
+draw_text(1300, 10, instance_number(obj_harvestable));
 </string>
           </argument>
         </arguments>
