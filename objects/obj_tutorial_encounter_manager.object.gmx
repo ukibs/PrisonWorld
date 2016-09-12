@@ -84,7 +84,7 @@ switch(global.tutorial_stage){
             script_execute(scr_pnj_assignment, "Bow Soldier", ally);
         }
         //And put them in alarm
-        obj_pnj.general_alert = true;
+        //obj_pnj.general_alert = true;
         //And the mission requisite
         mission_requisite = 100 * global.num_players;
     break;
@@ -198,30 +198,38 @@ if(finished == false &amp;&amp; game_over == false){
             }
         break;
         //Second mission, harvest some supplies
-        if(obj_enemy.general_alert == true &amp;&amp; instance_number(obj_enemy) &lt; 10 + (num_players * 4)){
-                //Position, upper half
-            randomX = irandom_range(200, room_width - 200);
-            enemy = instance_create(randomX, 100, obj_enemy);
-            script_execute(scr_pnj_assignment, "Goatnie", enemy);
-            enemy.general_alert = true;
-        }
-        //When mission is accomplished
-        if(mission_completion &gt;= mission_requisite &amp;&amp; !instance_exists(obj_exit)){
-            //We take the one´s out of the tutotiral position as reference
-            exit_zone = instance_create(1376, 1504, obj_exit);
-            //exit_zone.image_xscale = 5;
-            //exit_zone.image_yscale = 2;
-            exit_zone.visible = true;
-        }
-        //Quit to complete
-        if(instance_exists(obj_exit)){
-            //Yeah, check that there are players alive to leave the place. You moron
-            if(leaving_players == instance_number(obj_player) &amp;&amp; 
-                fadeIn == true &amp;&amp; instance_number(obj_player) &gt; 0){
-                fadeIn = false;
-                finished = true;
+        case 2:
+            if(obj_enemy.general_alert == true &amp;&amp; instance_number(obj_enemy) &lt; 10 + (global.num_players * 4)){
+                    //Position, upper half
+                randomX = irandom_range(200, room_width - 200);
+                enemy = instance_create(randomX, 100, obj_enemy);
+                script_execute(scr_pnj_assignment, "Goatnie", enemy);
+                enemy.general_alert = true;
             }
-        }
+            //When mission is accomplished
+            if(mission_completion &gt;= mission_requisite &amp;&amp; !instance_exists(obj_exit)){
+                //We take the one´s out of the tutotiral position as reference
+                exit_zone = instance_create(1376, 1504, obj_exit);
+                exit_zone.image_xscale = 5;
+                exit_zone.image_yscale = 2;
+                //exit_zone.visible = true;
+            }
+            //Quit to complete
+            leaving_players = 0;
+            for(i = 0; i &lt; instance_number(obj_player); i++){
+                player_to_check = instance_find(obj_player, i);
+                if(player_to_check.quiting == 1)
+                    leaving_players ++;
+            }
+            if(instance_exists(obj_exit)){
+                //Yeah, check that there are players alive to leave the place. You moron
+                if(leaving_players == instance_number(obj_player) &amp;&amp; 
+                    fadeIn == true &amp;&amp; instance_number(obj_player) &gt; 0){
+                    fadeIn = false;
+                    finished = true;
+                }
+            }
+        break;
     }
 }
 //Completion overflow control
@@ -305,7 +313,7 @@ switch(global.tutorial_stage){
         if(mission_completion &lt; mission_requisite){
             draw_text(600, 50, "Gather supplies" + string(mission_completion) + "/" +
                     string(mission_requisite));
-            draw_text(600, 80, "They have set guards, better to not alert them");
+            draw_text(600, 80, "They have set guards, better to not attack them");
         }
         else{
             draw_text(600, 50, "Evacuate by the south exit");

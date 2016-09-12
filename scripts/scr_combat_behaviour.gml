@@ -185,8 +185,10 @@
             break;
             //Return to a quiet behaviour
             case "Calm Down":
-                if(distance_to_object(objective) > 250 && general_alert == false)
+                if(distance_to_object(objective) > 250 && general_alert == false){
                     alerted = false;
+                    done = true;
+                }
             break;
         }
         //Save the last action for tests

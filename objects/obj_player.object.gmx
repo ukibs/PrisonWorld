@@ -389,10 +389,10 @@ y = clamp(y, view_yview, view_yview + view_hview);
 //Guarrada pa probar
 if(gamepad_button_check_pressed(player_num, gp_shoulderr)){
     if(instance_exists(obj_enemy)){
-        if(obj_enemy.alerted == true)
-            obj_enemy.alerted = false;
+        if(obj_enemy.general_alert == true)
+            obj_enemy.general_alert = false;
         else
-            obj_enemy.alerted = true;
+            obj_enemy.general_alert = true;
     }
 }
 </string>

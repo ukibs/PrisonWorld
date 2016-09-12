@@ -154,3 +154,6 @@ switch(argument0){
             argument1.combat_behaviour[2] = "Approach";
     break;
 }
+//Common parameters
+argument1.initial_life = argument1.life;
+argument1.sprite_index = argument1.front_idle;

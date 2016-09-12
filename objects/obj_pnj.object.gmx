@@ -387,6 +387,7 @@ charge = false;
             <kind>1</kind>
             <string>//
 draw_text(10, 10, last_action);
+draw_text(100, 10, general_alert);
 </string>
           </argument>
         </arguments>
