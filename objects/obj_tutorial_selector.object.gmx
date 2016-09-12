@@ -38,10 +38,10 @@ for(i = 0; i &lt; global.num_players; i++){
 }
 
 //Text for the missions
-mission_text[0] = "Mission: Draw back the enemy";
-mission_text[1] = "Mission: Gather supplies from the enemy";
-mission_text[2] = "Mission: Capture some of their cattle";
-mission_text[3] = "Mission: Defeat their leader";
+mission_text[1] = "Mission: Draw back the enemy";
+mission_text[2] = "Mission: Gather supplies from the enemy";
+mission_text[3] = "Mission: Capture some of their cattle";
+mission_text[4] = "Mission: Defeat their leader";
 </string>
           </argument>
         </arguments>
@@ -141,7 +141,7 @@ draw_set_halign(fa_center);
 
 //Mission text
     //Luego lo ponemos bonito
-draw_text(room_width/2, 50, mission_text[0]);
+draw_text(room_width/2, 50, mission_text[global.tutorial_stage]);
 
 //Mostramos por pantalla
 for(i = 0; i &lt; possible_players; i++){
