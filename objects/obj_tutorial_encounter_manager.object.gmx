@@ -102,7 +102,7 @@ switch(global.tutorial_stage){
         for(i = 0; i &lt; 4 + global.num_players; i++){
             //Position, upper half
             randomX = irandom_range(300, room_width - 300);
-            randomY = irandom_range(200, room_width - 200);
+            randomY = irandom_range(200, room_height - 200);
             harvestable = instance_create(randomX, randomY, obj_harvestable);
         }
         //And put them unalarmed
@@ -206,11 +206,12 @@ if(finished == false &amp;&amp; game_over == false){
             enemy.general_alert = true;
         }
         //When mission is accomplished
-        if(mission_completion &gt;= mission_requisite){
+        if(mission_completion &gt;= mission_requisite &amp;&amp; !instance_exists(obj_exit)){
             //We take the one´s out of the tutotiral position as reference
             exit_zone = instance_create(1376, 1504, obj_exit);
-            exit_zone.image_xscale = 5;
-            exit_zone.image_yscale = 2;
+            //exit_zone.image_xscale = 5;
+            //exit_zone.image_yscale = 2;
+            exit_zone.visible = true;
         }
         //Quit to complete
         if(instance_exists(obj_exit)){
