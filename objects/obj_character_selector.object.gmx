@@ -92,11 +92,11 @@ if(!gamepad_is_connected(player_num) &amp;&amp; global.player[player_num, 0] == 
 }
     
 //Change the player id if controller disconected and you are the keyboard
-if(global.player[player_num, 0] == 2){
+/*if(global.player[player_num, 0] == 2){
     //global.player[player_num, 0] = 0;
     //global.player[player_num, 1] = 0;
     player_num = obj_tabern_manager.possible_players - 1;
-}
+}*/
 </string>
           </argument>
         </arguments>
