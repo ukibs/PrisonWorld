@@ -209,6 +209,8 @@
     <script>scripts\scr_abilities_end.gml</script>
     <script>scripts\scr_combat_behaviour.gml</script>
     <script>scripts\scr_quiet_behaviour.gml</script>
+    <script>scripts\scr_save_game.gml</script>
+    <script>scripts\scr_load_game.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_preload</object>

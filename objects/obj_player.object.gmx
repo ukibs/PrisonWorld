@@ -672,22 +672,20 @@ draw_sprite_stretched(spr_cooldown, 0, 96, 50 + (player_num * 90),
           <argument>
             <kind>1</kind>
             <string>//De momento los diferenciamos con un marcador
-draw_sprite(spr_general_marker, player_num, x, y);
-draw_self();
+draw_sprite(spr_general_marker, player_num, x, y);  //Este ya lo quitaremos
+//Dibujarlo quieto o moviéndose
+    //Más adelante habrá que tener en cuenta que no esté unsando sprite de ataque
+if(v_direction == 0 &amp;&amp; h_direction == 0)
+    draw_sprite(sprite_index, 0, x, y);
+else
+    draw_self();
 
 
 //Use button
-/*switch(action){
-    case 0:
-        //draw_sprite(spr_no_action, 0, 128, 50 + (player_num * 90));
-    break;
-    case 1:*/
-        if(action == 1) draw_sprite(icon_to_use, 0, x - 16, y - 100);
-   /* break;
-}*/
+if(action == 1) draw_sprite(icon_to_use, 0, x - 16, y - 100);
     //Progression bar (charge)
-    //Controlamos aqui que no se pase
-    charge_done = min(charge_done, charge_required);
+//Controlamos aqui que no se pase
+charge_done = min(charge_done, charge_required);
 draw_sprite_stretched(spr_charge, 0, x - 16, y - 100, 
                         charge_done / charge_required * 32, 32);
 </string>
